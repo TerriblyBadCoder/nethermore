@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "nethermore:block/whispering_slab"
+    },
+    "type=double": {
+      "model": "nethermore:block/whispering_planks"
+    },
+    "type=top": {
+      "model": "nethermore:block/whispering_slab_top"
+    }
+  }
+}

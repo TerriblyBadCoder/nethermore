@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "nethermore:block/cold_fused_tar_top",
+    "side": "nethermore:block/cold_fused_tar_side"
+  }
+}

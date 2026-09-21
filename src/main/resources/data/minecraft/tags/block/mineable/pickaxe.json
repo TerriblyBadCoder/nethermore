@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "nethermore:fused_tar",
+    "nethermore:cold_fused_tar",
+    "nethermore:tumor_block",
+    "nethermore:fat_tumor_block",
+    "nethermore:maw_tumor_block",
+    "nethermore:eye_tumor_block"]
+}

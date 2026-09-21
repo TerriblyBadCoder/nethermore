@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "axis=x,blinking=false": {
+      "model": "nethermore:block/whispering_thorn_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,blinking=false": {
+      "model": "nethermore:block/whispering_thorn"
+    },
+    "axis=z,blinking=false": {
+      "model": "nethermore:block/whispering_thorn_horizontal",
+      "x": 90
+    },
+    "axis=x,blinking=true": {
+      "model": "nethermore:block/whispering_thorn_blink_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,blinking=true": {
+      "model": "nethermore:block/whispering_thorn_blink"
+    },
+    "axis=z,blinking=true": {
+      "model": "nethermore:block/whispering_thorn_blink_horizontal",
+      "x": 90
+    }
+  }
+}

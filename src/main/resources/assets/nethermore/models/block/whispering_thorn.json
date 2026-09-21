@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "nethermore:block/whispering_thorn_stem_top",
+    "side": "nethermore:block/whispering_thorn_stem"
+  }
+}

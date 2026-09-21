@@ -1,0 +1,46 @@
+{
+  "block.nethermore.tumor_block": "Tumor Block",
+  "block.nethermore.eye_tumor_block": "Eye Tumor Block",
+  "block.nethermore.maw_tumor_block": "Maw Tumor Block",
+  "block.nethermore.fat_tumor_block": "Fat Tumor Block",
+  "block.nethermore.fused_tar": "Fused Tar",
+  "block.nethermore.soft_tar": "Soft Tar",
+  "block.nethermore.whispering_thorn": "Whispering Thorn",
+  "block.nethermore.whispering_fence": "Whispering Fence",
+  "block.nethermore.whispering_planks": "Whispering Planks",
+  "block.nethermore.slivers": "Slivers",
+  "block.nethermore.cold_fused_tar": "Cold Fused Tar",
+  "block.nethermore.soul_lining": "Soul Lining",
+  "block.nethermore.soul_crystal": "Soul Crystal",
+  "block.nethermore.bilestone": "Bilestone",
+  "block.nethermore.bile_growth": "Bile Growth",
+  "block.nethermore.topped_bilestone": "Topped Bilestone",
+  "block.nethermore.blue_ash": "Blue Ash",
+  "block.nethermore.blue_slag": "Blue Slag",
+  "block.nethermore.blue_ash_block": "Blue Ash Block",
+  "effect.nethermore.morbid": "Morbid",
+
+  "item.nethermore.morbid_piece": "Morbid Piece",
+  "item.nethermore.tar_bucket": "Tar Bucket",
+  "item.nethermore.tar_glob": "Tar Glob",
+
+  "sound.nethermore.heartbeat": "Heart beat.",
+
+  "entity.nethermore.morbid_piglin": "Morbid Piglin",
+  "entity.nethermore.tarling": "Tarling",
+  "entity.nethermore.disgustling_head": "Disgustling",
+  "entity.nethermore.disgustling": "Disgustling",
+
+  "entity.nethermore.unpheasant": "Unpheasant",
+
+  "entity.nethermore.noo": "Noo",
+  "entity.nethermore.pylon": "Pylon",
+  "entity.nethermore.onlooker": "Onlooker",
+  "entity.nethermore.beholder": "Beholder",
+  "entity.nethermore.ego": "Egocentrist",
+
+  "biome.nethermore.haunted_crags": "Haunted Crags",
+  "nethermore.configuration.title": "Nethermore Configs",
+  "nethermore.configuration.section.nethermore.common.toml": "Nethermore Configs",
+  "nethermore.configuration.section.nethermore.common.toml.title": "Nethermore Configs"
+}

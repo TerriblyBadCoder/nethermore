@@ -1,0 +1,6 @@
+{
+  "type": "nethermore:scrambled_pits",
+  "biomes": "nethermore:scrambled_pits",
+  "spawn_overrides": {},
+  "step": "underground_structures"
+}

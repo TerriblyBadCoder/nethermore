@@ -1,0 +1,31 @@
+{
+  "feature": "nethermore:whispering_thorn",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 6,
+        "min_inclusive": 1
+      }
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:trapezoid",
+        "max_inclusive": {
+          "below_top": 35
+        },
+        "min_inclusive": {
+          "above_bottom": 53
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "feature": "nethermore:soul_bump",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 64
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:trapezoid",
+        "max_inclusive": {
+          "below_top": 30
+        },
+        "min_inclusive": {
+          "above_bottom": 40
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

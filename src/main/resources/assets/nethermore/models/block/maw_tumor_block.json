@@ -1,0 +1,19 @@
+{
+    "parent": "block/cube",
+    "display": {
+        "firstperson_righthand": {
+            "rotation": [ 0, 135, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.40, 0.40, 0.40 ]
+        }
+    },
+    "textures": {
+        "particle": "nethermore:block/tumor_block",
+        "down": "nethermore:block/tumor_block",
+        "up": "nethermore:block/tumor_block",
+        "north": "nethermore:block/mouth_tumor_block_1",
+        "east": "nethermore:block/mouth_tumor_block_0",
+        "south": "nethermore:block/tumor_block",
+        "west": "nethermore:block/mouth_tumor_block_2"
+    }
+}

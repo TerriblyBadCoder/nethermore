@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "nethermore:block/soft_tar"
+    }
+  }
+}

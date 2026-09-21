@@ -1,0 +1,29 @@
+{
+  "required": true,
+  "package": "net.atired.nethermore.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ClimateMixin",
+    "LevelChunkSectionMixin",
+    "LivingEntityMixin",
+    "NMBiomeSourceNoiseMixin",
+    "NMMultiBiomeSourceNoiseMixin",
+    "ServerLevelMixin",
+    "SkeletonEntityMixin",
+    "SurfaceRuleDataMixin",
+    "TextRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "client": [
+    "CameraMixin",
+    "InGameHudMixin",
+    "LightmapMixin",
+    "NMGameRendererMixin",
+    "NMPostChainMixin"
+  ]
+}

@@ -1,0 +1,9 @@
+
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "nethermore:block/bilerock",
+    "side": "nethermore:block/bilerock_topped",
+    "top": "nethermore:block/bilerock_top"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "nethermore:haunted_crags",
+  "features": "nethermore:tumor_placed",
+  "step": "underground_ores"
+}

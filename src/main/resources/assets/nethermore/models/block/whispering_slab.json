@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "nethermore:block/whispering_planks",
+    "side": "nethermore:block/whispering_planks",
+    "top": "nethermore:block/whispering_planks"
+  }
+}

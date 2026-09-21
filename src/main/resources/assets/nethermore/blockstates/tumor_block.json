@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "nethermore:block/tumor_block"
+    }
+  }
+}

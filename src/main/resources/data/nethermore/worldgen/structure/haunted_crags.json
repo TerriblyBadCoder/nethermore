@@ -1,0 +1,6 @@
+{
+  "type": "nethermore:haunted_crags",
+  "biomes": "nethermore:haunted_crags",
+  "spawn_overrides": {},
+  "step": "underground_structures"
+}

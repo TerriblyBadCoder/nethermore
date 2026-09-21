@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/flowerbed_3",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "flowerbed": "nethermore:block/slivers",
+    "stem": "nethermore:block/sliver_stem"
+  }
+}

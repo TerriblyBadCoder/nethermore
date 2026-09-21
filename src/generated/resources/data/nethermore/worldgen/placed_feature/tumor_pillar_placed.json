@@ -1,0 +1,31 @@
+{
+  "feature": "nethermore:tumor_pillar",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 16,
+        "min_inclusive": 12
+      }
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:trapezoid",
+        "max_inclusive": {
+          "below_top": 4
+        },
+        "min_inclusive": {
+          "below_top": 100
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

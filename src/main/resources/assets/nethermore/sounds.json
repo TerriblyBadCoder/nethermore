@@ -1,0 +1,8 @@
+{
+  "entity.heartbeat": {
+    "subtitle": "sound.nethermore.heartbeat",
+    "sounds": [
+      "nethermore:heartbeat"
+    ]
+  }
+}

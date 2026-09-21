@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "nethermore:scrambled_pits",
+  "features": "nethermore:soul_bump_placed",
+  "step": "underground_ores"
+}

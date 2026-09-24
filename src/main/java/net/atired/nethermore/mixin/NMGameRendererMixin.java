@@ -42,7 +42,7 @@ public class NMGameRendererMixin implements GameRendererResourceManagerAccessor 
     @Inject(method = "render",at= @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/pipeline/RenderTarget;bindWrite(Z)V",ordinal = 0,shift= At.Shift.BEFORE))
     private void renderNM(DeltaTracker deltaTracker, boolean renderLevel, CallbackInfo ci){
         if(Minecraft.getInstance().levelRenderer!=null&&Minecraft.getInstance().player!=null){
-            if(NethermoreClient.PROXY!=null&& NethermoreClient.PROXY.blueNess>0.0f){
+            if(NethermoreClient.PROXY!=null&& NethermoreClient.PROXY.blueNess>0.01f){
 
                 PostChain chain = NethermoreClient.TUMOR;
                 chain.setUniform("GameTime",(Minecraft.getInstance().level.getGameTime()%24000));
@@ -50,14 +50,14 @@ public class NMGameRendererMixin implements GameRendererResourceManagerAccessor 
                 chain.setUniform("Pixelation",1.0f-NethermoreClient.PROXY.lightNess);
                 chain.process(deltaTracker.getRealtimeDeltaTicks());
             }
-            if(NethermoreClient.PROXY!=null&& NethermoreClient.PROXY.tarNess>0.0f){
+            if(NethermoreClient.PROXY!=null&& NethermoreClient.PROXY.tarNess>0.01f){
 
                 PostChain chain = NethermoreClient.TARRED;
                 chain.setUniform("GameTime",(Minecraft.getInstance().level.getGameTime()%24000));
                 chain.setUniform("FadeInTest",NethermoreClient.PROXY.tarNess);
                 chain.process(deltaTracker.getRealtimeDeltaTicks());
             }
-            if(NethermoreClient.PROXY!=null&& NethermoreClient.PROXY.nihiloNess>0.0f){
+            if(NethermoreClient.PROXY!=null&& NethermoreClient.PROXY.nihiloNess>0.01f){
 
                 PostChain chain = NethermoreClient.SCRAMBLED;
                 chain.setUniform("GameTime",(Minecraft.getInstance().level.getGameTime()%24000));

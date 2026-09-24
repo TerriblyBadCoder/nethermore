@@ -1,5 +1,6 @@
 package net.atired.nethermore.client;
 
+import com.mojang.authlib.minecraft.client.MinecraftClient;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.atired.nethermore.Nethermore;
@@ -110,7 +111,7 @@ public class NethermoreClientEvents {
         }
         if(NethermoreClient.PROXY.nihiloNess>0.01f) {
             computeFogColor.scaleNearPlaneDistance(1.0f-NethermoreClient.PROXY.nihiloNess*2.6f);
-            computeFogColor.scaleFarPlaneDistance(1.0f-NethermoreClient.PROXY.nihiloNess*0.3f);
+            computeFogColor.scaleFarPlaneDistance(1.0f-NethermoreClient.PROXY.nihiloNess*0.25f);
             computeFogColor.setCanceled(true);
         }
     }
@@ -127,10 +128,11 @@ public class NethermoreClientEvents {
             computeFogColor.setGreen(computeFogColor.getGreen()*(1.0f+NethermoreClient.PROXY.lightNess*5f)+NethermoreClient.PROXY.lightNess/2.0f);
             computeFogColor.setRed(computeFogColor.getRed()*(1.0f+NethermoreClient.PROXY.lightNess*5f)+NethermoreClient.PROXY.lightNess/2.0f);
         }
-        if(NethermoreClient.PROXY.nihiloNess>0.01f){
-            computeFogColor.setBlue(computeFogColor.getBlue()*(1.0f));
-            computeFogColor.setGreen(computeFogColor.getGreen()*(1.0f));
-            computeFogColor.setRed(computeFogColor.getRed()*(1.0f));
+        if(NethermoreClient.PROXY.nihiloNess>0.01f&&Minecraft.getInstance().level!=null){
+            float toAdd = NethermoreClient.PROXY.nihiloNess*Minecraft.getInstance().level.getRainLevel((float)computeFogColor.getPartialTick());
+            computeFogColor.setBlue(computeFogColor.getBlue()*(1.0f+toAdd));
+            computeFogColor.setGreen(computeFogColor.getGreen()*(1.0f+toAdd));
+            computeFogColor.setRed(computeFogColor.getRed()*(1.0f+toAdd));
         }
 //        if(NethermoreClient.PROXY.redNess>0.01f) {
 //            computeFogColor.setBlue(computeFogColor.getBlue()*(1.0f+0.2f*NethermoreClient.PROXY.redNess));

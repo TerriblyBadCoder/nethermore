@@ -77,6 +77,7 @@ public class NethermoreEvents {
         event.put(NMEntityInit.DISGUSTLING_HEAD.get(), DisgustlingEntity.createUnpheasantAttributes().build());
         event.put(NMEntityInit.DISGUSTLING.get(), DisgustlingEntity.createUnpheasantAttributes().build());
         event.put(NMEntityInit.TARLING.get(), Monster.createMonsterAttributes().build());
+        event.put(NMEntityInit.SLITHER.get(), SlitherEntity.createSlitherAttributes().build());
         event.put(NMEntityInit.NOO.get(), NooEntity.createNooAttributes().build());
         event.put(NMEntityInit.EGO_MASK.get(), EgoMaskEntity.createEgoMaskAttributes().build());
         event.put(NMEntityInit.EGO.get(), EgoEntity.createEgoAttributes().build());

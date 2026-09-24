@@ -26,13 +26,19 @@ public class ShatterFeature extends Feature<NoneFeatureConfiguration> {
             return false;
         }
         for (int x = -12; x <= 12; x++) {
-            for (int y = -12; y <= 18; y++) {
-                for (int z = -12; z <= 12; z++) {
+            for (int z = -12; z <= 12; z++) {
+                int otherSolidity=5;
+                for (int y = -12; y <= 18; y++) {
                     BlockPos pos1 = pos.offset(x, y, z);
                     float noisy = NMsimplexNoise.sampleNoise3D(x, y/40.0f, z, 35.0f);
                     float noisy2 = NMsimplexNoise.sampleNoise3D(x, y, z, 4.0f)*0.5f;
                     double dist = new Vec3(x,y*2.0,z).length();
-                    if(level.getBlockState(pos1.below()).isCollisionShapeFullBlock(level,pos1.below())&&(level.isEmptyBlock(pos1)||((level.getBlockState(pos1).is(BlockTags.SOUL_FIRE_BASE_BLOCKS)||level.getBlockState(pos1).is(Blocks.NETHERRACK))&&level.getBlockState(pos1).isSolid()))){
+                    boolean solidity=level.getBlockState(pos1.below()).isCollisionShapeFullBlock(level,pos1.below());
+                    if(!solidity&&otherSolidity>0&&!level.isEmptyBlock(pos1)){
+                        otherSolidity-=1;
+                        solidity=true;
+                    }
+                    if(solidity&&(level.isEmptyBlock(pos1)||((level.getBlockState(pos1).is(BlockTags.SOUL_FIRE_BASE_BLOCKS)||level.getBlockState(pos1).is(Blocks.NETHERRACK))&&level.getBlockState(pos1).isSolid()))){
                         boolean fullOnly=false;
                         if((level.getBlockState(pos1).is(BlockTags.SOUL_FIRE_BASE_BLOCKS)||level.getBlockState(pos1).is(Blocks.NETHERRACK))){
                             dist*=0.7f;

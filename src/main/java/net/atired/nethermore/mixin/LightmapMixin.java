@@ -44,13 +44,14 @@ public class LightmapMixin {
             Vector3f olLight = instance.mul(new Vector3f(1, 1, 1), new Vector3f());
             float median = (olLight.x+olLight.y+olLight.z)/3.0f;
             median=(float)Math.pow(median,0.5);
-            median=Math.min(1.0f,median*1.33f);
+            median=Math.min(1.0f,median*(1.0f+NethermoreClient.PROXY.nihiloNess/2.0f));
             instance.x= Mth.lerp(NethermoreClient.PROXY.nihiloNess,instance.x,median);
 //            float reddened = Math.min(1.0f,NethermoreClient.PROXY.redNess*3.0f);
 //            if(NethermoreClient.PROXY.redNess>0.8f){
 //                reddened=Math.clamp(1.0f-NethermoreClient.PROXY.redNess,0.0f,0.2f)*6.0f;
 //            }
 //            median=(float)Math.pow(median,1.0+reddened);
+            instance.x= Mth.lerp(NethermoreClient.PROXY.nihiloNess,instance.x,median);
             instance.y= Mth.lerp(NethermoreClient.PROXY.nihiloNess,instance.y,median);
             instance.z= Mth.lerp(NethermoreClient.PROXY.nihiloNess,instance.z,median);
         }

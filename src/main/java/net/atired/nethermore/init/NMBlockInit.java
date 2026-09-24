@@ -25,9 +25,13 @@ public class NMBlockInit {
             () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_YELLOW)));
 
     public static final DeferredBlock<Block> SOUL_LINING_BLOCK = registerBlock("soul_lining",
-            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.AMETHYST)));
+            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).lightLevel((p_50872_) -> {
+                return 12;
+            }).mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.AMETHYST)));
     public static final DeferredBlock<Block> SOUL_CRYSTAL_BLOCK = registerBlock("soul_crystal",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.AMETHYST)));
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).lightLevel((p_50872_) -> {
+                return 12;
+            }).mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.AMETHYST)));
     public static final DeferredBlock<Block> BLUE_ASH = registerBlock("blue_ash",
             () -> new BlueAshLayerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.SNOW)));
     public static final DeferredBlock<Block> BLUE_ASH_BLOCK = registerBlock("blue_ash_block",

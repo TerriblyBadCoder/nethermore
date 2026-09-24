@@ -117,8 +117,8 @@ void main(){
     dist=clamp(dist/3.0-2.0,3.0,6.0)-3.0;
     dist/=3.0;
     dist*=(red/2.0+0.5)*FadeInTest;
-    fracted.y+=sin(fracted.y*3.14f*60.0f+fracted.x*3.14f*4.0f+GameTime/3.0f)/80.0f*dist;
-    fracted.x+=sin(fracted.y*3.14f*60.0f+GameTime/50.0f)/400.0f*dist;
+    fracted.y+=sin(fracted.y*3.14f*60.0f+fracted.x*3.14f*4.0f+GameTime/3.0f)/160.0f*dist;
+    fracted.x+=sin(fracted.y*3.14f*60.0f+GameTime/50.0f)/800.0f*dist;
     vec4 diffuseColor = texture(DiffuseSampler, fracted);
     vec3 hsvD = rgb2hsv(diffuseColor.rgb);
     float mulSat=clamp(abs(hsvD.x-0.5)*12.0-0.4,0.0,1.0);
@@ -141,8 +141,8 @@ void main(){
     souled*=(1.0-olMulSat);
     if(souled>0.0){
         hsvD.x=1.08-red*0.08;
-        hsvD.y*=0.9f+red*0.7;
         hsvD.y=pow(hsvD.y,0.5);
+        hsvD.y*=0.9f+red*0.0;
         hsvD.z*=1.0f-red*0.04f*hsvD.y;
         souled=min(souled+red,1.0);
         rgbD=rgbD*(1.0-souled)+souled*hsv2rgb(hsvD);

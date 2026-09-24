@@ -118,6 +118,7 @@ public class NethermoreClient {
         event.registerEntityRenderer(NMEntityInit.BEHOLDER.get(), ObserverEntityRenderer::new);
 
         event.registerEntityRenderer(NMEntityInit.TARLING.get(), TarlingEntityRenderer::new);
+        event.registerEntityRenderer(NMEntityInit.SLITHER.get(), SlitherEntityRenderer::new);
         event.registerEntityRenderer(NMEntityInit.MORBID_PIGLIN.get(), MorbidPiglinEntityRenderer::new);
         event.registerEntityRenderer(NMEntityInit.DISGUSTLING.get(), DisgustlingEntityRenderer::new);
         event.registerEntityRenderer(NMEntityInit.DISGUSTLING_HEAD.get(), EmptyEntityRenderer::new);
@@ -133,12 +134,17 @@ public class NethermoreClient {
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(UnpheasantEntityModel.LAYER_LOCATION, UnpheasantEntityModel::createBodyLayer);
+
+
         event.registerLayerDefinition(NooEntityModel.LAYER_LOCATION, NooEntityModel::createBodyLayer);
         event.registerLayerDefinition(OnlookerEntityModel.LAYER_LOCATION, OnlookerEntityModel::createBodyLayer);
         event.registerLayerDefinition(ObserverEntityModel.LAYER_LOCATION, ObserverEntityModel::createBodyLayer);
         event.registerLayerDefinition(EgoEntityModel.LAYER_LOCATION, EgoEntityModel::createBodyLayer);
         event.registerLayerDefinition(PylonEntityModel.LAYER_LOCATION, PylonEntityModel::createBodyLayer);
+
+
         event.registerLayerDefinition(TarlingEntityModel.LAYER_LOCATION, TarlingEntityModel::createBodyLayer);
+        event.registerLayerDefinition(SlitherEntityModel.LAYER_LOCATION, SlitherEntityModel::createBodyLayer);
         event.registerLayerDefinition(MorbidPiglinEntityModel.LAYER_LOCATION, MorbidPiglinEntityModel::createBodyLayer);
         event.registerLayerDefinition(DisgustlingEntityModel.LAYER_LOCATION, DisgustlingEntityModel::createBodyLayer);
     }

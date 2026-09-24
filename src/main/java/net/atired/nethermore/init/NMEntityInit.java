@@ -56,7 +56,7 @@ public class NMEntityInit {
                     .build("tarling"));
     public static final Supplier<EntityType<SlitherEntity>> SLITHER =
             ENTITIES.register("slither", () -> EntityType.Builder.of(SlitherEntity::new, MobCategory.MONSTER)
-                    .sized(0.62f, 1.8f).eyeHeight(1.5F).passengerAttachments(1.0125F).ridingOffset(-0.7F).clientTrackingRange(8)
+                    .sized(0.62f, 1.5f).eyeHeight(1.2F).passengerAttachments(1.0125F).ridingOffset(-0.7F).clientTrackingRange(8)
                     .build("slither"));
     public static final Supplier<EntityType<DisgustlingHeadEntity>> DISGUSTLING_HEAD =
             ENTITIES.register("disgustling_head", () -> EntityType.Builder.of(DisgustlingHeadEntity::new, MobCategory.MONSTER)

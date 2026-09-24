@@ -112,7 +112,7 @@ void main() {
     vec2 fracted = texCoord0;
     fracted.x-=fract(fracted.x*64.0)/64.0;
     fracted.y-=fract(fracted.y*64.0)/64.0;
-    float noisy=max(-1.2f,(cnoise(vec3(fracted*vec2(10.0f,10.0f)+vec2(0,GameTime*70.0f),GameTime*1000.0f)))*toTar-0.1f);
+    float noisy=max(-1.2f,(cnoise(vec3(fracted*vec2(10.0f,10.0f)+vec2(0,GameTime*70.0f),GameTime*4000.0f)))*toTar-0.1f);
     toTar*=abs(noisy);
     hsvD.z*=toTar/6.0f+0.7;
     hsvD.x+=sin(toTar*6.28*2.0)/32.0f;

@@ -59,17 +59,20 @@ public class SlitherEntityModel<T extends SlitherEntity> extends HierarchicalMod
 
 	@Override
 	public void setupAnim(SlitherEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.body.yScale=1.0f-(entity.lerpedSlide*0.95f);
+		float slide = entity.getSlide();
+//		if(slide>0.0f){
+//			slide-=(ageInTicks%1)/10.0f;
+//		}
+		float yScaled =1.0f-((float)Math.min(Mth.sin(slide*3.14f)*1.5f,1.0F)*0.9f);
 		this.head.xRot=headPitch/180.0f*3.14f/4.0f;
 		this.head.yRot=netHeadYaw/180.0f*3.14f/4.0f;
 		this.body.zRot=Mth.sin(ageInTicks/12.0f)/12.0f;
-		float flip = (1.0f-this.body.yScale);
+		float flip = (1.0f-yScaled);
 		this.body.xRot=Mth.cos(ageInTicks/12.0f)/12.0f-flip*0.4f;
 		this.head.zRot=Mth.sin(ageInTicks/12.0f)/12.0f;
 		this.head.xRot+=Mth.cos(ageInTicks/12.0f)/12.0f;
-		this.hat.xScale=1.0f+flip*0.5f;
-		this.hat.zScale=1.0f+flip*0.5f;
-		this.head.yScale=1.0f/this.body.yScale;
+		this.hat.yRot=ageInTicks/12.0f;
+		this.hat.xRot=10.0f/180.0f*3.14f;
 	}
 
 

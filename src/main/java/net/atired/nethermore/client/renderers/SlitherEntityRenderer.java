@@ -7,6 +7,7 @@ import net.atired.nethermore.client.NMClientProxy;
 import net.atired.nethermore.client.NMRenderLayers;
 import net.atired.nethermore.client.renderers.models.SlitherEntityModel;
 import net.atired.nethermore.entity.SlitherEntity;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -35,8 +36,11 @@ public class SlitherEntityRenderer extends MobRenderer<SlitherEntity, SlitherEnt
 //			slide-=(ageInTicks%1)/10.0f;
 //		}
         slide=(float)Math.min(Mth.sin(slide*3.14f)*1.5f,1.0F);
+        NMRenderLayers.TAR_SHADER_INSTANCE.safeGetUniform("OffYPosition")
+                .set((float)(entity.getPosition(partialTicks).y- Minecraft.getInstance().gameRenderer.getMainCamera().getPosition().y));
+
         if(NMRenderLayers.TAR_SHADER_INSTANCE!=null){
-            NMRenderLayers.TAR_SHADER_INSTANCE.safeGetUniform("Tarred").set(slide);
+            NMRenderLayers.TAR_SHADER_INSTANCE.safeGetUniform("Tarred").set(slide+0.5f);
         }
         super.render(entity, entityYaw, partialTicks, poseStack, NMClientProxy.getSlitherSource(), packedLight);
         NMClientProxy.getSlitherSource().endBatch();
@@ -46,7 +50,7 @@ public class SlitherEntityRenderer extends MobRenderer<SlitherEntity, SlitherEnt
     protected void scale(SlitherEntity livingEntity, PoseStack poseStack, float partialTickTime) {
         float slide = livingEntity.getSlide();
         slide=(float)Math.min(Mth.sin(slide*3.14f)*1.5f,1.0F);
-        poseStack.scale(1.0f+slide*1.3f,1.0f-slide*0.92f,1.0f+slide*1.3f);
+        poseStack.scale(1.0f+slide*1.3f,1.0f-slide*0.82f,1.0f+slide*1.3f);
         super.scale(livingEntity, poseStack, partialTickTime);
     }
 

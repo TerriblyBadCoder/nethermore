@@ -2,6 +2,8 @@
 
 #moj_import <fog.glsl>
 uniform sampler2D Sampler0;
+uniform sampler2D Sampler4;
+uniform float OffYPosition;
 uniform float Tarred;
 
 uniform vec4 ColorModulator;
@@ -107,23 +109,24 @@ float cnoise(vec3 P){
 }
 void main() {
     vec4 color = texture(Sampler0, texCoord0);
-    vec3 hsvD = rgb2hsv(color.rgb);
-    float toTar = min(Tarred*1.3f,1.0f);
-    vec2 fracted = texCoord0;
-    fracted.x-=fract(fracted.x*64.0)/64.0;
-    fracted.y-=fract(fracted.y*64.0)/64.0;
-    float noisy=max(-1.2f,(cnoise(vec3(fracted*vec2(10.0f,10.0f)+vec2(0,GameTime*70.0f),GameTime*4000.0f)))*toTar-0.1f);
-    toTar*=abs(noisy);
-    hsvD.z*=toTar/6.0f+0.7;
-    hsvD.x+=sin(toTar*6.28*2.0)/32.0f;
-    hsvD.y+=toTar/4.0f;
-    hsvD.z*=toTar*4.0+1.0;
-    color.rgb=hsv2rgb(hsvD);
-    if (color.a < 0.1) {
-        discard;
-    }
     color *= vertexColor * ColorModulator;
     color.rgb = mix(overlayColor.rgb, color.rgb, overlayColor.a);
     color *= lightMapColor;
+
+    float toTar = min(Tarred*1.5f,1.3f);
+    vec2 fracted = texCoord0;
+    fracted.x-=fract(fracted.x*64.0)/64.0;
+    fracted.y-=fract(fracted.y*64.0)/64.0;
+    float noisy=max(-1.2f,(cnoise(vec3(fracted*vec2(10.0f,10.0f)+vec2(0,GameTime*70.0f),GameTime*1000.0f)))*toTar-0.1f);
+    toTar*=abs(noisy);
+    toTar*=2.0*(1.0-color.a);
+    toTar=min(toTar,1.0);
+    color.rgb=texture(Sampler4,texCoord0*4.0+vec2(GameTime*1000.0)).rgb*toTar+color.rgb*(1.0-toTar);
+    if (color.a < 0.1) {
+        discard;
+    }
+    if(color.a>0.01f){
+        color.a=1.0f;
+    }
     fragColor = linear_fog(color, vertexDistance, FogStart, FogEnd, FogColor);
 }

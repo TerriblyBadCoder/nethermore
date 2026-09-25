@@ -70,6 +70,8 @@ public class NMBlockInit {
             () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_STAIRS).mapColor(MapColor.COLOR_GREEN)));
     public static final DeferredBlock<Block> WHISPERING_FENCE = registerBlock("whispering_fence",
             () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_FENCE).mapColor(MapColor.COLOR_GREEN)));
+    public static final DeferredBlock<Block> WHISPERING_TRAPDOOR = registerBlock("whispering_trapdoor",
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_TRAPDOOR).mapColor(MapColor.COLOR_GREEN)));
     public static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name,block);
         registerBlockItem(name, toReturn);

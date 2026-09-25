@@ -60,8 +60,8 @@ public class SlitherEntity extends Monster {
             if(this.getSlide()>0){
                 this.navigation.stop();
                 this.addDeltaMovement(this.oldDir.scale(0.5*Math.pow(this.getSlide(),2.0)).scale(this.slideCount==1?(-0.8f):1.0f));
-                this.setSlide(Math.max(getSlide()-0.1f,0.0f));
-                if(this.getSlide()<0.8){
+                this.setSlide(Math.max(getSlide()-0.09f,0.0f));
+                if(this.getSlide()<0.7){
                     this.lookAt(EntityAnchorArgument.Anchor.EYES,this.oldDir.scale(200).add(getEyePosition()));
                     this.lookControl.setLookAt(this.oldDir.scale(200).add(getEyePosition()));
                 }else if(this.getTarget()!=null){
@@ -100,8 +100,13 @@ public class SlitherEntity extends Monster {
             if(onGround()&&getSlide()>0.1){
                 if((this.tickCount+getId())%2==0)
                     level().addParticle(NMParticleInit.TAR_POP_PARTICLE.get(),getX((Math.random()-0.5)*3.0),getY(0.02),getZ((Math.random()-0.5)*3.0),0,0.01,0);
-                if((this.tickCount+getId())%2==0&&getSlide()>0.8)
-                    level().addParticle(NMParticleInit.TAR_SLOP_PARTICLE.get(),getX(Math.random()),getY(0.02),getZ(Math.random()),(Math.random()-0.5)*0.1,0.01,(Math.random()-0.5)*0.1);
+                if(getSlide()>0.5&&this.tickCount%4==0){
+                    for (int i = 0; i < 1; i++) {
+                        level().addParticle(NMParticleInit.TAR_SLOP_PARTICLE.get(),getX(Math.random()),getY(0.02),getZ(Math.random()),(Math.random()-0.5)*0.1,0.01,(Math.random()-0.5)*0.1);
+                        level().addParticle(NMParticleInit.TAR_SLOP_PARTICLE.get(),getX(Math.random()),getY(0.02),getZ(Math.random()),(Math.random()-0.5)*0.9,0.01,(Math.random()-0.5)*0.9);
+
+                    }
+                }
 
             }
         }

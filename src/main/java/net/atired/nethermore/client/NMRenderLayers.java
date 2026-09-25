@@ -1,12 +1,15 @@
 package net.atired.nethermore.client;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import net.atired.nethermore.Nethermore;
 import net.minecraft.Util;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -22,11 +25,17 @@ public class NMRenderLayers {
     public static ShaderInstance getTarShaderInstance(){return TAR_SHADER_INSTANCE;}
     public static final RenderStateShard.ShaderStateShard RENDERTYPE_ENTITY_TAR_CULL_SHADER = new RenderStateShard.ShaderStateShard
             (NMRenderLayers::getTarShaderInstance);
+    private static final ResourceLocation TAR =Nethermore.getId("textures/block/tar.png");
     public static final Function<ResourceLocation, RenderType> ENTITY_TAR_CULL = Util.memoize(
             p_286169_ -> {
                 RenderType.CompositeState rendertype$compositestate = RenderType.CompositeState.builder()
                         .setShaderState(RENDERTYPE_ENTITY_TAR_CULL_SHADER)
-                        .setTextureState(new RenderStateShard.TextureStateShard(p_286169_, false, false))
+                        .setTextureState(new RenderStateShard.EmptyTextureStateShard(()->{
+                            TextureManager texturemanager = Minecraft.getInstance().getTextureManager();
+                            texturemanager.getTexture(p_286169_).setFilter(false, false);
+                            RenderSystem.setShaderTexture(0, p_286169_);
+                            RenderSystem.setShaderTexture(4,Minecraft.getInstance().getTextureManager().getTexture(TAR).getId());
+                        },()->{}))
                         .setCullState(RenderType.NO_CULL)
                         .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
                         .setLightmapState(RenderType.LIGHTMAP)

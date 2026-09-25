@@ -1,5 +1,5 @@
 {
-    "vertex": "rendertype_entity_cutout",
+    "vertex": "nethermore:rendertype_entity_tar",
     "fragment": "nethermore:rendertype_entity_tar",
     "samplers": [
         { "name": "Sampler0" },

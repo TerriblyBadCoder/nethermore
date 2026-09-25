@@ -7,6 +7,7 @@ import net.atired.nethermore.datagen.NMDatapackProvider;
 import net.atired.nethermore.entity.*;
 import net.atired.nethermore.init.NMBiomeInit;
 import net.atired.nethermore.init.NMEntityInit;
+import net.atired.nethermore.init.NMItemInit;
 import net.atired.nethermore.init.NMMobEffectInit;
 import net.atired.nethermore.networking.payloads.RednessPayload;
 import net.atired.nethermore.networking.payloads.VelSyncPayload;
@@ -24,6 +25,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.neoforged.bus.api.EventPriority;
@@ -31,6 +33,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
@@ -52,6 +55,27 @@ public class NethermoreEvents {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         generator.addProvider(true, new NMDatapackProvider(packOutput, lookupProvider));
+    }
+    @SubscribeEvent // on the mod event bus
+    public static void buildContents(BuildCreativeModeTabContentsEvent event) {
+
+        if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+            event.accept(NMItemInit.DISGUSTLING_SPAWN_EGG.get());
+            event.accept(NMItemInit.MORBID_PIGLIN_SPAWN_EGG.get());
+
+            event.accept(NMItemInit.SLITHER_SPAWN_EGG.get());
+            event.accept(NMItemInit.TARLING_SPAWN_EGG.get());
+
+            event.accept(NMItemInit.UNPHEASANT_SPAWN_EGG.get());
+
+            event.accept(NMItemInit.NOO_SPAWN_EGG.get());
+            event.accept(NMItemInit.PYLON_SPAWN_EGG.get());
+            event.accept(NMItemInit.EGO_SPAWN_EGG.get());
+
+            event.accept(NMItemInit.ONLOOKER_SPAWN_EGG.get());
+            event.accept(NMItemInit.BEHOLDER_SPAWN_EGG.get());
+
+        }
     }
     @SubscribeEvent
     public static void healEvent(LivingHealEvent event){

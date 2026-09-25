@@ -9,6 +9,7 @@
   "block.nethermore.whispering_fence": "Whispering Fence",
   "block.nethermore.whispering_planks": "Whispering Planks",
   "block.nethermore.whispering_stairs": "Whispering Stairs",
+  "block.nethermore.whispering_trapdoor": "Whispering Trapdoor",
   "block.nethermore.whispering_slab": "Whispering Slab",
   "block.nethermore.slivers": "Slivers",
   "block.nethermore.cold_fused_tar": "Cold Fused Tar",
@@ -25,6 +26,7 @@
   "item.nethermore.morbid_piece": "Morbid Piece",
   "item.nethermore.tar_bucket": "Tar Bucket",
   "item.nethermore.tar_glob": "Tar Glob",
+  "item.nethermore.ash_ball": "Ash Ball",
 
   "sound.nethermore.heartbeat": "Heart beat.",
 

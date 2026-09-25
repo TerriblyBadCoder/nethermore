@@ -7,6 +7,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -22,6 +23,14 @@ public class NMItemInit {
     public static final DeferredItem<Item> TAR_GLOB = ITEMS.register(
             "tar_glob",
             ()->new Item(new Item.Properties())
+    );
+    public static final DeferredItem<Item> TARLING_SPAWN_EGG = ITEMS.register(
+            "tarling_spawn_egg",
+            ()->new SpawnEggItem(NMEntityInit.TARLING.get(),0x292127,0xa44d00,new Item.Properties())
+    );
+    public static final DeferredItem<Item> BEHOLDER_SPAWN_EGG = ITEMS.register(
+            "beholder_spawn_egg",
+            ()->new SpawnEggItem(NMEntityInit.BEHOLDER.get(),0xa0c46e,0xcc6e61,new Item.Properties())
     );
     public static final DeferredItem<Item> ASH_BALL = ITEMS.register(
             "ash_ball",

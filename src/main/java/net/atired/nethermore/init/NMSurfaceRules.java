@@ -1,6 +1,7 @@
 package net.atired.nethermore.init;
 
 import net.minecraft.core.HolderGetter;
+import net.minecraft.data.worldgen.SurfaceRuleData;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -23,10 +24,12 @@ public class NMSurfaceRules {
         SurfaceRules.RuleSource surfacerules$rulesource = SurfaceRules.ifTrue(
                 surfacerules$conditionsource8, SurfaceRules.ifTrue(surfacerules$conditionsource2, SurfaceRules.ifTrue(surfacerules$conditionsource3, block(Blocks.GRAVEL)))
         );
+
         SurfaceRules.RuleSource scrambledPits = SurfaceRules.ifTrue(
                 SurfaceRules.isBiome(NMBiomeInit.SCRAMBLED_PITS),
                 SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(
+                        SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.verticalGradient("bedrock_roof", VerticalAnchor.belowTop(5), VerticalAnchor.top())), block(Blocks.BEDROCK))
+                        ,SurfaceRules.ifTrue(
                                 SurfaceRules.UNDER_CEILING, SurfaceRules.sequence(SurfaceRules.ifTrue(surfacerules$conditionsource11, block(Blocks.SOUL_SAND)), block(Blocks.SOUL_SOIL))
                         ),
                         SurfaceRules.ifTrue(

@@ -29,7 +29,7 @@ public record RednessPayload(int no) implements CustomPacketPayload {
     public void handleData(final IPayloadContext context) {
         if (context.flow().isClientbound()) {
             context.enqueueWork(() -> {
-                if(NethermoreClient.PROXY!=null&&NethermoreClient.PROXY.nihiloNess>0.01f){
+                if(NethermoreClient.PROXY!=null&&NethermoreClient.PROXY.nihiloNess>0.14f){
                     Minecraft.getInstance().player.playSound(NMSoundInit.HEARTBEAT.value(),8.2f,1.24f-(float)Math.random()/2.0f);
                     NethermoreClient.PROXY.redNess=0.99f;
                 }

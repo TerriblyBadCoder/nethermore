@@ -76,6 +76,7 @@ public class OnlookerEntity extends Monster {
     public boolean save(CompoundTag compound) {
         if(this.eyeOwner!=null)
         compound.putUUID("skeletontieduuid",this.eyeOwner.getUUID());
+        if(getSource().length()>0){setPos(new Vec3(getSource()));}
         return super.save(compound);
     }
 

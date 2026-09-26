@@ -28,6 +28,18 @@
   "item.nethermore.tar_glob": "Tar Glob",
   "item.nethermore.ash_ball": "Ash Ball",
 
+  "item.nethermore.unpheasant_spawn_egg": "Unpheasant Spawn Egg",
+  "item.nethermore.noo_spawn_egg": "Noo Spawn Egg",
+  "item.nethermore.ego_spawn_egg": "Ego Spawn Egg",
+  "item.nethermore.pylon_spawn_egg": "Pylon Spawn Egg",
+  "item.nethermore.morbid_piglin_spawn_egg": "Morbid Piglin Spawn Egg",
+  "item.nethermore.disgustling_spawn_egg": "Disgustling Spawn Egg",
+  "item.nethermore.tarling_spawn_egg": "Tarling Spawn Egg",
+  "item.nethermore.slither_spawn_egg": "Slither Spawn Egg",
+  "item.nethermore.onlooker_spawn_egg": "Onlooker Spawn Egg",
+  "item.nethermore.beholder_spawn_egg": "Beholder Spawn Egg",
+
+
   "sound.nethermore.heartbeat": "Heart beat.",
 
   "entity.nethermore.morbid_piglin": "Morbid Piglin",
@@ -45,6 +57,8 @@
   "entity.nethermore.ego": "Egocentrist",
 
   "biome.nethermore.haunted_crags": "Haunted Crags",
+  "biome.nethermore.scrambled_pits": "Scrambled Pits",
+
   "nethermore.configuration.title": "Nethermore Configs",
   "nethermore.configuration.section.nethermore.common.toml": "Nethermore Configs",
   "nethermore.configuration.section.nethermore.common.toml.title": "Nethermore Configs"

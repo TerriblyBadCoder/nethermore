@@ -15,7 +15,7 @@ public class SoulParticle extends TextureSheetParticle {
     protected SoulParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, SpriteSet sprite) {
         super(level, x, y, z, xSpeed, ySpeed, zSpeed);
         this.lifetime=20;
-        this.yd=0.0f;
+        this.yd=ySpeed;
         this.xd*=0.28f;
         this.zd*=0.28f;
         this.gravity=-0.1f;

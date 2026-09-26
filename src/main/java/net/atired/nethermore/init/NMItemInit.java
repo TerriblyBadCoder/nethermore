@@ -65,10 +65,10 @@ public class NMItemInit {
             ()->new SpawnEggItem(NMEntityInit.PYLON.get(),0x52dcff,0xdae3e3,new Item.Properties())
     );
 
-//    public static final DeferredItem<Item> ASH_BALL = ITEMS.register(
-//            "ash_ball",
-//            ()->new Item(new Item.Properties())
-//    );
+    public static final DeferredItem<Item> ASH_BALL = ITEMS.register(
+            "ash_ball",
+            ()->new Item(new Item.Properties())
+    );
 //    public static final DeferredItem<Item> WAILING_SCEPTRE = ITEMS.register(
 //            "wailing_sceptre",
 //            ()->new Item(new Item.Properties())

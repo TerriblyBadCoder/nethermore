@@ -6,6 +6,7 @@ package net.atired.nethermore.client.renderers.models;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.atired.nethermore.Nethermore;
+import net.atired.nethermore.client.NMRenderLayers;
 import net.atired.nethermore.client.NethermoreClient;
 import net.atired.nethermore.entity.MorbidPiglinEntity;
 import net.minecraft.client.model.ArmedModel;
@@ -33,6 +34,7 @@ public class NooEntityModel<T extends NooEntity> extends HierarchicalModel<T> {
 	private final ModelPart root;
 
 	public NooEntityModel(ModelPart root) {
+		super(NMRenderLayers::entityFadingCull);
 		this.root=root;
 		this.body = root.getChild("body");
 		this.right_arm = this.body.getChild("right_arm");

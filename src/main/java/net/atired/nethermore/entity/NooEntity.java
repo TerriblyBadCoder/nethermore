@@ -1,6 +1,7 @@
 package net.atired.nethermore.entity;
 
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -29,6 +30,9 @@ public class NooEntity extends Monster {
 
     @Override
     public void tick() {
+        if(level() instanceof ServerLevel serverLevel && this.tickCount>414){
+            discard();
+        }
         super.tick();
     }
     public static AttributeSupplier.Builder createNooAttributes() {

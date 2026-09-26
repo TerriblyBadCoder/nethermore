@@ -48,7 +48,27 @@ public class NMRenderLayers {
     public static RenderType entityTarCull(ResourceLocation location) {
         return ENTITY_TAR_CULL.apply(location);
     }
-    public static ShaderInstance MONOCHROME_SHADER_INSTANCE = null;
+    public static ShaderInstance FADING_SHADER_INSTANCE = null;
+    public static ShaderInstance getFadingShaderInstance(){return FADING_SHADER_INSTANCE;}
+    public static final RenderStateShard.ShaderStateShard RENDERTYPE_ENTITY_FADING_CULL_SHADER = new RenderStateShard.ShaderStateShard
+            (NMRenderLayers::getFadingShaderInstance);
+    public static final Function<ResourceLocation, RenderType> ENTITY_FADING_CULL = Util.memoize(
+            p_286169_ -> {
+                RenderType.CompositeState rendertype$compositestate = RenderType.CompositeState.builder()
+                        .setShaderState(RENDERTYPE_ENTITY_FADING_CULL_SHADER)
+                        .setTextureState(new RenderStateShard.TextureStateShard(p_286169_, false, false))
+                        .setCullState(RenderType.NO_CULL)
+                        .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
+                        .setLightmapState(RenderType.LIGHTMAP)
+                        .setOverlayState(RenderStateShard.OVERLAY)
+                        .createCompositeState(true);
+                return RenderType.create("entity_fading", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, 1536, rendertype$compositestate);
+            }
+    );
+
+    public static RenderType entityFadingCull(ResourceLocation location) {
+        return ENTITY_FADING_CULL.apply(location);
+    }public static ShaderInstance MONOCHROME_SHADER_INSTANCE = null;
     public static ShaderInstance getMonochromeShaderInstance(){return MONOCHROME_SHADER_INSTANCE;}
     public static final RenderStateShard.ShaderStateShard RENDERTYPE_ENTITY_MONOCHROME_CULL_SHADER = new RenderStateShard.ShaderStateShard
             (NMRenderLayers::getMonochromeShaderInstance);
@@ -80,6 +100,11 @@ public class NMRenderLayers {
                 new ShaderInstance(registerShadersEvent.getResourceProvider(), Nethermore.getId("rendertype_entity_tar"), DefaultVertexFormat.NEW_ENTITY)
                 , (a) -> {
                     TAR_SHADER_INSTANCE = a;
+                });
+        registerShadersEvent.registerShader(
+                new ShaderInstance(registerShadersEvent.getResourceProvider(), Nethermore.getId("rendertype_entity_fading"), DefaultVertexFormat.NEW_ENTITY)
+                , (a) -> {
+                    FADING_SHADER_INSTANCE = a;
                 });
     }
 }

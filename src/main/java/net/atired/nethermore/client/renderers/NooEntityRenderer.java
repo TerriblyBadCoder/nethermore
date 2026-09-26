@@ -3,6 +3,7 @@ package net.atired.nethermore.client.renderers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.atired.nethermore.Nethermore;
+import net.atired.nethermore.client.NMRenderLayers;
 import net.atired.nethermore.client.renderers.models.NooEntityModel;
 import net.atired.nethermore.entity.NooEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -28,6 +29,11 @@ public class NooEntityRenderer extends MobRenderer<NooEntity, NooEntityModel<Noo
 
     @Override
     public void render(NooEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        float aged = entity.tickCount+partialTicks;
+        aged = Math.clamp((aged-400.0f)/12.0f,0.0f,1.0f);
+        if(NMRenderLayers.FADING_SHADER_INSTANCE!=null){
+            NMRenderLayers.FADING_SHADER_INSTANCE.safeGetUniform("Fade").set(aged);
+        }
         super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
     }
 

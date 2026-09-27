@@ -109,16 +109,20 @@ void main() {
     vec4 color = texture(Sampler0, texCoord0);
     vec3 hsvD = rgb2hsv(color.rgb);
     vec2 fracted = texCoord0;
-    fracted.x-=fract(fracted.x*64.0)/64.0;
-    fracted.y-=fract(fracted.y*64.0)/64.0;
-    float faded = clamp((Fade-0.1)/0.9,0.0,1.0);
-    float noisy=(cnoise(vec3(fracted*vec2(10.0f,10.0f)+vec2(0,GameTime*5000.0f),GameTime*10.0f)))*faded*1.3;
-    noisy=abs(noisy);
+    fracted.x-=fract(fracted.x*32.0)/32.0;
+    fracted.y-=fract(fracted.y*32.0)/32.0;
+    float faded = clamp((Fade-0.1)/0.9*2.0,0.0,10.0);
+    float noisy=(cnoise(vec3(fracted*vec2(6.0f,6.0f)+vec2(0,GameTime*3000.0f),GameTime*10.0f)))*faded*1.3;
+    noisy=abs(noisy)+pow(faded*0.1,2.0)*1.5;
     noisy-=fract(noisy*6.0)/6.0;
     noisy=clamp(noisy,0.0,1.0);
     color *= vertexColor * ColorModulator;
     color.rgb = mix(overlayColor.rgb, color.rgb, overlayColor.a);
     color *= lightMapColor;
     color.a*=1.0-noisy;
+    color.b*=1.0+2.0*noisy;
+    color.b=min(color.b,1.0);
+    color.g*=1.0+2.0*noisy;
+    color.g=min(color.g,1.0);
     fragColor = linear_fog(color, vertexDistance, FogStart, FogEnd, FogColor);
 }

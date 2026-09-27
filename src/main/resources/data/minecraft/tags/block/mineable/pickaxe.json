@@ -1,8 +1,13 @@
 {
   "replace": false,
   "values": [
-    "nethermore:fused_tar",
+    "nethermore:soul_lining",
+    "nethermore:soul_crystal",
+    "nethermore:topped_bilestone",
+    "nethermore:bilestone",
     "nethermore:cold_fused_tar",
+    "nethermore:fused_tar",
+    "nethermore:soft_tar",
     "nethermore:tumor_block",
     "nethermore:fat_tumor_block",
     "nethermore:maw_tumor_block",

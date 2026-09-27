@@ -24,6 +24,8 @@ public class NMBlockInit {
             () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_YELLOW)));
     public static final DeferredBlock<Block> TOPPED_BILESTONE = registerBlock("topped_bilestone",
             () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_YELLOW)));
+    public static final DeferredBlock<Block> BLUE_ASH_SHINGLES = registerBlock("blue_ash_shingles",
+            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.TERRACOTTA_WHITE)));
 
     public static final DeferredBlock<Block> SOUL_LINING_BLOCK = registerBlock("soul_lining",
             () -> new SoulLiningBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).lightLevel((p_50872_) -> {

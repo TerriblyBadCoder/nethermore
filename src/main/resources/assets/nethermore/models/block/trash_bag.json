@@ -1,0 +1,45 @@
+{   "parent": "block/block",
+  "display": {
+    "head": {
+      "rotation": [ -60, 0, 0 ],
+      "translation": [ 0, 5, -9],
+      "scale":[ 1, 1, 1]
+    },
+    "thirdperson_righthand": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 0, 0],
+      "scale": [ 0.375, 0.375, 0.375 ]
+    }
+  },
+  "textures": {
+    "top": "nethermore:block/trash_bag_top",
+    "side": "nethermore:block/trash_bag_side",
+    "bow": "nethermore:block/trash_bag_bow",
+    "particle": "nethermore:block/trash_bag_top"
+  },
+  "elements": [
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "uv": [ 0,0,16,16 ], "texture": "#top", "cullface": "down" },
+        "up":    { "uv": [0,0,16,16 ], "texture": "#top" },
+        "north": { "uv": [ 0,0,16,16 ], "texture": "#side" },
+        "south": { "uv": [ 0,0,16,16 ], "texture": "#side" },
+        "west":  { "uv": [ 0,0,16,16 ], "texture": "#side" },
+        "east":  { "uv": [ 0,0,16,16 ], "texture": "#side" }
+      }
+    },
+    {
+      "from": [ 4, 16, 4 ],
+      "to": [ 12, 20, 12 ],
+      "faces": {
+        "up":    { "uv": [ 0, 8, 8, 16 ], "texture": "#bow", "cullface": "up" },
+        "north": { "uv": [ 8, 12, 16, 16 ], "texture": "#bow" },
+        "south": { "uv": [ 8, 12, 16, 16 ], "texture": "#bow" },
+        "west":  { "uv": [ 8, 12, 16, 16 ], "texture": "#bow" },
+        "east":  { "uv": [ 8, 12, 16, 16 ], "texture": "#bow" }
+      }
+    }
+  ]
+}

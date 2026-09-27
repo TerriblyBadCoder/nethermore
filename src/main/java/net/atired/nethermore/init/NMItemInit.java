@@ -77,10 +77,10 @@ public class NMItemInit {
 //            "mask",
 //            ()->new Item(new Item.Properties())
 //    );
-//    public static final DeferredItem<Item> CIGAR = ITEMS.register(
-//            "cigar",
-//            ()->new Item(new Item.Properties())
-//    );
+    public static final DeferredItem<Item> CIGAR = ITEMS.register(
+            "cigar",
+            ()->new Item(new Item.Properties())
+    );
     public static final DeferredItem<Item> MORBID_PIECE = ITEMS.register(
             "morbid_piece",
             ()->new Item(new Item.Properties().food(MORBID_FOOD))

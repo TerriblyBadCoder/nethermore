@@ -7,6 +7,7 @@ import net.atired.nethermore.client.renderers.models.ObserverEntityModel;
 import net.atired.nethermore.entity.ObserverEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
@@ -27,6 +28,11 @@ public class ObserverEntityRenderer extends MobRenderer<ObserverEntity, Observer
     @Override
     public ResourceLocation getTextureLocation(ObserverEntity machinationEntity) {
         return OBSERVER_LOCATION;
+    }
+
+    @Override
+    public boolean shouldRender(ObserverEntity livingEntity, Frustum camera, double camX, double camY, double camZ) {
+        return true;
     }
 
     @Override

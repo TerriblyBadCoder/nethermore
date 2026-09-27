@@ -30,7 +30,7 @@ public class NooEntity extends Monster {
 
     @Override
     public void tick() {
-        if(level() instanceof ServerLevel serverLevel && this.tickCount>414){
+        if(level() instanceof ServerLevel serverLevel && this.tickCount>154){
             discard();
         }
         super.tick();

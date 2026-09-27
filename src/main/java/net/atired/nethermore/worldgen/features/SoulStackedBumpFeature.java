@@ -6,6 +6,7 @@ import net.atired.nethermore.misc.NMsimplexNoise;
 import net.minecraft.core.BlockPos;
 import net.minecraft.data.worldgen.SurfaceRuleData;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -23,17 +24,26 @@ public class SoulStackedBumpFeature extends Feature<NoneFeatureConfiguration> {
                 BlockPos pos1 = pos.offset(x,y,z);
                 float noisy = NMsimplexNoise.sampleNoise3D(200+pos1.getX(),pos1.getY(),pos1.getZ(),40);
                 float noisy3 = NMsimplexNoise.sampleNoise3D(200+pos1.getX(),pos1.getY(),pos1.getZ(),100);
+                noisy3=Math.abs(noisy3);
+                noisy3=noisy3%0.2f;
                 if(noisy>0.3){
                     double dist = new Vec3(x,up?y/3.0f:(8.0f-Math.abs(y)/2.0f),z).length();
                     float noisy2 = NMsimplexNoise.sampleNoise3D(200+pos1.getX(),pos1.getY(),pos1.getZ(),12);
                     if(dist+noisy2*4.0<8.0&&level.getBlockState(pos1).isEmpty()){
                         noisy2 = NMsimplexNoise.sampleNoise3D(200+pos1.getX(),pos1.getY()*2.0f,pos1.getZ(),12);
+                        Block block = Blocks.AIR;
                         if(noisy2>0){
                             if(noisy2<0.4){
-                                level.setBlock(pos1,Blocks.SOUL_SOIL.defaultBlockState(),2);
+                                block=Blocks.SOUL_SOIL;
                             }
                         }else{
-                            level.setBlock(pos1,Blocks.SOUL_SAND.defaultBlockState(),2);
+                            block = Blocks.SOUL_SAND;
+                        }
+                        if(block!=Blocks.AIR){
+                            if(noisy3>0.18f){
+                                block=Blocks.BLACKSTONE;
+                            }
+                            level.setBlock(pos1,block.defaultBlockState(),2);
                         }
                     }
 

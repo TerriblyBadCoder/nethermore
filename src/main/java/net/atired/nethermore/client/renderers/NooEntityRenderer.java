@@ -30,7 +30,7 @@ public class NooEntityRenderer extends MobRenderer<NooEntity, NooEntityModel<Noo
     @Override
     public void render(NooEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         float aged = entity.tickCount+partialTicks;
-        aged = Math.clamp((aged-400.0f)/12.0f,0.0f,1.0f);
+        aged = Math.clamp((aged-100.0f)/12.0f,0.0f,10.0f);
         if(NMRenderLayers.FADING_SHADER_INSTANCE!=null){
             NMRenderLayers.FADING_SHADER_INSTANCE.safeGetUniform("Fade").set(aged);
         }

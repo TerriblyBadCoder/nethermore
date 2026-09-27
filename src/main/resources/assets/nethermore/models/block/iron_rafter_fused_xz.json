@@ -1,0 +1,50 @@
+{   "parent": "block/block",
+  "display": {
+    "head": {
+      "rotation": [ -60, 0, 0 ],
+      "translation": [ 0, 5, -9],
+      "scale":[ 1, 1, 1]
+    },
+    "gui": {
+      "rotation": [ 30, 225, 0 ],
+      "translation": [ 0, 0, 0],
+      "scale": [ 0.8,0.8, 0.8 ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 0, 0],
+      "scale": [ 0.375, 0.375, 0.375 ]
+    }
+  },
+  "textures": {
+    "upper": "nethermore:block/rafter_vertical",
+    "top": "nethermore:block/rebar",
+    "particle": "nethermore:block/rebar_only_side"
+  },
+  "elements": [
+    {
+      "from": [ 0, 4.5, 4.5 ],
+      "to": [ 16, 11.5, 11.5 ],
+      "faces": {
+        "down":  { "uv": [ 0,0,16,7 ], "texture": "#top", "cullface": "down" },
+        "up":    { "uv": [0,0,16,7 ], "texture": "#top" },
+        "north": { "uv": [ 0,0,16,7 ], "texture": "#top" },
+        "south": { "uv": [ 0,0,16,7 ], "texture": "#top" },
+        "west":  { "uv": [0,7,7,14 ], "texture": "#top" },
+        "east":  { "uv": [0,7,7,14 ], "texture": "#top" }
+      }
+    },
+    {
+      "from": [4.5, 0, 4.495 ],
+      "to": [ 11.5, 16, 11.495 ],
+      "faces": {
+        "down":  { "uv": [ 0,7,7,14 ], "texture": "#top", "cullface": "down" },
+        "up":    { "uv": [0,7,7,14 ], "texture": "#top" },
+        "north": { "uv": [ 0,0,7,16 ], "texture": "#upper" },
+        "south": { "uv": [ 0,0,7,16 ], "texture": "#upper" },
+        "west":  { "uv": [ 0,0,7,16 ], "texture": "#upper" },
+        "east":  { "uv": [ 0,0,7,16 ], "texture": "#upper" }
+      }
+    }
+  ]
+}

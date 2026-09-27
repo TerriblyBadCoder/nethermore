@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "combined=true,axis=x": {
+      "model": "nethermore:block/iron_rafter_fused_xz",
+      "x": 90
+    },
+    "combined=true,axis=z": {
+      "model": "nethermore:block/iron_rafter_fused_xz",
+      "x": 90
+    },
+    "combined=true,axis=y,isx=true": {
+      "model": "nethermore:block/iron_rafter_fused_xz"
+    },
+    "combined=true,axis=y,isx=false": {
+      "model": "nethermore:block/iron_rafter_fused_xz",
+      "y": 90
+    },
+    "axis=x,combined=false": {
+      "model": "nethermore:block/iron_rafter",
+      "x": 90
+    },
+    "axis=y,combined=false": {
+      "model": "nethermore:block/iron_rafter_vertical"
+    },
+    "axis=z,combined=false": {
+      "model": "nethermore:block/iron_rafter",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

@@ -7,6 +7,7 @@
     "LevelChunkSectionMixin",
     "LivingEntityMixin",
     "NMBiomeSourceNoiseMixin",
+    "NMBlockBehaviourPropertiesMixin",
     "NMMultiBiomeSourceNoiseMixin",
     "ServerLevelMixin",
     "SkeletonEntityMixin",

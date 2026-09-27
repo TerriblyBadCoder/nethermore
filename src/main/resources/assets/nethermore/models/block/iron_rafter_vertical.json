@@ -1,0 +1,33 @@
+{   "parent": "block/block",
+  "display": {
+    "head": {
+      "rotation": [ -60, 0, 0 ],
+      "translation": [ 0, 5, -9],
+      "scale":[ 1, 1, 1]
+    },
+    "thirdperson_righthand": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 0, 0],
+      "scale": [ 0.375, 0.375, 0.375 ]
+    }
+  },
+  "textures": {
+    "top": "nethermore:block/rebar",
+    "upper": "nethermore:block/rafter_vertical",
+    "particle": "nethermore:block/rebar_only_side"
+  },
+  "elements": [
+    {
+      "from": [4.5, 0, 4.5 ],
+      "to": [ 11.5, 16, 11.5 ],
+      "faces": {
+        "down":  { "uv": [ 0,7,7,14 ], "texture": "#top", "cullface": "down" },
+        "up":    { "uv": [0,7,7,14 ], "texture": "#top" },
+        "north": { "uv": [ 0,0,7,16 ], "texture": "#upper" },
+        "south": { "uv": [ 0,0,7,16 ], "texture": "#upper" },
+        "west":  { "uv": [ 0,0,7,16 ], "texture": "#upper" },
+        "east":  { "uv": [ 0,0,7,16 ], "texture": "#upper" }
+      }
+    }
+  ]
+}

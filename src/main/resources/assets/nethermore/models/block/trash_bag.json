@@ -13,7 +13,7 @@
   },
   "textures": {
     "top": "nethermore:block/trash_bag_top",
-    "side": "nethermore:block/trash_bag_side",
+    "side": "nethermore:block/trash_bag",
     "bow": "nethermore:block/trash_bag_bow",
     "particle": "nethermore:block/trash_bag_top"
   },

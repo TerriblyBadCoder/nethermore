@@ -21,11 +21,11 @@ public class NMBlockInit {
     public static final DeferredBlock<Block> BILE_GROWTH = registerBlock("bile_growth",
             () -> new GrowthBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_ROOTS).mapColor(MapColor.COLOR_YELLOW)));
     public static final DeferredBlock<Block> BILESTONE = registerBlock("bilestone",
-            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_YELLOW)));
+            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_LIGHT_GREEN)));
     public static final DeferredBlock<Block> TOPPED_BILESTONE = registerBlock("topped_bilestone",
-            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_YELLOW)));
+            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_RED)));
     public static final DeferredBlock<Block> BLUE_ASH_SHINGLES = registerBlock("blue_ash_shingles",
-            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.TERRACOTTA_WHITE)));
+            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_WHITE)));
 
     public static final DeferredBlock<Block> SOUL_LINING_BLOCK = registerBlock("soul_lining",
             () -> new SoulLiningBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).lightLevel((p_50872_) -> {
@@ -37,6 +37,10 @@ public class NMBlockInit {
             }).mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.AMETHYST)));
     public static final DeferredBlock<Block> BLUE_ASH = registerBlock("blue_ash",
             () -> new BlueAshLayerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.SNOW)));
+    public static final DeferredBlock<Block> TRASH_BAG = registerBlock("trash_bag",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DRIED_KELP_BLOCK).mapColor(MapColor.COLOR_BLACK)));
+    public static final DeferredBlock<Block> INFLAMED_EYE = registerBlock("inflamed_eye",
+            () -> new InflamedEyeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_RED).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)));
     public static final DeferredBlock<Block> BLUE_ASH_BLOCK = registerBlock("blue_ash_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.SNOW)));
     public static final DeferredBlock<Block> BLUE_SLAG_BLOCK = registerBlock("blue_slag",
@@ -49,6 +53,8 @@ public class NMBlockInit {
             () -> new TumorBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).mapColor(MapColor.TERRACOTTA_CYAN).sound(SoundType.MOSS)));
     public static final DeferredBlock<Block> FUSED_TAR_BLOCK = registerBlock("fused_tar",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
+    public static final DeferredBlock<Block> IRON_RAFTER = registerBlock("iron_rafter",
+            () -> new IronRafterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_GRAY).noOcclusion()));
     public static final DeferredBlock<Block> SOFT_TAR_BLOCK = registerBlock("soft_tar",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).randomTicks().strength(0.5F).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
     public static final DeferredBlock<Block> COLD_FUSED_TAR_BLOCK = registerBlock("cold_fused_tar",
@@ -59,7 +65,7 @@ public class NMBlockInit {
             })));
     public static final DeferredBlock<Block> MAW_TUMOR_BLOCK = registerBlock("maw_tumor_block",
             () -> new MawTumorBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).mapColor(MapColor.TERRACOTTA_WHITE).strength(0.6F)));
-    public static final DeferredBlock<LiquidBlock> TAR = registerBlockNoItem("tar",()-> new TarBlock(NMFluidInit.TAR_FLUID_SOURCE.get(),BlockBehaviour.Properties.ofFullCopy(Blocks.WATER)));
+    public static final DeferredBlock<LiquidBlock> TAR = registerBlockNoItem("tar",()-> new TarBlock(NMFluidInit.TAR_FLUID_SOURCE.get(),BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_BLACK)));
     public static final DeferredBlock<Block> WHISPERING_THORN_BLOCK = registerBlock("whispering_thorn",
             () -> new WhisperingThornBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_STEM).randomTicks().mapColor(MapColor.COLOR_PURPLE)));
     public static final DeferredBlock<Block> SLIVERS_BLOCK = registerBlock("slivers",
@@ -70,7 +76,7 @@ public class NMBlockInit {
     public static final DeferredBlock<Block> WHISPERING_SLAB = registerBlock("whispering_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_SLAB).mapColor(MapColor.COLOR_GREEN)));
     public static final DeferredBlock<Block> WHISPERING_STAIRS = registerBlock("whispering_stairs",
-            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_STAIRS).mapColor(MapColor.COLOR_GREEN)));
+            () -> new StairBlock(WHISPERING_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_STAIRS).mapColor(MapColor.COLOR_GREEN)));
     public static final DeferredBlock<Block> WHISPERING_FENCE = registerBlock("whispering_fence",
             () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_FENCE).mapColor(MapColor.COLOR_GREEN)));
     public static final DeferredBlock<Block> WHISPERING_TRAPDOOR = registerBlock("whispering_trapdoor",

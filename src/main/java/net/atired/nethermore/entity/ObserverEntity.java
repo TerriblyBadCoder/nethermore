@@ -71,7 +71,7 @@ public class ObserverEntity extends Monster {
                             posFrom,
                             posFrom.add(dir.scale(12)),
                             ClipContext.Block.COLLIDER,
-                            ClipContext.Fluid.NONE,
+                            ClipContext.Fluid.ANY,
                             this));
                     if (legPositions[i].equals(new Vec3(getX(), getY(), getZ())) ||
                             ((legPositions[i].subtract(getPosition(1)).length() > result.getLocation().subtract(getPosition(1)).length() || Objects.equals(legPositions[i], new Vec3(getX(), getY(), getZ()))) && result.getType() != HitResult.Type.MISS)) {
@@ -111,7 +111,7 @@ public class ObserverEntity extends Monster {
                             getPosition(1),
                             getPosition(1).add(new Vec3(0.3, -3.1 + Mth.sin(this.tickCount / 10.0f) / 1.4f, 0).yRot(i * 3.14f / 2.0f)),
                             ClipContext.Block.COLLIDER,
-                            ClipContext.Fluid.NONE,
+                            ClipContext.Fluid.ANY,
                             this));
                     if (result == null || result1.getLocation().distanceTo(getPosition(1)) < result.getLocation().distanceTo(getPosition(1))) {
                         result = result1;

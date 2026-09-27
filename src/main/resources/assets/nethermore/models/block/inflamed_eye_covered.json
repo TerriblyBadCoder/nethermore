@@ -5,11 +5,6 @@
       "translation": [ 0, 5, -9],
       "scale":[ 1, 1, 1]
     },
-    "gui": {
-      "rotation": [ 30, 225, 0 ],
-      "translation": [ 0, 0, 0],
-      "scale": [ 0.72,0.72, 0.72 ]
-    },
     "thirdperson_righthand": {
       "rotation": [ 0, 0, 0 ],
       "translation": [ 0, 0, 0],
@@ -17,10 +12,10 @@
     }
   },
   "textures": {
-    "top": "nethermore:block/bile_eye",
-    "side": "nethermore:block/bile_pillar",
+    "top": "nethermore:block/bilerock",
+    "side": "nethermore:block/bile_pillar_untopped",
     "bottom": "nethermore:block/bilerock",
-    "particle": "nethermore:block/bile_pillar"
+    "particle": "nethermore:block/bile_pillar_untopped"
   },
   "elements": [
     {

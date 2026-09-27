@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "nethermore:block/full_syringe",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "nethermore:block/full_syringe",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "nethermore:block/full_syringe",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "nethermore:block/full_syringe",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "nethermore:block/full_syringe"
+    },
+    "facing=west": {
+      "model": "nethermore:block/full_syringe",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

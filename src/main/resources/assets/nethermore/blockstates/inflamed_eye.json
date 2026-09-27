@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "covered=false": {
       "model": "nethermore:block/inflamed_eye"
+    },
+    "covered=true": {
+      "model": "nethermore:block/inflamed_eye_covered"
     }
   }
 }

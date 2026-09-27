@@ -29,11 +29,11 @@ public class NMBlockInit {
 
     public static final DeferredBlock<Block> SOUL_LINING_BLOCK = registerBlock("soul_lining",
             () -> new SoulLiningBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).lightLevel((p_50872_) -> {
-                return 14;
+                return 13;
             }).mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.AMETHYST)));
     public static final DeferredBlock<Block> SOUL_CRYSTAL_BLOCK = registerBlock("soul_crystal",
             () -> new SoulLiningBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).lightLevel((p_50872_) -> {
-                return 14;
+                return 13;
             }).mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.AMETHYST)));
     public static final DeferredBlock<Block> BLUE_ASH = registerBlock("blue_ash",
             () -> new BlueAshLayerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.SNOW)));
@@ -55,6 +55,10 @@ public class NMBlockInit {
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
     public static final DeferredBlock<Block> IRON_RAFTER = registerBlock("iron_rafter",
             () -> new IronRafterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_GRAY).noOcclusion()));
+    public static final DeferredBlock<Block> SYRINGE = registerBlock("syringe",
+            () -> new SyringeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_GRAY).lightLevel((p_50872_) -> {
+                return 15;
+            }).noOcclusion()));
     public static final DeferredBlock<Block> SOFT_TAR_BLOCK = registerBlock("soft_tar",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).randomTicks().strength(0.5F).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
     public static final DeferredBlock<Block> COLD_FUSED_TAR_BLOCK = registerBlock("cold_fused_tar",

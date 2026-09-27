@@ -1,0 +1,67 @@
+{   "parent": "block/block",
+  "display": {
+    "head": {
+      "rotation": [ -60, 0, 0 ],
+      "translation": [ 0, 5, -9],
+      "scale":[ 1, 1, 1]
+    },
+    "gui": {
+      "rotation": [ 25, 225, 0 ],
+      "translation": [ 0, 0, 0],
+      "scale": [ 0.72,0.72, 0.72 ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 0, 0],
+      "scale": [ 0.375, 0.375, 0.375 ]
+    }
+  },
+  "textures": {
+    "sy": "nethermore:block/syringe",
+    "so": "nethermore:block/syringed_soul",
+    "particle": "nethermore:block/syringe"
+  },
+  "render_type": "minecraft:cutout",
+  "elements": [
+    {
+      "from": [ 2, 4, 2 ],
+      "to": [ 14, 16, 14 ],
+      "faces": {
+        "down":  { "uv": [ 0,0,12,12 ], "texture": "#sy"},
+        "up":    { "uv": [0,0,12,12 ], "texture": "#sy" },
+        "north": { "uv": [ 0,0,12,12 ], "texture": "#sy" },
+        "south": { "uv": [ 0,0,12,12 ], "texture": "#sy" },
+        "west":  { "uv": [ 0,0,12,12 ], "texture": "#sy" },
+        "east":  { "uv": [ 0,0,12,12 ], "texture": "#sy" }
+      }
+    },
+    {
+      "from": [ 3, 5, 3 ],
+      "to": [ 13, 15, 13 ],
+      "faces": {
+        "down":  { "uv": [ 0,0,10,10 ], "texture": "#so" },
+        "up":    { "uv": [0,0,10,10 ], "texture": "#so" },
+        "north": { "uv": [ 0,0,10,10 ], "texture": "#so" },
+        "south": { "uv": [ 0,0,10,10 ], "texture": "#so" },
+        "west":  { "uv": [ 0,0,10,10 ], "texture": "#so" },
+        "east":  { "uv": [ 0,0,10,10 ], "texture": "#so" }
+      }
+    },
+    {
+      "from": [ 7, 0, 6 ],
+      "to": [ 9, 4, 10 ],
+      "faces": {
+        "west":  { "uv": [ 0, 12, 4, 16 ], "texture": "#sy" },
+        "east":  { "uv": [ 0, 12, 4, 16 ], "texture": "#sy" }
+      }
+    },
+    {
+      "from": [ 6, 0, 7 ],
+      "to": [ 10, 4, 9 ],
+      "faces": {
+        "north":  { "uv": [ 0, 12, 4, 16 ], "texture": "#sy" },
+        "south":  { "uv": [ 0, 12, 4, 16 ], "texture": "#sy" }
+      }
+    }
+  ]
+}

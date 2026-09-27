@@ -42,6 +42,7 @@ public class Nethermore {
         NMStructureInit.STRUCTURES.register(modEventBus);
         NMStructurePieceInit.STRUCTURE_PIECES.register(modEventBus);
         NMFeatures.FEATURES.register(modEventBus);
+        NMCreativeTabs.TABS.register(modEventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
     public void loadComplete(FMLLoadCompleteEvent event) {

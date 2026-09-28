@@ -22,6 +22,8 @@ public class NMBlockInit {
             () -> new GrowthBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_ROOTS).mapColor(MapColor.COLOR_YELLOW)));
     public static final DeferredBlock<Block> BILESTONE = registerBlock("bilestone",
             () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_LIGHT_GREEN)));
+    public static final DeferredBlock<Block> BILE_BRICKS = registerBlock("bile_bricks",
+            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_LIGHT_GREEN)));
     public static final DeferredBlock<Block> TOPPED_BILESTONE = registerBlock("topped_bilestone",
             () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_RED)));
     public static final DeferredBlock<Block> BLUE_ASH_SHINGLES = registerBlock("blue_ash_shingles",

@@ -27,6 +27,7 @@ public class NMPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BRICK_ROAD_PK = registerKey("brick_road_placed");
     public static final ResourceKey<PlacedFeature> SLAG_PK = registerKey("slag_placed");
     public static final ResourceKey<PlacedFeature> BILESTONE_PK = registerKey("bilestone_placed");
+    public static final ResourceKey<PlacedFeature> IRON_RAFTERS_PK = registerKey("iron_rafters_placed");
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         register(context, SMALL_TUMOR_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.SMALL_TUMOR_KEY),
@@ -51,6 +52,8 @@ public class NMPlacedFeatures {
                 commonPlacement(32, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(47), VerticalAnchor.belowTop(20))));
         register(context, BILESTONE_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.BILESTONE_KEY),
                 commonPlacement(48, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(34), VerticalAnchor.aboveBottom(43))));
+        register(context, IRON_RAFTERS_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.IRON_RAFTERS_KEY),
+                commonPlacement(24, HeightRangePlacement.triangle(VerticalAnchor.belowTop(40), VerticalAnchor.belowTop(2))));
 
     }
     public static List<PlacementModifier> typicalPlacement(PlacementModifier pCountPlacement, PlacementModifier pHeightRange) {

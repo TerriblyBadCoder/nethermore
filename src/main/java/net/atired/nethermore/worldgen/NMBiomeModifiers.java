@@ -31,6 +31,7 @@ public class NMBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_BRICK_ROAD = registerKey("add_brick_road");
     public static final ResourceKey<BiomeModifier> ADD_SLAG = registerKey("add_slag");
     public static final ResourceKey<BiomeModifier> ADD_BILESTONE = registerKey("add_bilestone");
+    public static final ResourceKey<BiomeModifier> ADD_IRON_RAFTERS = registerKey("add_iron_rafters");
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         HolderGetter<PlacedFeature>placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
@@ -77,6 +78,10 @@ public class NMBiomeModifiers {
         context.register(ADD_BILESTONE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(NMBiomeInit.SCRAMBLED_PITS)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.BILESTONE_PK)),
+                GenerationStep.Decoration.UNDERGROUND_DECORATION));
+        context.register(ADD_IRON_RAFTERS, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(NMBiomeInit.SCRAMBLED_PITS)),
+                HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.IRON_RAFTERS_PK)),
                 GenerationStep.Decoration.UNDERGROUND_DECORATION));
     }
 

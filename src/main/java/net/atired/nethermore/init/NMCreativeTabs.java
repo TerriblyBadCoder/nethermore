@@ -40,6 +40,7 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.TOPPED_BILESTONE);
                         output.accept(NMBlockInit.BILE_GROWTH);
                         output.accept(NMBlockInit.INFLAMED_EYE);
+                        output.accept(NMBlockInit.BILE_BRICKS);
                         output.accept(NMBlockInit.IRON_RAFTER);
                         output.accept(NMBlockInit.SYRINGE);
                         output.accept(NMBlockInit.SLIVERS_BLOCK);

@@ -55,7 +55,11 @@ public class CrimsonBumpFeature  extends Feature<NoneFeatureConfiguration> {
                                 boolean doesNoisy = (Math.abs(noisy)%0.2f)>0.09f;
                                 level.setBlock(pos1.above(),doesNoisy?Blocks.CRIMSON_NYLIUM.defaultBlockState():Blocks.WARPED_NYLIUM.defaultBlockState(),2);
                                 if(Math.random()>0.8){
-                                    performBonemeal(level,featurePlaceContext.random(),pos1.above(),featurePlaceContext.chunkGenerator());
+                                    if(Math.random()>0.8){
+                                        performBonemeal(level,featurePlaceContext.random(),pos1.above(),featurePlaceContext.chunkGenerator());
+                                    }else{
+                                        level.setBlock(pos1.above().above(),NMBlockInit.TRASH_BAG.get().defaultBlockState(),2);
+                                    }
                                 }
                                 break;
                             }

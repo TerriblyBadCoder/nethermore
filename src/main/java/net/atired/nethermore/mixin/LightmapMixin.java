@@ -43,13 +43,16 @@ public class LightmapMixin {
         if(NethermoreClient.PROXY.nihiloNess>0.01f) {
             Vector3f olLight = instance.mul(new Vector3f(1, 1, 1), new Vector3f());
             float median = (olLight.x+olLight.y+olLight.z)/3.0f;
-            median=(float)Math.pow(median,0.5);
-            median=Math.min(1.0f,median*(1.0f+NethermoreClient.PROXY.nihiloNess/2.0f));
-            instance.x= Mth.lerp(NethermoreClient.PROXY.nihiloNess,instance.x,median);
-//            float reddened = Math.min(1.0f,NethermoreClient.PROXY.redNess*3.0f);
-//            if(NethermoreClient.PROXY.redNess>0.8f){
-//                reddened=Math.clamp(1.0f-NethermoreClient.PROXY.redNess,0.0f,0.2f)*6.0f;
-//            }
+            float reddened = Math.min(1.0f,NethermoreClient.PROXY.redNess*3.0f);
+            if(NethermoreClient.PROXY.redNess>0.8f){
+                reddened=Math.clamp((1.0f-NethermoreClient.PROXY.redNess)*6.0f,0.0f,1.0f);
+            }
+            if(median<0.92){
+                median=(float)Math.pow(median,4.5-reddened*1.0);
+                median=Math.min(1.0f,median*(1.0f-NethermoreClient.PROXY.nihiloNess/3.0f+reddened/9.0f));
+            }
+
+
 //            median=(float)Math.pow(median,1.0+reddened);
             instance.x= Mth.lerp(NethermoreClient.PROXY.nihiloNess,instance.x,median);
             instance.y= Mth.lerp(NethermoreClient.PROXY.nihiloNess,instance.y,median);

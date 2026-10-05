@@ -18,9 +18,12 @@
   "block.nethermore.cold_fused_tar": "Cold Fused Tar",
   "block.nethermore.soul_lining": "Soul Lining",
   "block.nethermore.soul_crystal": "Soul Crystal",
+
   "block.nethermore.bilestone": "Bilestone",
+  "block.nethermore.bile_bricks": "Bile Bricks",
   "block.nethermore.bile_growth": "Bile Growth",
   "block.nethermore.topped_bilestone": "Topped Bilestone",
+
   "block.nethermore.blue_ash": "Blue Ash",
   "block.nethermore.blue_slag": "Blue Slag",
   "block.nethermore.blue_ash_shingles": "Blue Ash Shingles",
@@ -32,6 +35,7 @@
   "item.nethermore.tar_bucket": "Tar Bucket",
   "item.nethermore.tar_glob": "Tar Glob",
   "item.nethermore.ash_ball": "Ash Ball",
+  "item.nethermore.loose_eye": "Loose Eye",
 
   "item.nethermore.unpheasant_spawn_egg": "Unpheasant Spawn Egg",
   "item.nethermore.noo_spawn_egg": "Noo Spawn Egg",

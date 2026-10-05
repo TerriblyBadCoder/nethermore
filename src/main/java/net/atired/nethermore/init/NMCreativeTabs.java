@@ -42,6 +42,7 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.INFLAMED_EYE);
                         output.accept(NMBlockInit.BILE_BRICKS);
                         output.accept(NMBlockInit.IRON_RAFTER);
+                        output.accept(NMItemInit.LOOSE_EYE);
                         output.accept(NMBlockInit.SYRINGE);
                         output.accept(NMBlockInit.SLIVERS_BLOCK);
                         output.accept(NMBlockInit.WHISPERING_THORN_BLOCK);

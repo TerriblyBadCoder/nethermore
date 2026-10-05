@@ -63,8 +63,8 @@ public class NethermoreClientEvents {
     @SubscribeEvent
     public static void clTick(ClientTickEvent.Pre tickEvent){
         NethermoreClient.PROXY.whispered*=0.95f;
-        NethermoreClient.PROXY.redNess=Math.max(0.0f,Math.max(NethermoreClient.PROXY.redNess-0.03f,NethermoreClient.PROXY.redNess*0.75f));
-        NethermoreClient.PROXY.redNess2=Math.max(0.0f,Math.max(NethermoreClient.PROXY.redNess2-0.03f,NethermoreClient.PROXY.redNess2*0.75f));
+        NethermoreClient.PROXY.redNess=Math.max(0.0f,Math.max(NethermoreClient.PROXY.redNess-0.02f,NethermoreClient.PROXY.redNess*0.86f));
+        NethermoreClient.PROXY.redNess2=Math.max(0.0f,Math.max(NethermoreClient.PROXY.redNess2-0.02f,NethermoreClient.PROXY.redNess2*0.86f));
 
         NethermoreClient.PROXY.lightNess=Math.max(0.0f,Math.max(NethermoreClient.PROXY.lightNess-0.015f,NethermoreClient.PROXY.lightNess*0.8f));
         if(Minecraft.getInstance().player!=null&&Minecraft.getInstance().player.isInFluidType(NMFluidInit.TAR_FLUID_TYPE.get())){

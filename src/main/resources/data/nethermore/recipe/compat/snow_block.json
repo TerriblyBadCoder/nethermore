@@ -1,0 +1,18 @@
+{
+  "type": "create:haunting",
+  "ingredients": [
+    {
+      "item": "minecraft:snow_block"
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.8,
+      "id": "nethermore:blue_ash_block"
+    },
+    {
+      "chance": 0.2,
+      "id": "nethermore:blue_slag"
+    }
+  ]
+}

@@ -24,6 +24,10 @@ public class NMItemInit {
             "tar_glob",
             ()->new Item(new Item.Properties())
     );
+    public static final DeferredItem<Item> LOOSE_EYE = ITEMS.register(
+            "loose_eye",
+            ()->new Item(new Item.Properties())
+    );
     public static final DeferredItem<Item> TARLING_SPAWN_EGG = ITEMS.register(
             "tarling_spawn_egg",
             ()->new SpawnEggItem(NMEntityInit.TARLING.get(),0x292127,0xa44d00,new Item.Properties())

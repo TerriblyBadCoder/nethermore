@@ -30,7 +30,7 @@ public abstract class ServerLevelMixin implements RednessServerLevelAccessor {
         if( nm$redCD<=0){
             if(Math.random()>0.9){
                 nm$redness=0.99f;
-                nm$redCD=50+(int)(Math.random()*17);
+                nm$redCD=400+(int)(Math.random()*17);
                 if(!players().isEmpty()){
                     PacketDistributor.sendToPlayersInDimension((ServerLevel)(Object)this,new RednessPayload(1));
                 }

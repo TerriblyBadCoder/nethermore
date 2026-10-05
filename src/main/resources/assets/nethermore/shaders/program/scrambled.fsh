@@ -109,7 +109,7 @@ vec3 hsv2rgb(vec3 c)
 void main(){
     float red = min(1.0,Reddened*3.0);
     if(Reddened>0.8){
-        red=clamp(1.0-Reddened,0.0,0.2)*6.0;
+        red=clamp((1.0-Reddened)*6.0,0.0,1.0);
     }
     vec2 fracted = texCoord;
     float depth = LinearizeDepth(min(texture(TrueDepthSampler, fracted).r,texture(TrueHandDepthSampler, fracted).r));
@@ -143,7 +143,7 @@ void main(){
         hsvD.x=1.08-red*0.08;
         hsvD.y=pow(hsvD.y,0.5);
         hsvD.y*=0.9f+red*0.0;
-        hsvD.z*=1.0f-red*0.04f*hsvD.y;
+        hsvD.z*=1.0f-red*0.05f*hsvD.y;
         souled=min(souled+red,1.0);
         rgbD=rgbD*(1.0-souled)+souled*hsv2rgb(hsvD);
     }

@@ -44,6 +44,10 @@ public class BileStoneFeature extends Feature<NoneFeatureConfiguration> {
                                 (!level.isEmptyBlock(pos1.below())&&noisy*10f/12.0f>0.3)){
                             if(!level.getBlockState(pos1).is(NMBlockInit.TOPPED_BILESTONE)&&!level.getFluidState(pos1).is(Fluids.LAVA)&&!level.getBlockState(pos1.below()).is(NMBlockInit.TOPPED_BILESTONE)&&!level.getBlockState(pos1.below()).is(NMBlockInit.BILE_GROWTH)){
                                 if(level.isEmptyBlock(pos1.above())){
+                                    if(level.getBlockState(pos1).getBlock()==NMBlockInit.INFLAMED_EYE.get()&&level.isEmptyBlock(pos1.above())&&Math.random()>0.8f){
+                                        level.setBlock(pos1.above(),NMBlockInit.INFLAMED_EYE.get().defaultBlockState(),2);
+                                        continue;
+                                    }
                                     noisy = NMsimplexNoise.sampleNoise3D(pos1.getX(),pos1.getY()/20.0f+300+1/20.0f,pos1.getZ(),55.0f);
                                     noisy=noisy%0.2f;
                                     noisy*=5.0f;
@@ -57,8 +61,15 @@ public class BileStoneFeature extends Feature<NoneFeatureConfiguration> {
                                     }
                                     Block block = (noisy*10f/12.0f>0.3||noisy2>0.5)?NMBlockInit.BILESTONE.get():NMBlockInit.TOPPED_BILESTONE.get();
                                     level.setBlock(pos1,(block).defaultBlockState(),2);
+
                                     if(block==NMBlockInit.TOPPED_BILESTONE.get()&&level.isEmptyBlock(pos1.above())&&Math.random()>0.96){
-                                        level.setBlock(pos1.above(),NMBlockInit.BILE_GROWTH.get().defaultBlockState(),2);
+
+                                        if(Math.random()>0.8f){
+                                            level.setBlock(pos1.above(),NMBlockInit.INFLAMED_EYE.get().defaultBlockState(),2);
+                                        }
+                                        else{
+                                            level.setBlock(pos1.above(),NMBlockInit.BILE_GROWTH.get().defaultBlockState(),2);
+                                        }
                                     }
                                 }else{
                                     level.setBlock(pos1,(NMBlockInit.BILESTONE.get()).defaultBlockState(),2);
@@ -76,7 +87,7 @@ public class BileStoneFeature extends Feature<NoneFeatureConfiguration> {
                 for (int z = 0; z < 2; z++) {
                     for (int y = -1; y <= i+2; y++) {
                         BlockPos pos1 = pos.offset(x+offX,y,z+offZ);
-                        if(level.isEmptyBlock(pos1)&&level.getBlockState(pos1.below()).isSolid()&&level.getBlockState(pos1).getBlock()!=NMBlockInit.BILE_GROWTH.get()){
+                        if(level.isEmptyBlock(pos1)&&level.getBlockState(pos1.below()).isSolid()&&level.getBlockState(pos1).getBlock()!=NMBlockInit.BILE_GROWTH.get()&&level.getBlockState(pos1).getBlock()!=NMBlockInit.INFLAMED_EYE.get()){
 
                             if(y!=i+2){
                                 level.setBlock(pos1,((level.isEmptyBlock(pos1.above())&&y==i+1)? NMBlockInit.TOPPED_BILESTONE.get():NMBlockInit.BILESTONE.get()).defaultBlockState(),2);
@@ -85,6 +96,9 @@ public class BileStoneFeature extends Feature<NoneFeatureConfiguration> {
                                 }
                             }else if(Math.random()>0.9){
                                 level.setBlock(pos1,(NMBlockInit.BILE_GROWTH.get()).defaultBlockState(),2);
+                            }
+                            else if(Math.random()>0.94){
+                                level.setBlock(pos1,(NMBlockInit.INFLAMED_EYE.get()).defaultBlockState(),2);
                             }
                         }
                     }

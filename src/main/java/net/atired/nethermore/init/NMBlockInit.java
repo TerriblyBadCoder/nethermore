@@ -42,7 +42,9 @@ public class NMBlockInit {
     public static final DeferredBlock<Block> TRASH_BAG = registerBlock("trash_bag",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DRIED_KELP_BLOCK).instabreak().mapColor(MapColor.COLOR_BLACK)));
     public static final DeferredBlock<Block> INFLAMED_EYE = registerBlock("inflamed_eye",
-            () -> new InflamedEyeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_RED).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)));
+            () -> new InflamedEyeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_RED).lightLevel((p_50872_) -> {
+                return p_50872_.getValue(InflamedEyeBlock.COVERED)?0:15;
+            }).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)));
     public static final DeferredBlock<Block> BLUE_ASH_BLOCK = registerBlock("blue_ash_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).requiresCorrectToolForDrops().mapColor(MapColor.SNOW)));
     public static final DeferredBlock<Block> BLUE_SLAG_BLOCK = registerBlock("blue_slag",

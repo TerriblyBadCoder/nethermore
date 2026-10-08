@@ -48,8 +48,8 @@ public class LightmapMixin {
             if(NethermoreClient.PROXY.redNess>0.8f){
                 reddened=Math.clamp((1.0f-NethermoreClient.PROXY.redNess)*6.0f,0.0f,1.0f);
             }
-            median=(float)Math.pow(median,4.5-reddened*3.0+((Double)Minecraft.getInstance().options.gamma().get()).floatValue()*3.0f);
-
+            median=(float)Math.pow(median,2.5-reddened*1.0+((Double)Minecraft.getInstance().options.gamma().get()).floatValue()*1.0f);
+            median=Math.clamp(median*3.0f-1.0f,0.0f,median);
 //            median=(float)Math.pow(median,1.0+reddened);
             instance.x= Mth.lerp(NethermoreClient.PROXY.nihiloNess,instance.x,median);
             instance.y= Mth.lerp(NethermoreClient.PROXY.nihiloNess,instance.y,median);

@@ -66,7 +66,7 @@ public class PylonEntity extends Monster {
                 if(this.tickCount%2==0){
                     SoulProjEntity soul = new SoulProjEntity(level, this);
                     soul.toHurt=getTarget();
-                    soul.shootFromRotation(this, this.getXRot(), this.getYRot()+(Math.random()>0.5?-90:90), 0.0F, 0.46F+(float)Math.random()/25.0f, 30.0F);
+                    soul.shootFromRotation(this, this.getXRot(), this.getYRot()+(Math.random()>0.5?-40:40), 0.0F, 0.46F+(float)Math.random()/25.0f, 30.0F);
                     soul.addDeltaMovement(new Vec3(0,(Math.random()-0.5)/7.0f,0));
                     double ranDumb = Math.random()/5.0f+0.8f;
                     soul.setDeltaMovement(soul.getDeltaMovement().multiply(ranDumb,1,ranDumb));

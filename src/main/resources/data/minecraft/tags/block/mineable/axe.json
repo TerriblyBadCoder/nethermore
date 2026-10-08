@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "nethermore:whispering_thorn",
+    "nethermore:whispering_planks",
+    "nethermore:whispering_slab",
+    "nethermore:whispering_stairs",
+    "nethermore:whispering_fence",
+    "nethermore:whispering_trapdoor"
+  ]
+}

@@ -27,26 +27,26 @@ public class NMBlockInit {
     public static final DeferredBlock<Block> TOPPED_BILESTONE = registerBlock("topped_bilestone",
             () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_RED)));
     public static final DeferredBlock<Block> BLUE_ASH_SHINGLES = registerBlock("blue_ash_shingles",
-            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_WHITE)));
+            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.TERRACOTTA_WHITE)));
 
     public static final DeferredBlock<Block> SOUL_LINING_BLOCK = registerBlock("soul_lining",
-            () -> new SoulLiningBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).lightLevel((p_50872_) -> {
+            () -> new SoulLiningBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).isValidSpawn((a,b,c,d)->{return false;}).lightLevel((p_50872_) -> {
                 return 13;
             }).mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.AMETHYST)));
     public static final DeferredBlock<Block> SOUL_CRYSTAL_BLOCK = registerBlock("soul_crystal",
-            () -> new SoulLiningBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).lightLevel((p_50872_) -> {
+            () -> new SoulLiningBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).isValidSpawn((a,b,c,d)->{return false;}).lightLevel((p_50872_) -> {
                 return 13;
             }).mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.AMETHYST)));
     public static final DeferredBlock<Block> BLUE_ASH = registerBlock("blue_ash",
-            () -> new BlueAshLayerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.SNOW)));
+            () -> new BlueAshLayerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).requiresCorrectToolForDrops().mapColor(MapColor.SNOW)));
     public static final DeferredBlock<Block> TRASH_BAG = registerBlock("trash_bag",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DRIED_KELP_BLOCK).instabreak().mapColor(MapColor.COLOR_BLACK)));
     public static final DeferredBlock<Block> INFLAMED_EYE = registerBlock("inflamed_eye",
             () -> new InflamedEyeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_RED).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)));
     public static final DeferredBlock<Block> BLUE_ASH_BLOCK = registerBlock("blue_ash_block",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.SNOW)));
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).requiresCorrectToolForDrops().mapColor(MapColor.SNOW)));
     public static final DeferredBlock<Block> BLUE_SLAG_BLOCK = registerBlock("blue_slag",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.SNOW)));
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).requiresCorrectToolForDrops().mapColor(MapColor.SNOW)));
 
 
     public static final DeferredBlock<Block> TUMOR_BLOCK = registerBlock("tumor_block",

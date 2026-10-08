@@ -40,7 +40,7 @@ public class NMBlockInit {
     public static final DeferredBlock<Block> BLUE_ASH = registerBlock("blue_ash",
             () -> new BlueAshLayerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.SNOW)));
     public static final DeferredBlock<Block> TRASH_BAG = registerBlock("trash_bag",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DRIED_KELP_BLOCK).mapColor(MapColor.COLOR_BLACK)));
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DRIED_KELP_BLOCK).instabreak().mapColor(MapColor.COLOR_BLACK)));
     public static final DeferredBlock<Block> INFLAMED_EYE = registerBlock("inflamed_eye",
             () -> new InflamedEyeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_RED).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)));
     public static final DeferredBlock<Block> BLUE_ASH_BLOCK = registerBlock("blue_ash_block",

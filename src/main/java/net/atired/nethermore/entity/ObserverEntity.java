@@ -1,6 +1,8 @@
 package net.atired.nethermore.entity;
 
+import net.atired.nethermore.init.NMBlockInit;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -10,6 +12,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
@@ -21,6 +24,8 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -44,8 +49,11 @@ public class ObserverEntity extends Monster {
         this.moveControl=new ObserverMoveControl(this);
 
     }
-
-    @Override
+    public static boolean checkObserverSpawnRules(EntityType<? extends Monster> type, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        BlockState state = level.getBlockState(pos.below());
+        return checkAnyLightMonsterSpawnRules(type,level,spawnType,pos,random)&&(state.is(NMBlockInit.BILESTONE) ||state.is(NMBlockInit.TOPPED_BILESTONE));
+    }
+        @Override
     public void tick() {
             if (legPositions[0] == null) {
                 for (int i = 0; i < 3; i++) {

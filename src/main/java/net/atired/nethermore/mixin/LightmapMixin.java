@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.At;
 public class LightmapMixin {
     @WrapOperation(method = "updateLightTexture",at= @At(value = "INVOKE",ordinal = 2, target = "Lorg/joml/Vector3f;mul(F)Lorg/joml/Vector3f;"))
     private Vector3f awesomeLightmapBlue(Vector3f instance, float scalar, Operation<Vector3f> original){
+
         if(NethermoreClient.PROXY.blueNess>0.01f){
             Vector3f olLight = instance.mul(new Vector3f(1,1,1),new Vector3f());
             if(instance.x+instance.y+instance.z>=3.0){
@@ -47,10 +48,8 @@ public class LightmapMixin {
             if(NethermoreClient.PROXY.redNess>0.8f){
                 reddened=Math.clamp((1.0f-NethermoreClient.PROXY.redNess)*6.0f,0.0f,1.0f);
             }
-            if(median<0.92){
-                median=(float)Math.pow(median,4.5-reddened*1.0);
-                median=Math.min(1.0f,median*(1.0f-NethermoreClient.PROXY.nihiloNess/3.0f+reddened/9.0f));
-            }
+            median=(float)Math.pow(median,6.5-reddened*1.0);
+            median= Math.min(median,Mth.lerp(1.0f-median,median,median*(1.0f-NethermoreClient.PROXY.nihiloNess/1.4f+reddened/9.0f)));
 
 
 //            median=(float)Math.pow(median,1.0+reddened);

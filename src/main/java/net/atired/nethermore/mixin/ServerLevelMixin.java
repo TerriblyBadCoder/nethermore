@@ -25,7 +25,7 @@ public abstract class ServerLevelMixin implements RednessServerLevelAccessor {
     private float nm$redness=0.0f;
     @Inject(method = "tick",at=@At("HEAD"))
     private void nmTick(BooleanSupplier hasTimeLeft, CallbackInfo ci){
-        this.nm$redness*=0.9f;
+        this.nm$redness*=0.92f;
         if(this.nm$redness<0.01f)this.nm$redness=0.0f;
         if( nm$redCD<=0){
             if(Math.random()>0.9){

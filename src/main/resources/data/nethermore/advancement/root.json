@@ -1,0 +1,29 @@
+{
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "nethermore:textures/block/tumor_block.png",
+    "description": {
+      "color": "#9ca49f",
+      "translate": "advancement.nethermore.root.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:obsidian"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancement.nethermore.root"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -38,7 +38,7 @@ public class EgoMaskEntity extends LivingEntity {
     }
     @Override
     protected void doPush(Entity entity) {
-        if(entity ==maskOwner)return;
+        if(entity ==maskOwner||entity instanceof EgoMaskEntity)return;
         Vec3 dir = getViewVector(1).scale(0.5);
 
         entity.addDeltaMovement(dir);

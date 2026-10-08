@@ -24,6 +24,7 @@
     "CameraMixin",
     "InGameHudMixin",
     "LightmapMixin",
+    "NMAdvancementTabMixin",
     "NMGameRendererMixin",
     "NMPostChainMixin"
   ]

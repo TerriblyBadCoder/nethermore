@@ -1,0 +1,29 @@
+{
+  "parent": "nethermore:unpleasant",
+  "criteria": {
+    "0": {
+      "trigger": "nethermore:babble"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "color": "#9ca49f",
+      "translate": "advancement.nethermore.babble.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nethermore:slivers"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancement.nethermore.babble"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

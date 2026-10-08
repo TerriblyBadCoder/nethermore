@@ -38,10 +38,10 @@ public class BileStoneFeature extends Feature<NoneFeatureConfiguration> {
                     noisy2=Math.abs(noisy2);
                     noisy2=noisy2%0.2f;
                     noisy2*=5.0f;
-                    double len = 10.0f/new Vec3(12,12,12).length();
-                    if(noisy*len>0.2){
+                    double len = 10.0f/new Vec3(x,y,z).length();
+                    if(noisy*10f/12.0f>0.2&&len>0.8f){
                         if((!level.isEmptyBlock(pos1)&&(level.getBlockState(pos1).isSolid()||level.getBlockState(pos1).is(BlockTags.SOUL_FIRE_BASE_BLOCKS)))||
-                                (!level.isEmptyBlock(pos1.below())&&noisy*len>0.3)){
+                                (!level.isEmptyBlock(pos1.below())&&noisy*10f/12.0f>0.3)){
                             if(!level.getBlockState(pos1).is(NMBlockInit.TOPPED_BILESTONE)&&!level.getFluidState(pos1).is(Fluids.LAVA)&&!level.getBlockState(pos1.below()).is(NMBlockInit.TOPPED_BILESTONE)&&!level.getBlockState(pos1.below()).is(NMBlockInit.BILE_GROWTH)){
                                 if(level.isEmptyBlock(pos1.above())){
                                     noisy = NMsimplexNoise.sampleNoise3D(pos1.getX(),pos1.getY()/20.0f+300+1/20.0f,pos1.getZ(),55.0f);
@@ -55,7 +55,7 @@ public class BileStoneFeature extends Feature<NoneFeatureConfiguration> {
                                             noStackingLmoa=true;
                                         }
                                     }
-                                    Block block = (noisy*len>0.3||noisy2>0.5)?NMBlockInit.BILESTONE.get():NMBlockInit.TOPPED_BILESTONE.get();
+                                    Block block = (noisy*10f/12.0f>0.3||noisy2>0.5)?NMBlockInit.BILESTONE.get():NMBlockInit.TOPPED_BILESTONE.get();
                                     level.setBlock(pos1,(block).defaultBlockState(),2);
                                     if(block==NMBlockInit.TOPPED_BILESTONE.get()&&level.isEmptyBlock(pos1.above())&&Math.random()>0.96){
                                         level.setBlock(pos1.above(),NMBlockInit.BILE_GROWTH.get().defaultBlockState(),2);

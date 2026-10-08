@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "nethermore:bilestone"
+  },
+  "result": {
+    "count": 1,
+    "id": "nethermore:bile_bricks"
+  }
+}

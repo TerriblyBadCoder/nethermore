@@ -1,23 +1,32 @@
 package net.atired.nethermore.entity;
 
+import net.atired.nethermore.init.NMBlockInit;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class MorbidPiglinEntity extends ZombifiedPiglin {
     public int jumpCD = 10;
     public double speedLower = 0.0f;
     public MorbidPiglinEntity(EntityType<? extends ZombifiedPiglin> entityType, Level level) {
         super(entityType, level);
+    }
+    public static boolean checkTumorSpawnRules(EntityType<? extends Monster> type, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        return checkMonsterSpawnRules(type,level,spawnType,pos,random)&&pos.getY()>56;
     }
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {

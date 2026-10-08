@@ -35,6 +35,7 @@ public class Nethermore {
         NMItemInit.ITEMS.register(modEventBus);
         NMBlockInit.BLOCKS.register(modEventBus);
         NMFluidInit.FLUIDS.register(modEventBus);
+        NMAchievements.TRIGGER_TYPES.register(modEventBus);
         NMSoundInit.SOUND_EVENTS.register(modEventBus);
         NMFluidInit.FLUID_TYPES.register(modEventBus);
         NMEntityInit.ENTITIES.register(modEventBus);

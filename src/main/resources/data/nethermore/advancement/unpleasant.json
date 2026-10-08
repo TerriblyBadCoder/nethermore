@@ -1,0 +1,29 @@
+{
+  "parent": "nethermore:root",
+  "criteria": {
+    "0": {
+      "trigger": "nethermore:unpleasant"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "color": "#9ca49f",
+      "translate": "advancement.nethermore.unpleasant.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nethermore:unpheasant_spawn_egg"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancement.nethermore.unpleasant"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

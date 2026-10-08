@@ -1,0 +1,29 @@
+{
+  "parent": "nethermore:root",
+  "criteria": {
+    "0": {
+      "trigger": "nethermore:morbid"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "color": "#9ca49f",
+      "translate": "advancement.nethermore.morbid.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nethermore:morbid_piece"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancement.nethermore.morbid"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

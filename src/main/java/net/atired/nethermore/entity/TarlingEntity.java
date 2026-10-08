@@ -3,6 +3,7 @@ package net.atired.nethermore.entity;
 import com.google.common.annotations.VisibleForTesting;
 import net.atired.nethermore.init.NMItemInit;
 import net.atired.nethermore.init.NMParticleInit;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -11,15 +12,18 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.monster.MagmaCube;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 
 public class TarlingEntity extends Slime {
@@ -31,7 +35,9 @@ public class TarlingEntity extends Slime {
     public TarlingEntity(EntityType<? extends Slime> entityType, Level level) {
         super(entityType, level);
     }
-
+    public static boolean checkTarSpawnRules(EntityType<? extends Slime> type, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        return checkMobSpawnRules(type,level,spawnType,pos,random)&&pos.getY()<67;
+    }
     @Override
     public void setJumping(boolean jumping) {
         if(this.jumpAmount<=0&&onGround()&&this.jumpDelay>0){

@@ -5,22 +5,19 @@ import net.atired.nethermore.accessors.BiomeSourceAccessor;
 import net.atired.nethermore.accessors.BiomeSourceExpandAccessor;
 import net.atired.nethermore.datagen.NMDatapackProvider;
 import net.atired.nethermore.entity.*;
-import net.atired.nethermore.init.NMBiomeInit;
-import net.atired.nethermore.init.NMEntityInit;
-import net.atired.nethermore.init.NMItemInit;
-import net.atired.nethermore.init.NMMobEffectInit;
+import net.atired.nethermore.init.*;
 import net.atired.nethermore.networking.payloads.RednessPayload;
 import net.atired.nethermore.networking.payloads.VelSyncPayload;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.world.entity.SpawnPlacementType;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
@@ -28,6 +25,7 @@ import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.dimension.LevelStem;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -35,6 +33,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
@@ -56,7 +55,41 @@ public class NethermoreEvents {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         generator.addProvider(true, new NMDatapackProvider(packOutput, lookupProvider));
     }
-    @SubscribeEvent // on the mod event bus
+    private static SpawnPlacementType IN_TAR = (p_325672_, p_325673_, p_325674_) -> {
+        if (p_325674_ != null && p_325672_.getWorldBorder().isWithinBounds(p_325673_)) {
+            BlockPos blockpos = p_325673_.above();
+            return p_325672_.getFluidState(p_325673_).getFluidType()==(NMFluidInit.TAR_FLUID_TYPE.get()) && !p_325672_.getBlockState(blockpos).isRedstoneConductor(p_325672_, blockpos);
+        } else {
+            return false;
+        }
+    };
+    @SubscribeEvent
+    public static void spawnPlacements(RegisterSpawnPlacementsEvent event) {
+        event.register(NMEntityInit.NOO.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Monster::checkAnyLightMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
+        event.register(NMEntityInit.PYLON.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Monster::checkAnyLightMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
+        event.register(NMEntityInit.EGO.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
+
+        event.register(NMEntityInit.BEHOLDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                ObserverEntity::checkObserverSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
+
+        event.register(NMEntityInit.DISGUSTLING.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                DisgustlingEntity::checkTumorSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
+        event.register(NMEntityInit.MORBID_PIGLIN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                MorbidPiglinEntity::checkTumorSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
+
+        event.register(NMEntityInit.SLITHER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                SlitherEntity::checkTarSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
+        event.register(NMEntityInit.TARLING.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                TarlingEntity::checkTarSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
+
+        event.register(NMEntityInit.UNPHEASANT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
+
+    }
+        @SubscribeEvent // on the mod event bus
     public static void buildContents(BuildCreativeModeTabContentsEvent event) {
 
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {

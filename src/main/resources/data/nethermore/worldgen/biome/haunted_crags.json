@@ -78,6 +78,30 @@
         "maxCount": 1,
         "minCount": 1,
         "weight": 40
+      },
+      {
+        "type": "nethermore:morbid_piglin",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 20
+      },
+      {
+        "type": "nethermore:tarling",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 20
+      },
+      {
+        "type": "nethermore:slither",
+        "maxCount": 3,
+        "minCount": 2,
+        "weight": 12
+      },
+      {
+        "type": "nethermore:disgustling",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 6
       }
     ],
     "underground_water_creature": [],

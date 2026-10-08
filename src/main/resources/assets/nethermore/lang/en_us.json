@@ -70,5 +70,19 @@
 
   "nethermore.configuration.title": "Nethermore Configs",
   "nethermore.configuration.section.nethermore.common.toml": "Nethermore Configs",
-  "nethermore.configuration.section.nethermore.common.toml.title": "Nethermore Configs"
+  "nethermore.configuration.section.nethermore.common.toml.title": "Nethermore Configs",
+
+
+  "advancement.nethermore.root": "Nethermore, Nevermore.",
+  "advancement.nethermore.root.desc": "Nevermore, Nevermore.",
+  "advancement.nethermore.morbid": "Uwaa! So morbid!",
+  "advancement.nethermore.morbid.desc": "Consume a tumor.",
+  "advancement.nethermore.unpleasant": "The Unpleasantry has arrived!",
+  "advancement.nethermore.unpleasant.desc": "Encounter an Unpheasant",
+  "advancement.nethermore.garbage": "Down in the dumps",
+  "advancement.nethermore.garbage.desc": "Break a trash bag.",
+  "advancement.nethermore.tarred": "Carcenogenius",
+  "advancement.nethermore.tarred.desc": "Get covered in tar.",
+  "advancement.nethermore.babble": "Tower Of Babble",
+  "advancement.nethermore.babble.desc": "concept. Babble is of tower a"
 }

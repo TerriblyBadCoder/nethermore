@@ -1,10 +1,12 @@
 package net.atired.nethermore.entity;
 
+import net.atired.nethermore.init.NMAchievements;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -164,6 +166,15 @@ public class UnpheasantEntity extends Monster {
     public boolean hasHead(){
         return this.entityData.get(HEADFUL);
     }
+
+    @Override
+    public boolean doHurtTarget(Entity entity) {
+        boolean dahurting=super.doHurtTarget(entity);
+        if(dahurting&&entity instanceof ServerPlayer serverPlayer) NMAchievements.UNPLEASANT.get().trigger(serverPlayer);
+
+        return dahurting;
+    }
+
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {

@@ -6,10 +6,7 @@ import com.mojang.blaze3d.vertex.*;
 import net.atired.nethermore.Nethermore;
 import net.atired.nethermore.accessors.GameRendererResourceManagerAccessor;
 import net.atired.nethermore.accessors.PostChainDepthPassAccessor;
-import net.atired.nethermore.client.particles.SoulParticle;
-import net.atired.nethermore.client.particles.TarParticle;
-import net.atired.nethermore.client.particles.TarSlopParticle;
-import net.atired.nethermore.client.particles.WhisperParticle;
+import net.atired.nethermore.client.particles.*;
 import net.atired.nethermore.client.renderers.*;
 import net.atired.nethermore.client.renderers.models.*;
 import net.atired.nethermore.entity.ObserverEntity;
@@ -126,6 +123,7 @@ public class NethermoreClient {
 
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(NMParticleInit.PAPER_TRAIL_PARTICLE.get(), PaperTrailParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.TAR_POP_PARTICLE.get(), TarParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.TAR_SLOP_PARTICLE.get(), TarSlopParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.WHISPER_PARTICLE.get(), WhisperParticle.Provider::new);

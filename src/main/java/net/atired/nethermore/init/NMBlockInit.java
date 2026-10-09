@@ -40,7 +40,7 @@ public class NMBlockInit {
     public static final DeferredBlock<Block> BLUE_ASH = registerBlock("blue_ash",
             () -> new BlueAshLayerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).requiresCorrectToolForDrops().mapColor(MapColor.SNOW)));
     public static final DeferredBlock<Block> TRASH_BAG = registerBlock("trash_bag",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DRIED_KELP_BLOCK).instabreak().mapColor(MapColor.COLOR_BLACK)));
+            () -> new TrashBagBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DRIED_KELP_BLOCK).instabreak().mapColor(MapColor.COLOR_BLACK)));
     public static final DeferredBlock<Block> INFLAMED_EYE = registerBlock("inflamed_eye",
             () -> new InflamedEyeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_RED).lightLevel((p_50872_) -> {
                 return p_50872_.getValue(InflamedEyeBlock.COVERED)?0:15;
@@ -89,6 +89,8 @@ public class NMBlockInit {
             () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_FENCE).mapColor(MapColor.COLOR_GREEN)));
     public static final DeferredBlock<Block> WHISPERING_TRAPDOOR = registerBlock("whispering_trapdoor",
             () -> new TrapDoorBlock(new BlockSetType("whispering"),BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_TRAPDOOR).mapColor(MapColor.COLOR_GREEN)));
+    public static final DeferredBlock<Block> WHISPERING_DOOR = registerBlock("whispering_door",
+            () -> new DoorBlock(new BlockSetType("whispering"),BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_DOOR).mapColor(MapColor.COLOR_GREEN)));
     public static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name,block);
         registerBlockItem(name, toReturn);

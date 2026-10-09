@@ -1,11 +1,13 @@
 package net.atired.nethermore.blocks;
 
 import net.atired.nethermore.client.NethermoreClient;
+import net.atired.nethermore.init.NMAchievements;
 import net.atired.nethermore.init.NMBlockInit;
 import net.atired.nethermore.init.NMParticleInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -38,6 +40,7 @@ public class SliversBlock extends PinkPetalsBlock {
     @Override
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if(level.isClientSide()){
+            if(entity instanceof ServerPlayer serverPlayer) NMAchievements.BABBLE.get().trigger(serverPlayer);
             if(entity instanceof AbstractClientPlayer abstractClientPlayer&&abstractClientPlayer== Minecraft.getInstance().player){
                 NethermoreClient.PROXY.whispered= Mth.lerp(0.1f,NethermoreClient.PROXY.whispered,1.0f);
             }

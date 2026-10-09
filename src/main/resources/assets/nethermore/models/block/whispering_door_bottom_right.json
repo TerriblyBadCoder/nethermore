@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right",
+  "textures": {
+    "bottom": "nethermore:block/whispering_door_bottom",
+    "top": "nethermore:block/whispering_door_top"
+  }
+}

@@ -1,8 +1,10 @@
 package net.atired.nethermore.blocks;
 
 import net.atired.nethermore.accessors.LivingEntityTarAccessor;
+import net.atired.nethermore.init.NMAchievements;
 import net.atired.nethermore.init.NMParticleInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
@@ -18,6 +20,7 @@ public class TarBlock extends LiquidBlock {
 
     @Override
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+
         if(entity instanceof LivingEntityTarAccessor tarAccessor){
             tarAccessor.setTarred(Math.min(1.3f,tarAccessor.getTarred()+0.2f));
         }

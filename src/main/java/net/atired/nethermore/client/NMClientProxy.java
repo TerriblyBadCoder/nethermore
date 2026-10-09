@@ -19,6 +19,7 @@ public class NMClientProxy {
     public int redCD=0;
     public float whispered=0.0f;
     public float lightNess=0.0f;
+    public float blink=0.0f;
     private static final ResourceLocation SLITHER_LOCATION = Nethermore.getId("textures/entity/slither.png");
     public static MultiBufferSource.BufferSource SLITHER_SOURCE = null;
 

@@ -62,6 +62,9 @@ public class NethermoreClientEvents {
     }
     @SubscribeEvent
     public static void clTick(ClientTickEvent.Pre tickEvent){
+        if(NethermoreClient.PROXY.blink>0){
+            NethermoreClient.PROXY.blink-=0.05f;
+        }
         NethermoreClient.PROXY.whispered*=0.95f;
         NethermoreClient.PROXY.redNess=Math.max(0.0f,Math.max(NethermoreClient.PROXY.redNess-0.02f,NethermoreClient.PROXY.redNess*0.86f));
         NethermoreClient.PROXY.redNess2=Math.max(0.0f,Math.max(NethermoreClient.PROXY.redNess2-0.02f,NethermoreClient.PROXY.redNess2*0.86f));

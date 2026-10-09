@@ -1,6 +1,7 @@
 package net.atired.nethermore.init;
 
 import net.atired.nethermore.Nethermore;
+import net.atired.nethermore.items.LooseEyeItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -26,7 +27,7 @@ public class NMItemInit {
     );
     public static final DeferredItem<Item> LOOSE_EYE = ITEMS.register(
             "loose_eye",
-            ()->new Item(new Item.Properties())
+            ()->new LooseEyeItem(new Item.Properties())
     );
     public static final DeferredItem<Item> TARLING_SPAWN_EGG = ITEMS.register(
             "tarling_spawn_egg",

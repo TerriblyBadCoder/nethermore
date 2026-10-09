@@ -65,6 +65,13 @@ public class NMGameRendererMixin implements GameRendererResourceManagerAccessor 
                 chain.setUniform("Reddened",NethermoreClient.PROXY.redNess);
                 chain.process(deltaTracker.getRealtimeDeltaTicks());
             }
+            if(NethermoreClient.PROXY!=null&&NethermoreClient.PROXY.blink>0){
+
+                PostChain chain = NethermoreClient.GAZING;
+                chain.setUniform("GameTime",(Minecraft.getInstance().level.getGameTime()%24000));
+                chain.setUniform("FadeInTest",NethermoreClient.PROXY.blink);
+                chain.process(deltaTracker.getRealtimeDeltaTicks());
+            }
         }
     }
 }

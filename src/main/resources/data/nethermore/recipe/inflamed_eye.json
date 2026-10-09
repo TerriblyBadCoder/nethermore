@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "nethermore:bilestone"
+    },
+
+    "O": {
+      "item": "nethermore:loose_eye"
+    }
+  },
+  "pattern": [
+    "O",
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "nethermore:inflamed_eye"
+  }
+}

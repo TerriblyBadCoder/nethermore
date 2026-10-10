@@ -1,0 +1,29 @@
+{
+  "parent": "nethermore:root",
+  "criteria": {
+    "0": {
+      "trigger": "nethermore:hearty"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "color": "#9ca49f",
+      "translate": "advancement.nethermore.hearty.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mineccraft:beetroot"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancement.nethermore.hearty"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

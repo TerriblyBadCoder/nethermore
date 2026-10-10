@@ -1,5 +1,6 @@
 package net.atired.nethermore.items;
 
+import net.atired.nethermore.entity.AshBallEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.sounds.SoundEvents;
@@ -21,11 +22,12 @@ public class AshBallItem extends Item implements ProjectileItem {
         super(properties);
     }
 
+
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!level.isClientSide) {
-            Snowball snowball = new Snowball(level, player);
+            AshBallEntity snowball = new AshBallEntity(level, player);
             snowball.setItem(itemstack);
             snowball.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
             level.addFreshEntity(snowball);

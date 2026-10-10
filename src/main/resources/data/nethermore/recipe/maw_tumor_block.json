@@ -1,18 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
-  "group": "wooden_trapdoor",
   "key": {
     "#": {
-      "item": "nethermore:whispering_planks"
+      "item": "nethermore:tumor_block"
+    },
+    "E": {
+      "item": "minecraft:bone"
     }
   },
   "pattern": [
-    "###",
-    "###"
+    "#E",
+    "E#"
   ],
   "result": {
     "count": 2,
-    "id": "nethermore:whispering_trapdoor"
+    "id": "nethermore:maw_tumor_block"
   }
 }

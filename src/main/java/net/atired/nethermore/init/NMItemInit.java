@@ -1,6 +1,7 @@
 package net.atired.nethermore.init;
 
 import net.atired.nethermore.Nethermore;
+import net.atired.nethermore.items.AshBallItem;
 import net.atired.nethermore.items.LooseEyeItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -72,7 +73,7 @@ public class NMItemInit {
 
     public static final DeferredItem<Item> ASH_BALL = ITEMS.register(
             "ash_ball",
-            ()->new Item(new Item.Properties())
+            ()->new AshBallItem(new Item.Properties())
     );
 //    public static final DeferredItem<Item> WAILING_SCEPTRE = ITEMS.register(
 //            "wailing_sceptre",

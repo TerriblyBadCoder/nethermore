@@ -38,6 +38,10 @@ public class NMEntityInit {
             ENTITIES.register("soul", () -> EntityType.Builder.<SoulProjEntity>of(SoulProjEntity::new, MobCategory.MONSTER)
                     .sized(0.45f, 0.45f).eyeHeight(0.225F).passengerAttachments(1.0125F).ridingOffset(-0.7F).clientTrackingRange(8)
                     .build("soul"));
+    public static final Supplier<EntityType<AshBallEntity>> ASH_BALL =
+            ENTITIES.register("ash_ball", () -> EntityType.Builder.<AshBallEntity>of(AshBallEntity::new, MobCategory.MONSTER)
+                    .sized(0.25f, 0.25f).eyeHeight(0.125F).passengerAttachments(1.0125F).ridingOffset(-0.7F).clientTrackingRange(8)
+                    .build("ash_ball"));
     public static final Supplier<EntityType<OnlookerEntity>> ONLOOKER =
             ENTITIES.register("onlooker", () -> EntityType.Builder.<OnlookerEntity>of(OnlookerEntity::new, MobCategory.MONSTER)
                     .sized(0.42f, 0.42f).eyeHeight(0.225F).passengerAttachments(1.0125F).ridingOffset(-0.7F).clientTrackingRange(8)

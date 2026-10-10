@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
-  "group": "wooden_door",
   "key": {
     "#": {
-      "item": "nethermore:whispering_planks"
+      "item": "nethermore:morbid_piece"
     }
   },
   "pattern": [
     "##",
-    "##",
     "##"
   ],
   "result": {
-    "count": 3,
-    "id": "nethermore:whispering_door"
+    "count": 1,
+    "id": "nethermore:tumor_block"
   }
 }

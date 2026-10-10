@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "nethermore:whispering_thorn"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "nethermore:whispering_planks"
+  }
+}

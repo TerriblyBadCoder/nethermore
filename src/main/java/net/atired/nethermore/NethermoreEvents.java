@@ -86,7 +86,7 @@ public class NethermoreEvents {
                 TarlingEntity::checkTarSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
 
         event.register(NMEntityInit.UNPHEASANT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
+                UnpheasantEntity::checkUnpheasantSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
 
     }
         @SubscribeEvent // on the mod event bus

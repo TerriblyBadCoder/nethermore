@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 50,
+  "experience": 0.4,
+  "group": "iron_nugget",
+  "ingredient": {
+    "item": "nethermore:iron_rafter"
+  },
+  "result": {
+    "count": 2,
+    "id": "minecraft:iron_nugget"
+  }
+}

@@ -15,6 +15,7 @@ import net.atired.nethermore.init.NMParticleInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.PostChain;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -114,6 +115,7 @@ public class NethermoreClient {
         event.registerEntityRenderer(NMEntityInit.EGO.get(), EgoEntityRenderer::new);
         event.registerEntityRenderer(NMEntityInit.PYLON.get(), PylonEntityRenderer::new);
         event.registerEntityRenderer(NMEntityInit.SOUL.get(), SoulProjEntityRenderer::new);
+        event.registerEntityRenderer(NMEntityInit.ASH_BALL.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(NMEntityInit.ONLOOKER.get(), OnlookerEntityRenderer::new);
         event.registerEntityRenderer(NMEntityInit.BEHOLDER.get(), ObserverEntityRenderer::new);
 

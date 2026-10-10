@@ -2,6 +2,7 @@ package net.atired.nethermore.entity;
 
 import net.atired.nethermore.init.NMAchievements;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -27,6 +28,7 @@ import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
@@ -125,8 +127,10 @@ public class UnpheasantEntity extends Monster {
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class,true));
 
     }
-
-    @Override
+    public static boolean checkUnpheasantSpawnRules(EntityType<? extends Monster> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        return pos.getCenter().length()>2000&&checkAnyLightMonsterSpawnRules(type,level,spawnType,pos,random);
+    }
+        @Override
     public boolean save(CompoundTag compound) {
         compound.putBoolean("has_real_head",true);
         return super.save(compound);

@@ -40,9 +40,9 @@ public class NMAdvancementTabMixin {
         int i = 0;
         int j = 0;
         ResourceLocation atlasLocation = (ResourceLocation)this.display.getBackground().orElse(TextureManager.INTENTIONAL_MISSING_TEXTURE);
-        test-=1.0f/10.0f*(1.0f+this.fade*3.0f);
-        test%=256;
         if(atlasLocation.getNamespace().equals("nethermore")&&NethermoreClient.PROXY.nihiloNess<0.95f) {
+            test-=1.0f/10.0f*(1.0f+this.fade*3.0f);
+
             RenderSystem.enableBlend();
             if(NethermoreClient.PROXY.nihiloNess>0.1f)RenderSystem.setShaderColor(1.0f,1.0f,1.0f,1.0f- NethermoreClient.PROXY.nihiloNess);
             guiGraphics.pose().translate((test/64.0f*234.0f)%234,(1.0f-this.fade)*30.0f,200);
@@ -53,23 +53,25 @@ public class NMAdvancementTabMixin {
             guiGraphics.pose().translate(-((test/64.0f*234.0f)%234),0,-200);
             RenderSystem.setShaderColor(1.0f,1.0f,1.0f,1.0f);
         }
-        if(atlasLocation.getNamespace().equals("nethermore")&&NethermoreClient.PROXY.nihiloNess>0.9f) {
+        else if(atlasLocation.getNamespace().equals("nethermore")&&NethermoreClient.PROXY.nihiloNess>0.9f) {
+            test-=1.0f/10.0f;
             RenderSystem.enableBlend();
-            guiGraphics.pose().translate((test/256.0f*234.0f)%234,(1.0f-this.fade*3.0f)*40.0f,200);
+            float faded = Math.min(0.33f,(float)Math.pow(this.fade*3.0f,2.0));
+            guiGraphics.pose().translate((test/256.0f*234.0f)%234,(1.0f-faded)*48.0f,200);
             guiGraphics.blit(SPRITE_3, i,j,0.0f,0.0f,234,113,234,113);
             guiGraphics.blit(SPRITE_3, i-234,j,0.0f,0.0f,234,113,234,113);
             guiGraphics.blit(SPRITE_3, i+234*2,j,0.0f,0.0f,234,113,234,113);
             guiGraphics.blit(SPRITE_3, i+234,j,0.0f,0.0f,234,113,234,113);
             RenderSystem.setShaderColor(0.6f,0.6f,0.6f,1.0f);
-            guiGraphics.pose().translate(((test/256.0f*234.0f)%234),16,-1);
+            guiGraphics.pose().translate((-(test/128.0f*234.0f)%234),16,-1);
             guiGraphics.blit(SPRITE_3, i,j,64,0.0f,234,113,234,113);
             guiGraphics.blit(SPRITE_3, i-234,j,64,0.0f,234,113,234,113);
             guiGraphics.blit(SPRITE_3, i+234*2,j,0.0f,0.0f,234,113,234,113);
             guiGraphics.blit(SPRITE_3, i+234,j,0.0f,0.0f,234,113,234,113);
-            guiGraphics.pose().translate(-((test/128.0f*234.0f)%234),-(1.0f-this.fade*3.0f)*40.0f-16,-199);
+            guiGraphics.pose().translate(((test/256.0f*234.0f)%234),-(1.0f-faded)*48.0f-16,-199);
             RenderSystem.setShaderColor(1.0f,1.0f,1.0f,1.0f);
         }
-
+        test%=256;
 
     }
         @WrapOperation(method = "drawContents",at= @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;blit(Lnet/minecraft/resources/ResourceLocation;IIFFIIII)V"))
@@ -96,7 +98,7 @@ public class NMAdvancementTabMixin {
                         if(NethermoreClient.PROXY.nihiloNess<0.9f)instance.blit(SPRITE_0[0],k+64*m,l+64*n,0.0f,test*1.0f,64,64,64,64);
                         RenderSystem.enableBlend();
                         if(NethermoreClient.PROXY.nihiloNess>0.1f){
-                            float sin = Math.max(0.0f,1.0f-fade*3.0f);
+                            float sin = Math.clamp(1.0f-fade*3.5f,0.0f,1.0f);
                             RenderSystem.setShaderColor(0.9f+sin*0.1f,0.3f+sin*0.7f,0.3f+sin*0.7f,NethermoreClient.PROXY.nihiloNess);
                             instance.pose().mulPose(new Quaternionf().rotationZ(0.5f));
                             instance.blit(SPRITE_0[1],k+64*m,l+64*n,test/2,test*1.5f,64,64,64,64);

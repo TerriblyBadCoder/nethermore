@@ -12,6 +12,8 @@ public class NMAchievements {
             DeferredRegister.create(Registries.TRIGGER_TYPE, Nethermore.MODID);
     public static final DeferredHolder<CriterionTrigger<?>, DummyTrigger> MORBID=  TRIGGER_TYPES.register("morbid",DummyTrigger::new);
     public static final DeferredHolder<CriterionTrigger<?>, DummyTrigger> HEARTY=  TRIGGER_TYPES.register("hearty",DummyTrigger::new);
+    public static final DeferredHolder<CriterionTrigger<?>, DummyTrigger> JAUNT=  TRIGGER_TYPES.register("jaunt",DummyTrigger::new);
+    public static final DeferredHolder<CriterionTrigger<?>, DummyTrigger> LIL_GUY=  TRIGGER_TYPES.register("lil_guy",DummyTrigger::new);
     public static final DeferredHolder<CriterionTrigger<?>, DummyTrigger> UNPLEASANT=  TRIGGER_TYPES.register("unpleasant",DummyTrigger::new);
     public static final DeferredHolder<CriterionTrigger<?>, DummyTrigger> BABBLE=  TRIGGER_TYPES.register("babble",DummyTrigger::new);
     public static final DeferredHolder<CriterionTrigger<?>, DummyTrigger> TARRED=  TRIGGER_TYPES.register("tarred",DummyTrigger::new);

@@ -69,7 +69,7 @@ public class PylonEntityModel<T extends PylonEntity> extends HierarchicalModel<T
 	public void setupAnim(PylonEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.body.yRot=Mth.sin(ageInTicks/16.0f)/8.0f+netHeadYaw/180.0f*3.14f/4.0f;
 		if(NethermoreClient.PROXY.redNess2>0.0f){
-			this.body.yRot-=(float)Math.pow(Math.max(0.0f,NethermoreClient.PROXY.redNess2-0.1f)/0.9f,2.0f)*3.14f*2.0f;
+			this.body.yRot-=(float)Math.pow(Math.max(0.0f,NethermoreClient.PROXY.redNess2-0.1f)/0.9f,2.0f)*3.14f*6.0f;
 		}
 		this.body.xRot=Mth.cos(ageInTicks/8.0f)/20.0f+headPitch/180.0f*3.14f/20.0f;
 		this.body.xRot+=Mth.sin(ageInTicks/8.0f)/14.0f-0.1f+Mth.sin(this.attackTime*3.14f)*1.1f;

@@ -45,69 +45,58 @@ public class SoulProjEntityRenderer extends EntityRenderer<SoulProjEntity> {
         double d0 = Mth.lerp((double)partialTicks, entity.xOld, entity.getX());
         double d1 = Mth.lerp((double)partialTicks, entity.yOld, entity.getY());
         double d2 = Mth.lerp((double)partialTicks, entity.zOld, entity.getZ());
-        Vec3 pos = entity.getPosition(partialTicks);
-        poseStack.translate(-pos.x(),-pos.y(),-pos.z());
+        poseStack.translate(-d0,-d1,-d2);
         PoseStack.Pose posed = poseStack.last();
-
-        VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(BLANK_LOCATION));
+        NMRenderLayers.FADING_SHADER_INSTANCE.safeGetUniform("Fade").set(0.0f);
+        VertexConsumer consumer = buffer.getBuffer(NMRenderLayers.entityFadingCull(BLANK_LOCATION));
         float scaled = Mth.clamp(30.0f-(entity.tickCount+partialTicks)/5.0f,0.0f,1.0f);
         float scaled2 =Mth.clamp(30.0f-(entity.tickCount+partialTicks)/5.0f,0.0f,1.0f);
-
-        float reddened = NethermoreClient.PROXY.redNess2;
-        float evilTickCount = Math.clamp((entity.tickCount+partialTicks-1)/8.0f,0.0f,1.0f)*(0.05f+(float)Math.pow(reddened,0.2f)*0.95f);
+        Vec3 dirVec = new Vec3(4f,0,0).yRot(-entityYaw/180.0f*3.14f);
+        dirVec=dirVec.scale(0.5);
+        Vec3 dirVec2 = dirVec;
+        float reddened = 1.0f;
+        float evilTickCount = Math.clamp((entity.tickCount+partialTicks-4)/12.0f,0.0f,1.0f)*(0.05f+(float)Math.pow(reddened,0.2f)*0.95f);
             float ud = 0;
-            float a =2.0f;
+            float a =1.46f;
             for(int i = entity.posTracker-2;i>1;i--){
-                Vec3 second =  entity.positions[i-1].lerp(entity.positions[i],partialTicks);
-                Vec3 first = entity.positions[i].lerp(entity.positions[i+1],partialTicks);
-                Vec3 zeroth = entity.positions[i+1].lerp(i==entity.posTracker-2?pos:entity.positions[i+2],partialTicks);
+                float evilTickCount1=evilTickCount*Math.clamp((i/8.0f-1.0f),0.0f,1.0f);
+                float evilTickCount2=evilTickCount*Math.clamp(((i-1)/8.0f-1.0f),0.0f,1.0f);
+                Vec3 second =  entity.positions[i-1];
+                Vec3 first = entity.positions[i];
+                Vec3 zeroth = entity.positions[i+1];
                 //
-                Vec3 to = zeroth.subtract(first).multiply(1,1,1).normalize();
-                Vec3 toHor = to.multiply(1,0,1).normalize();
-                float yaw = (float)Math.atan2(toHor.x,toHor.z);
-                float pitch = (float)Math.asin(to.y);
-                Vec3 dirVec = new Vec3(1f,0,0).xRot(-pitch).yRot(yaw+3.14f*0.2f*reddened);
-                Vec3 dirCross = dirVec.cross(to).scale(0.5);
-                dirVec=dirVec.scale(0.5);
-                //
-                to =  first.subtract(second).multiply(1,1,1).normalize();
-                toHor = to.multiply(1,0,1).normalize();
-                yaw = (float)Math.atan2(toHor.x,toHor.z);
-                pitch = (float)Math.asin(to.y);
-                Vec3 dirVec2 = new Vec3(1f,0,0).xRot(-pitch).yRot(yaw+3.14f*0.2f*reddened);
-                Vec3 dirCross2 = dirVec2.cross(to).scale(0.5);
-                dirVec2=dirVec2.scale(0.5);
 
-                float ud2=ud+(float)first.add(0,0,0).distanceTo(second.add(0,0,0))/4.0f;
-                float a2 = (float)Math.pow(Math.clamp( Math.clamp(((i-1)/((float)(entity.posTracker-2))),0f,1f)-0.5f,0.0f,0.5f),3.0f)*18.0f;
+
+                float ud2=ud+1.0f/7.0f;
+                float a2 = 0.66f*(float)Math.pow(Math.clamp( Math.clamp(((i-1)/((float)(entity.posTracker-2))),0f,1f)-0.5f,0.0f,0.5f),3.0f)*18.0f;
                 if(ud2>1.0f){
                     ud2=1.01f;
                 }
                 vertex(posed, consumer,
                         first.x + dirVec.x * scaled, first.y + dirVec.y * scaled+a*scaled, first.z + dirVec.z * scaled,
-                        0.0f, ud, 0, 0, 1, packedLight,evilTickCount);
+                        0.0f, ud, 0, 0, 1, packedLight,evilTickCount1);
                 vertex(posed,consumer,
                         second.x+dirVec2.x*scaled2,second.y+dirVec2.y*scaled2+a2*scaled2,second.z+dirVec2.z*scaled2,
-                        0.0f,ud2,0,0,1,packedLight,evilTickCount);
+                        0.0f,ud2,0,0,1,packedLight,evilTickCount2);
                 vertex(posed,consumer,
                         second.x-dirVec2.x*scaled2,second.y-dirVec2.y*scaled2+a2*scaled2,second.z-dirVec2.z*scaled2,
-                        1.0f,ud2,0,0,1,packedLight,evilTickCount);
+                        1.0f,ud2,0,0,1,packedLight,evilTickCount2);
                 vertex(posed,consumer,
                         first.x-dirVec.x*scaled,first.y-dirVec.y*scaled+a*scaled,first.z-dirVec.z*scaled
-                        ,1.0f,ud,0,0,1,packedLight,evilTickCount);
+                        ,1.0f,ud,0,0,1,packedLight,evilTickCount1);
 
-                vertex(posed, consumer,
-                        first.x + dirCross.x * scaled, first.y + dirCross.y * scaled+a*scaled, first.z + dirCross.z * scaled,
-                        0.0f, ud, 0, 0, 1, packedLight,evilTickCount);
-                vertex(posed,consumer,
-                        second.x+dirCross2.x*scaled2,second.y+dirCross2.y*scaled2+a2*scaled2,second.z+dirCross2.z*scaled2,
-                        0.0f,ud2,0,0,1,packedLight,evilTickCount);
-                vertex(posed,consumer,
-                        second.x-dirCross2.x*scaled2,second.y-dirCross2.y*scaled2+a2*scaled2,second.z-dirCross2.z*scaled2,
-                        1.0f,ud2,0,0,1,packedLight,evilTickCount);
-                vertex(posed,consumer,
-                        first.x-dirCross.x*scaled,first.y-dirCross.y*scaled+a*scaled,first.z-dirCross.z*scaled
-                        ,1.0f,ud,0,0,1,packedLight,evilTickCount);
+//                vertex(posed, consumer,
+//                        first.x + dirCross.x * scaled, first.y + dirCross.y * scaled+a*scaled, first.z + dirCross.z * scaled,
+//                        0.0f, ud, 0, 0, 1, packedLight,evilTickCount);
+//                vertex(posed,consumer,
+//                        second.x+dirCross2.x*scaled2,second.y+dirCross2.y*scaled2+a2*scaled2,second.z+dirCross2.z*scaled2,
+//                        0.0f,ud2,0,0,1,packedLight,evilTickCount);
+//                vertex(posed,consumer,
+//                        second.x-dirCross2.x*scaled2,second.y-dirCross2.y*scaled2+a2*scaled2,second.z-dirCross2.z*scaled2,
+//                        1.0f,ud2,0,0,1,packedLight,evilTickCount);
+//                vertex(posed,consumer,
+//                        first.x-dirCross.x*scaled,first.y-dirCross.y*scaled+a*scaled,first.z-dirCross.z*scaled
+//                        ,1.0f,ud,0,0,1,packedLight,evilTickCount);
                 ud=ud2;
                 a =a2;
                 if(ud2>=1.0f){

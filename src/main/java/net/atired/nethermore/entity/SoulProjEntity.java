@@ -61,6 +61,7 @@ public class SoulProjEntity extends ThrowableItemProjectile {
 
     @Override
     public void tick() {
+        setOldPosAndRot();
         super.tick();
         if(level() instanceof ServerLevel serverLevel && toHurt==null){
             LivingEntity otherLiving=null;
@@ -78,21 +79,19 @@ public class SoulProjEntity extends ThrowableItemProjectile {
             }
         }
         if(this.tickCount<140&&toHurt!=null){
-            Vec3 to = this.toHurt.getPosition(0).add(0,1.6,0).subtract(this.getPosition(0)).add(0,1.0,0);
+            Vec3 to = this.toHurt.getPosition(0).add(0,this.toHurt.getBbHeight()*0.4,0).subtract(this.getPosition(0)).add(0,this.toHurt.getBbHeight()*0.2,0);
             if(this.tickCount<40){
-                to=to.add(0,2.4*(1.0f-Math.max(0.0f,(tickCount-20)/10.0f)),0);
+                to=to.add(0,this.toHurt.getBbHeight()*0.6f*(1.0f-Math.max(0.0f,(tickCount-20)/10.0f)),0);
             }
-            float mul = 0.4f;
+            float mul = 0.8f;
             if(level() instanceof RednessServerLevelAccessor serverLevelAccessor){
-                mul+=ignoreHeart?1.4f:serverLevelAccessor.nethermore$getRed()*1.4f;
+                mul+=ignoreHeart?1.0f:serverLevelAccessor.nethermore$getRed()*1.0f;
                 to=to.add(0,-1.0,0);
             }
-            if(this.hitStuff||this.tickCount>125){
-                mul*=2.3f;
-                to=to.add(0,50,0);
-                setDeltaMovement(getDeltaMovement().scale(1.03));
+            if(this.hitStuff||this.tickCount>45){
+                setDeltaMovement(getDeltaMovement().scale(1.01));
             }
-            this.setDeltaMovement(evilAssRotLerp(getDeltaMovement().scale(1.01),to.normalize(), mul*0.015f*(float)Math.pow(this.tickCount+3,0.5f)));
+            this.setDeltaMovement(evilAssRotLerp(getDeltaMovement().scale(1.01),to.normalize().scale(2), mul*0.5f*(float)Math.pow(1.0f/(this.tickCount+3),0.5f)));
         }
         if(this.tickCount>143){
             if(level() instanceof ServerLevel serverLevel){
@@ -138,17 +137,12 @@ public class SoulProjEntity extends ThrowableItemProjectile {
     @Override
     protected void onHitEntity(EntityHitResult result) {
         if(this.hitStuff)return;
-        if(!(level() instanceof RednessServerLevelAccessor)){
-            return;
-        }
-        if((level() instanceof RednessServerLevelAccessor serverLevelAccessor)&&serverLevelAccessor.nethermore$getRed()<0.03f&&!this.ignoreHeart){
-            return;
-        }
+
         if(result.getEntity() instanceof LivingEntity living&&(living!=getOwner()||this.tickCount>20)&&level()instanceof ServerLevel serverLevel){
             setHitStuff();
             playSound(SoundEvents.SOUL_ESCAPE.value(),3.7f,2.4f);
             playSound(SoundEvents.VEX_CHARGE,0.37f,0.4f);
-            living.setHealth(Math.max(0.01f,living.getHealth()-4f));
+            living.setHealth(Math.max(0.01f,living.getHealth()-1f));
             Vec3 normDir = getDeltaMovement().multiply(1,0,1).normalize().scale(0.1);
             living.addDeltaMovement(normDir);
             if(living instanceof Player){

@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.atired.nethermore.Nethermore;
 import net.atired.nethermore.client.NMRenderLayers;
+import net.atired.nethermore.client.NethermoreClient;
 import net.atired.nethermore.client.renderers.models.PylonEntityModel;
 import net.atired.nethermore.entity.PylonEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -30,7 +31,11 @@ public class PylonEntityRenderer extends MobRenderer<PylonEntity, PylonEntityMod
     @Override
     public void render(PylonEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         if(NMRenderLayers.MONOCHROME_SHADER_INSTANCE!=null){
-            NMRenderLayers.MONOCHROME_SHADER_INSTANCE.safeGetUniform("DeSaturation").set(1.0f);
+            float red = Math.min(1.0f, NethermoreClient.PROXY.redNess2*3.0f);
+            if(NethermoreClient.PROXY.redNess2>0.8){
+                red=Math.clamp((1.0f-NethermoreClient.PROXY.redNess2)*6.0f,0.0f,1.0f);
+            }
+            NMRenderLayers.MONOCHROME_SHADER_INSTANCE.safeGetUniform("DeSaturation").set(red);
         }
         super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
     }

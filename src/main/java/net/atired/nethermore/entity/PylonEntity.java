@@ -59,19 +59,18 @@ public class PylonEntity extends Monster {
     @Override
     public void tick() {
         if(getTarget()!=null){
-            if(this.tickCount%2==0&&level() instanceof ServerLevel level && level() instanceof RednessServerLevelAccessor rednessServerLevelAccessor && rednessServerLevelAccessor.nethermore$getRed()>0.1){
+            if(this.tickCount%2==0&&level() instanceof ServerLevel level && level() instanceof RednessServerLevelAccessor rednessServerLevelAccessor && rednessServerLevelAccessor.nethermore$getRed()>0.5){
                 playSound(SoundEvents.SOUL_SAND_BREAK,0.45f,0.2f+(float)Math.random()/3.0f);
                 //level.sendParticles(ParticleTypes.SOUL_FIRE_FLAME,getX(),getY(0.5),getZ(),4,0.3,0.6,0.3,0.01);
-                level.sendParticles(NMParticleInit.SOUL_PARTICLE.get(),getX(),getY(0.5),getZ(),1,0.3,0.6,0.3,0.01);
-                if(this.tickCount%2==0){
+                level.sendParticles(NMParticleInit.SOUL_PARTICLE.get(),getX(),getY(0.5),getZ(),3,0.16,0.5,0.16,0.25);
                     SoulProjEntity soul = new SoulProjEntity(level, this);
                     soul.toHurt=getTarget();
-                    soul.shootFromRotation(this, this.getXRot(), this.getYRot()+(Math.random()>0.5?-40:40), 0.0F, 0.46F+(float)Math.random()/25.0f, 30.0F);
+                    soul.shootFromRotation(this, this.getXRot(), this.getYRot()+(Math.random()>0.5?-90:90), 0.0F, 0.46F+(float)Math.random()/25.0f, 30.0F);
                     soul.addDeltaMovement(new Vec3(0,(Math.random()-0.5)/7.0f,0));
                     double ranDumb = Math.random()/5.0f+0.8f;
                     soul.setDeltaMovement(soul.getDeltaMovement().multiply(ranDumb,1,ranDumb));
+                    soul.setPos(new Vec3(getX((Math.random()-0.5)*4.0),getY()-0.1,getZ((Math.random()-0.5)*4.0)));
                     level.addFreshEntity(soul);
-                }
             }
         }
         super.tick();

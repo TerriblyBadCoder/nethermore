@@ -108,7 +108,7 @@ float cnoise(vec3 P){
 void main() {
     vec4 color = texture(Sampler0, texCoord0);
     vec3 hsvD = rgb2hsv(color.rgb);
-    float deSat = min(DeSaturation*1.3f,1.0f);
+    float deSat = 1.0;
     vec2 fracted = texCoord0;
     fracted.x-=fract(fracted.x*64.0)/64.0;
     fracted.y-=fract(fracted.y*64.0)/64.0;
@@ -122,6 +122,6 @@ void main() {
     }
     color *= vertexColor * ColorModulator;
     color.rgb = mix(overlayColor.rgb, color.rgb, overlayColor.a);
-    color *= lightMapColor;
+    color *= lightMapColor*(1.0f-DeSaturation*noisy)+vec4(1.0,1.0,1.0,1.0)*DeSaturation*noisy;
     fragColor = linear_fog(color, vertexDistance, FogStart, FogEnd, FogColor);
 }

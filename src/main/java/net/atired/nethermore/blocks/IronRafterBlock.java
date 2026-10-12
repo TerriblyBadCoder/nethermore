@@ -56,6 +56,9 @@ public class IronRafterBlock extends RotatedPillarBlock {
                     level.setBlock(pos,state.setValue(COMBINED,true).setValue(ISX,axis2== Direction.Axis.X),2);
                 }
                 player.swing(hand);
+                if(!player.isCreative())
+                    stack.setCount(stack.getCount()-1);
+                player.playSound(soundType.getPlaceSound());
                 return ItemInteractionResult.CONSUME_PARTIAL;
             }
         }

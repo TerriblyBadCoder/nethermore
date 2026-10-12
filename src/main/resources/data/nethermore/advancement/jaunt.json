@@ -6,7 +6,7 @@
     }
   },
   "display": {
-    "announce_to_chat": false,
+    "announce_to_chat": true,
     "description": {
       "color": "#9ca49f",
       "translate": "advancement.nethermore.jaunt.desc"
@@ -15,7 +15,7 @@
       "count": 1,
       "id": "nethermore:loose_eye"
     },
-    "show_toast": false,
+    "show_toast": true,
     "title": {
       "translate": "advancement.nethermore.jaunt"
     }

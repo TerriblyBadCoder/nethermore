@@ -29,7 +29,7 @@
   "block.nethermore.blue_slag": "Blue Slag",
   "block.nethermore.blue_ash_shingles": "Blue Ash Shingles",
   "block.nethermore.blue_ash_block": "Blue Ash Block",
-  "block.nethermore.syringe": "Syringe",
+  "block.nethermore.syringe": "Blightbulb",
   "effect.nethermore.morbid": "Morbid",
   "creativetab.nethermore.nethermore": "Nethermore, Nevermore",
   "item.nethermore.morbid_piece": "Morbid Piece",
@@ -60,6 +60,7 @@
   "entity.nethermore.unpheasant": "Unpheasant",
 
   "entity.nethermore.noo": "Noo",
+  "entity.nethermore.soul": "Soul",
   "entity.nethermore.slither": "Slither",
   "entity.nethermore.pylon": "Pylon",
   "entity.nethermore.onlooker": "Onlooker",

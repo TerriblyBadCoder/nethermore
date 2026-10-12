@@ -1,7 +1,9 @@
 package net.atired.nethermore.entity;
 
+import net.atired.nethermore.init.NMAchievements;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -31,6 +33,11 @@ public class NooEntity extends Monster {
     @Override
     public void tick() {
         if(level() instanceof ServerLevel serverLevel && this.tickCount>154){
+            for(Player player : level().getEntitiesOfClass(Player.class,getBoundingBox().inflate(7))){
+                if(player instanceof ServerPlayer serverPlayer){
+                    NMAchievements.LIL_GUY.get().trigger(serverPlayer);
+                }
+            }
             discard();
         }
         super.tick();

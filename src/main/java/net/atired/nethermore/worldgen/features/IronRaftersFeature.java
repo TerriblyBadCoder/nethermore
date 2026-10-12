@@ -41,7 +41,7 @@ public class IronRaftersFeature extends Feature<NoneFeatureConfiguration> {
                                         ,2);
 
                             }else{
-                                if(Math.random()>0.9f&&(pos1.getZ()+pos1.getY()/(int)2)%4==2&&level.getBlockState(pos1.below()).isEmpty()){
+                                if(Math.random()>0.85f&&(pos1.getZ()+pos1.getY()/(int)2)%4==2&&level.getBlockState(pos1.below()).isEmpty()){
                                     level.setBlock(pos1.below(),NMBlockInit.SYRINGE.get().defaultBlockState().setValue(
                                             BlockStateProperties.FACING,Direction.DOWN),2);
                                     level.setBlock(pos1, NMBlockInit.IRON_RAFTER.get().defaultBlockState()
@@ -57,7 +57,7 @@ public class IronRaftersFeature extends Feature<NoneFeatureConfiguration> {
                                 }
                             }
                         }else if((pos1.getZ()+pos1.getY()/(int)2)%4==0){
-                            if(Math.random()>0.9f&&(pos1.getX()+pos1.getY()/(int)2)%4==2&&level.getBlockState(pos1.below()).isEmpty()){
+                            if(Math.random()>0.85f&&(pos1.getX()+pos1.getY()/(int)2)%4==2&&level.getBlockState(pos1.below()).isEmpty()){
                                 level.setBlock(pos1.below(),NMBlockInit.SYRINGE.get().defaultBlockState().setValue(
                                         BlockStateProperties.FACING,Direction.DOWN),2);
                                 level.setBlock(pos1, NMBlockInit.IRON_RAFTER.get().defaultBlockState()

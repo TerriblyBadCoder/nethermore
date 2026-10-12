@@ -15,7 +15,7 @@
       "count": 1,
       "id": "nethermore:unpheasant_spawn_egg"
     },
-    "show_toast": false,
+    "show_toast": true,
     "title": {
       "translate": "advancement.nethermore.unpleasant"
     }

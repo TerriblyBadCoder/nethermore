@@ -51,6 +51,7 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.WHISPERING_STAIRS);
                         output.accept(NMBlockInit.WHISPERING_FENCE);
                         output.accept(NMBlockInit.WHISPERING_TRAPDOOR);
+                        output.accept(NMBlockInit.WHISPERING_DOOR);
                         output.accept(NMItemInit.DISGUSTLING_SPAWN_EGG.get());
                         output.accept(NMItemInit.MORBID_PIGLIN_SPAWN_EGG.get());
 

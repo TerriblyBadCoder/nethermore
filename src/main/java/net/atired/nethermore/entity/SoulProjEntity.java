@@ -27,6 +27,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 public class SoulProjEntity extends ThrowableItemProjectile {
     public Vec3[] positions = new Vec3[16];
     public float lastYaw;
+    public boolean ignoreHeart = false;
     public float lastPitch;
     public int posTracker = 0;
 
@@ -83,7 +84,7 @@ public class SoulProjEntity extends ThrowableItemProjectile {
             }
             float mul = 0.4f;
             if(level() instanceof RednessServerLevelAccessor serverLevelAccessor){
-                mul+=serverLevelAccessor.nethermore$getRed()*1.4f;
+                mul+=ignoreHeart?1.4f:serverLevelAccessor.nethermore$getRed()*1.4f;
                 to=to.add(0,-1.0,0);
             }
             if(this.hitStuff||this.tickCount>125){
@@ -140,7 +141,7 @@ public class SoulProjEntity extends ThrowableItemProjectile {
         if(!(level() instanceof RednessServerLevelAccessor)){
             return;
         }
-        if((level() instanceof RednessServerLevelAccessor serverLevelAccessor)&&serverLevelAccessor.nethermore$getRed()<0.03f){
+        if((level() instanceof RednessServerLevelAccessor serverLevelAccessor)&&serverLevelAccessor.nethermore$getRed()<0.03f&&!this.ignoreHeart){
             return;
         }
         if(result.getEntity() instanceof LivingEntity living&&(living!=getOwner()||this.tickCount>20)&&level()instanceof ServerLevel serverLevel){

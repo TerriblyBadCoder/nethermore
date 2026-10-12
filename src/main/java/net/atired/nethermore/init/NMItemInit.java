@@ -6,10 +6,7 @@ import net.atired.nethermore.items.LooseEyeItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -28,7 +25,7 @@ public class NMItemInit {
     );
     public static final DeferredItem<Item> LOOSE_EYE = ITEMS.register(
             "loose_eye",
-            ()->new LooseEyeItem(new Item.Properties())
+            ()->new LooseEyeItem(new Item.Properties().stacksTo(16))
     );
     public static final DeferredItem<Item> TARLING_SPAWN_EGG = ITEMS.register(
             "tarling_spawn_egg",
@@ -71,9 +68,13 @@ public class NMItemInit {
             ()->new SpawnEggItem(NMEntityInit.PYLON.get(),0x52dcff,0xdae3e3,new Item.Properties())
     );
 
+    public static final DeferredItem<Item> EGO_SHIELD = ITEMS.register(
+            "ego_shield",
+            ()->new ShieldItem(new Item.Properties().stacksTo(1).durability(336))
+    );
     public static final DeferredItem<Item> ASH_BALL = ITEMS.register(
             "ash_ball",
-            ()->new AshBallItem(new Item.Properties())
+            ()->new AshBallItem(new Item.Properties().stacksTo(16))
     );
 //    public static final DeferredItem<Item> WAILING_SCEPTRE = ITEMS.register(
 //            "wailing_sceptre",
@@ -83,10 +84,10 @@ public class NMItemInit {
 //            "mask",
 //            ()->new Item(new Item.Properties())
 //    );
-    public static final DeferredItem<Item> CIGAR = ITEMS.register(
-            "cigar",
-            ()->new Item(new Item.Properties())
-    );
+//    public static final DeferredItem<Item> CIGAR = ITEMS.register(
+//            "cigar",
+//            ()->new Item(new Item.Properties())
+//    );
     public static final DeferredItem<Item> MORBID_PIECE = ITEMS.register(
             "morbid_piece",
             ()->new Item(new Item.Properties().food(MORBID_FOOD))

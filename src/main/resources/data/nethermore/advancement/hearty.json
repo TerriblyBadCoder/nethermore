@@ -15,7 +15,7 @@
       "count": 1,
       "id": "minecraft:beetroot"
     },
-    "show_toast": false,
+    "show_toast": true,
     "title": {
       "translate": "advancement.nethermore.hearty"
     }

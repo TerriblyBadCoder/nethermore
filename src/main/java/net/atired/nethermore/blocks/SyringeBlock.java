@@ -1,10 +1,13 @@
 package net.atired.nethermore.blocks;
 
 import com.mojang.serialization.MapCodec;
+import net.atired.nethermore.init.NMParticleInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EndRodBlock;
 import net.minecraft.world.level.block.RodBlock;
@@ -38,6 +41,15 @@ public class SyringeBlock extends RodBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(new Property[]{FACING});
     }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if(random.nextFloat()>0.2f)
+            level.addParticle(NMParticleInit.SOUL_PARTICLE.get(), pos.getX()+Math.random(),pos.getY()+Math.random()*0.2f+0.8f,pos.getZ()+Math.random(),Math.random()-0.5,Math.random()/4.0f,Math.random()-0.5);
+
+        super.animateTick(state, level, pos, random);
+    }
+
     @Override
     protected VoxelShape getShape(BlockState p_154346_, BlockGetter p_154347_, BlockPos p_154348_, CollisionContext p_154349_) {
         Direction dir = p_154346_.getValue(FACING);

@@ -11,6 +11,36 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "nethermore:iron_rafter",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "combined": "false"
+                  }
+                }
+              ],
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "nethermore:iron_rafter",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "combined": "true"
+                  }
+                }
+              ],
+              "count": 2.0,
+              "function": "minecraft:set_count"
+            }
+          ],
           "name": "nethermore:iron_rafter"
         }
       ],

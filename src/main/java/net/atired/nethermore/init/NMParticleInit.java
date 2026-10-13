@@ -15,6 +15,10 @@ public class NMParticleInit {
             "whisper",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> OPEN_PARTICLE = PARTICLE_TYPES.register(
+            "open",
+            () -> new SimpleParticleType(false)
+    );
     public static final Supplier<SimpleParticleType> SOUL_PARTICLE = PARTICLE_TYPES.register(
             "soul",
             () -> new SimpleParticleType(false)

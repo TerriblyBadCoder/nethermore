@@ -133,6 +133,7 @@ public class NethermoreClient {
         event.registerSpriteSet(NMParticleInit.TAR_SLOP_PARTICLE.get(), TarSlopParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.WHISPER_PARTICLE.get(), WhisperParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.SOUL_PARTICLE.get(), SoulParticle.Provider::new);
+        event.registerSpriteSet(NMParticleInit.OPEN_PARTICLE.get(), OpenParticle.Provider::new);
     }
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {

@@ -1,0 +1,19 @@
+{
+    "parent": "block/cube",
+    "display": {
+        "firstperson_righthand": {
+            "rotation": [ 0, 135, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.40, 0.40, 0.40 ]
+        }
+    },
+    "textures": {
+        "particle": "nethermore:block/blackstone_cabinet_side",
+        "down": "minecraft:block/polished_blackstone",
+        "up": "minecraft:block/polished_blackstone",
+        "north": "nethermore:block/blackstone_cabinet_open",
+        "east": "nethermore:block/blackstone_cabinet_side",
+        "south": "minecraft:block/polished_blackstone",
+        "west": "nethermore:block/blackstone_cabinet_side"
+    }
+}

@@ -67,6 +67,8 @@ public class NMBlockInit {
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).randomTicks().strength(0.5F).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
     public static final DeferredBlock<Block> COLD_FUSED_TAR_BLOCK = registerBlock("cold_fused_tar",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
+    public static final DeferredBlock<Block> MORGUE_CABINET_BLOCK = registerBlock("morgue_cabinet",
+            () -> new MorgueCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
     public static final DeferredBlock<Block> FAT_TUMOR_BLOCK = registerBlock("fat_tumor_block",
             () -> new TumorBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).mapColor(MapColor.GLOW_LICHEN).sound(SoundType.HONEY_BLOCK).lightLevel((p_50872_) -> {
                 return 9;

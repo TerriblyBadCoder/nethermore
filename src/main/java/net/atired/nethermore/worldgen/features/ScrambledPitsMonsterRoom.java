@@ -21,15 +21,14 @@ public class ScrambledPitsMonsterRoom extends Feature<NoneFeatureConfiguration> 
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext) {
         WorldGenLevel level = featurePlaceContext.level();
         BlockPos pos = featurePlaceContext.origin();
-        if(level.isEmptyBlock(pos)||Math.random()>0.04)return false;
-        System.out.println(pos.getX()+" "+pos.getZ());
-        for (int x = -7; x <= 7; x++) {
-            for (int z = -7; z <= 7; z++) {
+        if(level.isEmptyBlock(pos)||Math.random()>0.2)return false;
+        for (int x = -4; x <= 4; x++) {
+            for (int z = -4; z <= 4; z++) {
                 for (int y = 0; y < 9; y++) {
                     BlockPos pos1 = pos.offset(x,y,z);
-                    if(!level.isEmptyBlock(pos1)&&NMsimplexNoise.sampleNoise3D(pos1.getX(),pos1.getY()*6.0f,pos1.getZ(),10.0f)>-3+new Vec3(x,y,z).length()/7.0f){
+                    if(!level.isEmptyBlock(pos1)&&NMsimplexNoise.sampleNoise3D(pos1.getX(),pos1.getY()*3.0f,pos1.getZ(),5.0f)*1.3f>-3+new Vec3(x,y,z).multiply(0.7,1,0.7).length()/2.0f){
                         Block block = Blocks.POLISHED_BLACKSTONE_BRICKS;
-                        if(Math.abs(x)==7||Math.abs(z)==7||y==0||y==9){
+                        if(Math.abs(x)==4||Math.abs(z)==4||y==0||y==9){
                             if(NMsimplexNoise.sampleNoise3D(pos1.getX(),pos1.getY()*6.0f,pos1.getZ(),12.0f)>0.2){
                                 block=Blocks.BLACKSTONE;
                             }
@@ -39,6 +38,12 @@ public class ScrambledPitsMonsterRoom extends Feature<NoneFeatureConfiguration> 
                                 continue;
                             }
                             block=Blocks.AIR;
+                            if((pos1.getX()+pos.getX())%12==3&&(pos1.getZ()+pos.getZ())%12>5){
+                                block=Blocks.BLACKSTONE_WALL;
+                            }
+                            else if((pos1.getZ()+pos.getZ())%12==3&&(pos1.getX()+pos.getX())%12>5){
+                                block=Blocks.BLACKSTONE_WALL;
+                            }
                         }
                         level.setBlock(pos1, block.defaultBlockState(),2);
                     }

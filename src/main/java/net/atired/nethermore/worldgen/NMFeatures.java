@@ -38,5 +38,7 @@ public class NMFeatures {
             FEATURES.register("bilestone_feature", () -> new BileStoneFeature(NoneFeatureConfiguration.CODEC));
     public static final Supplier<Feature<NoneFeatureConfiguration>> IRON_RAFTERS_FEATURE =
             FEATURES.register("iron_rafters_feature", () -> new IronRaftersFeature(NoneFeatureConfiguration.CODEC));
+    public static final Supplier<Feature<NoneFeatureConfiguration>> SC_MR_FEATURE =
+            FEATURES.register("sc_mr_feature", () -> new ScrambledPitsMonsterRoom(NoneFeatureConfiguration.CODEC));
 
 }

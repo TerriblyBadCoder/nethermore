@@ -47,21 +47,32 @@ public class MorgueCabinetBlock extends HorizontalDirectionalBlock {
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if(!state.getValue(OPEN)){
-            this.playSound(player, level, pos, !(Boolean)state.getValue(OPEN));
-            level.setBlock(pos,state.setValue(OPEN,!state.getValue(OPEN)),2);
             Vec3 center = pos.getCenter();
             Vec3i vec3i = state.getValue(FACING).getNormal();
             Vec3 dir = new Vec3(vec3i.getX(),0,vec3i.getZ());
             center=center.add(dir.scale(0.55));
-            for (int i = 0; i < 12; i++) {
-                level.addParticle(NMParticleInit.SOUL_PARTICLE.get(),
-                        center.x+(Math.random()-0.5),center.y+(Math.random()-0.5),center.z+(Math.random()-0.5),
-                        dir.x*(Math.random()*0.4+0.05),Math.random()/12.0f,dir.z*(Math.random()*.4+0.05));
+            double randumb = Math.random();
+            if(randumb>0.8){
+                for (int i = 0; i < 12; i++) {
+                    level.addParticle(NMParticleInit.SOUL_PARTICLE.get(),
+                            center.x+(Math.random()-0.5),center.y+(Math.random()-0.5),center.z+(Math.random()-0.5),
+                            dir.x*(Math.random()*0.4+0.05),Math.random()/12.0f,dir.z*(Math.random()*.4+0.05));
+                }
+                level.addParticle(NMParticleInit.OPEN_PARTICLE.get(), center.x,center.y,center.z, dir.x,0,dir.z);
+            }else if(randumb>0.6){
+                for (int i = 0; i < 12; i++) {
+                    level.addParticle(NMParticleInit.TAR_POP_PARTICLE.get(),
+                            center.x+(Math.random()-0.5),center.y+(Math.random()-0.5),center.z+(Math.random()-0.5),
+                            dir.x*(Math.random()*0.1+0.05),Math.random()/12.0f,dir.z*(Math.random()*.1+0.05));
+                }
+                level.addParticle(NMParticleInit.TAR_SLOP_PARTICLE.get(), center.x,center.y,center.z, dir.x,0,dir.z);
             }
-            level.addParticle(NMParticleInit.OPEN_PARTICLE.get(), center.x,center.y,center.z, dir.x,0,dir.z);
-            return InteractionResult.SUCCESS;
-        }
-        return super.useWithoutItem(state, level, pos, player, hitResult);
+            }
+        this.playSound(player, level, pos, !(Boolean)state.getValue(OPEN));
+        level.setBlock(pos,state.setValue(OPEN,!state.getValue(OPEN)),2);
+        return InteractionResult.SUCCESS;
+
+        //return super.useWithoutItem(state, level, pos, player, hitResult);
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

@@ -32,6 +32,7 @@
   "block.nethermore.blue_ash_block": "Blue Ash Block",
   "block.nethermore.syringe": "Blightbulb",
   "effect.nethermore.morbid": "Morbid",
+  "effect.nethermore.morbid.description": "Converts all healing into hunger and saturation increases",
   "creativetab.nethermore.nethermore": "Nethermore, Nevermore",
   "item.nethermore.morbid_piece": "Morbid Piece",
   "item.nethermore.tar_bucket": "Tar Bucket",

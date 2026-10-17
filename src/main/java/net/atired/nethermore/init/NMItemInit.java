@@ -68,10 +68,10 @@ public class NMItemInit {
             ()->new SpawnEggItem(NMEntityInit.PYLON.get(),0x52dcff,0xdae3e3,new Item.Properties())
     );
 
-    public static final DeferredItem<Item> EGO_SHIELD = ITEMS.register(
-            "ego_shield",
-            ()->new ShieldItem(new Item.Properties().stacksTo(1).durability(336))
-    );
+//    public static final DeferredItem<Item> EGO_SHIELD = ITEMS.register(
+//            "ego_shield",
+//            ()->new ShieldItem(new Item.Properties().stacksTo(1).durability(336))
+//    );
     public static final DeferredItem<Item> ASH_BALL = ITEMS.register(
             "ash_ball",
             ()->new AshBallItem(new Item.Properties().stacksTo(16))

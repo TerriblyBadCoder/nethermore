@@ -134,15 +134,15 @@ void main(){
     mulSat=min(1.0,mulSat+red);
     float souled = 1.0f-clamp(hsvD.z*8.0f-2.0-red*4.0,0.0,1.0);
     hsvD.y*=mulSat*(1.0-souled)+souled;
-    hsvD.y=pow(hsvD.y,2.0);
-    hsvD.y*=1.0f-red/2.2f;
+    hsvD.y=pow(hsvD.y,2.0-hsvD.y*1.9f);
+    souled*=(1.0-olMulSat);
+    hsvD.y*=1.0f+red/2.2f*(1.0f-hsvD.y)*(1.0f-souled);
     hsvD.z*=1.0+red/7.0;
     vec3 rgbD=hsv2rgb(hsvD);
-    souled*=(1.0-olMulSat);
     if(souled>0.0){
         hsvD.x=1.08-red*0.08;
-        hsvD.y=pow(hsvD.y,0.5);
-        hsvD.y*=0.9f+red*0.0;
+        hsvD.y=pow(hsvD.y,0.75);
+        hsvD.y*=0.8f;
         hsvD.z*=1.0f-red*0.05f*hsvD.y;
         souled=min(souled+red,1.0);
         rgbD=rgbD*(1.0-souled)+souled*hsv2rgb(hsvD);

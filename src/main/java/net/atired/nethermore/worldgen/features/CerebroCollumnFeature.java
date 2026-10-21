@@ -40,7 +40,7 @@ public class CerebroCollumnFeature extends Feature<NoneFeatureConfiguration> {
                                 }else{
                                     level.setBlock(pos1, NMBlockInit.SOUL_CRYSTAL_BLOCK.get().defaultBlockState(),2);
                                 }
-                            }else if(((dir.length()<5.5&&dir.length()>4.5+noisier)||(dir.length()>7.0&&dir.length()<7.5-noisier))&&!level.getBlockState(pos1).isEmpty()){
+                            }else if(((dir.length()<5.5&&dir.length()>4.5+noisier*2.0)||(dir.length()>7.0&&dir.length()<7.5-noisier))&&!level.getBlockState(pos1).isEmpty()){
                                 float noisy = NMsimplexNoise.sampleNoise3D(200+pos1.getX(),pos1.getY(),pos1.getZ(),5);
                                 if(noisy>-0.2){
                                     level.setBlock(pos1, NMBlockInit.BLUE_ASH_BLOCK.get().defaultBlockState(),2);

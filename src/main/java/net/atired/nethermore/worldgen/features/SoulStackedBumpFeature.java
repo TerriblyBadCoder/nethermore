@@ -5,6 +5,7 @@ import net.atired.nethermore.init.NMBlockInit;
 import net.atired.nethermore.misc.NMsimplexNoise;
 import net.minecraft.core.BlockPos;
 import net.minecraft.data.worldgen.SurfaceRuleData;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -40,11 +41,13 @@ public class SoulStackedBumpFeature extends Feature<NoneFeatureConfiguration> {
                             block = Blocks.SOUL_SAND;
                         }
                         if(block!=Blocks.AIR){
-                            if(noisy3>0.18f){
+                            if(noisy3>0.14f){
                                 block=Blocks.BLACKSTONE;
                             }
                             level.setBlock(pos1,block.defaultBlockState(),2);
                         }
+                    }else if(dist+noisy2*4.0<9.0&&noisy3>0.12f&&level.getBlockState(pos1).is(BlockTags.SOUL_FIRE_BASE_BLOCKS)){
+                        level.setBlock(pos1,Blocks.BLACKSTONE.defaultBlockState(),2);
                     }
 
                 }

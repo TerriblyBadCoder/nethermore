@@ -88,6 +88,7 @@ public class MorgueCabinetBlock extends HorizontalDirectionalBlock {
                     center=center.add(dir);
                     tarlingEntity.setPos(new Vec3(center.x,center.y,center.z));
                     serverLevel.addFreshEntity(tarlingEntity);
+                    tarlingEntity.setSize(1,true);
                     tarlingEntity.setDeltaMovement(dir.scale(0.21).add(0,0.1,0));
                 }
                 level.addParticle(NMParticleInit.TAR_SLOP_PARTICLE.get(), center.x,center.y,center.z, dir.x*0.2,0,dir.z*0.2);

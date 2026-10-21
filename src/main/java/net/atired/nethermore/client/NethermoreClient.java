@@ -10,13 +10,16 @@ import net.atired.nethermore.client.particles.*;
 import net.atired.nethermore.client.renderers.*;
 import net.atired.nethermore.client.renderers.models.*;
 import net.atired.nethermore.entity.ObserverEntity;
+import net.atired.nethermore.init.NMBlockInit;
 import net.atired.nethermore.init.NMEntityInit;
 import net.atired.nethermore.init.NMParticleInit;
+import net.atired.nethermore.misc.NMsimplexNoise;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.PostChain;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -28,6 +31,7 @@ import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import org.joml.Matrix4f;
 
+import java.awt.*;
 import java.io.IOException;
 
 @Mod(value = Nethermore.MODID, dist = Dist.CLIENT)
@@ -125,7 +129,17 @@ public class NethermoreClient {
         event.registerEntityRenderer(NMEntityInit.DISGUSTLING.get(), DisgustlingEntityRenderer::new);
         event.registerEntityRenderer(NMEntityInit.DISGUSTLING_HEAD.get(), EmptyEntityRenderer::new);
     }
-
+    @SubscribeEvent
+    public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
+        event.register((blockState, blockAndTintGetter, blockPos, tintIndex) -> {
+            if(blockPos!=null){
+                float minimal = Math.min(1.0f,1.0f+ NMsimplexNoise.sampleNoise3D(blockPos.getX(),blockPos.getY()*4.0f,blockPos.getZ(),14.0f)/4.0f);
+                int a = (int)(minimal*255);
+                return new Color(255,a,a,255).getRGB();
+            }
+            return 0xFFFFFFFF;
+        }, NMBlockInit.SOUL_LINING_BLOCK.get(), NMBlockInit.SOUL_CRYSTAL_BLOCK.get());
+    }
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(NMParticleInit.PAPER_TRAIL_PARTICLE.get(), PaperTrailParticle.Provider::new);

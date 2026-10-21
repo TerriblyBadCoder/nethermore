@@ -2,6 +2,7 @@ package net.atired.nethermore.worldgen.features;
 
 import com.mojang.serialization.Codec;
 import net.atired.nethermore.blocks.MorgueCabinetBlock;
+import net.atired.nethermore.blocks.SyringeBlock;
 import net.atired.nethermore.init.NMBlockInit;
 import net.atired.nethermore.misc.NMsimplexNoise;
 import net.minecraft.core.BlockPos;
@@ -26,6 +27,7 @@ public class ScrambledPitsMonsterRoom extends Feature<NoneFeatureConfiguration> 
         WorldGenLevel level = featurePlaceContext.level();
         BlockPos pos = featurePlaceContext.origin();
         if(level.isEmptyBlock(pos)||Math.random()>0.2)return false;
+        boolean didLantern=false;
         for (int x = -4; x <= 4; x++) {
             for (int z = -4; z <= 4; z++) {
                 for (int y = 0; y < 9; y++) {
@@ -37,7 +39,7 @@ public class ScrambledPitsMonsterRoom extends Feature<NoneFeatureConfiguration> 
                                 block=Blocks.BLACKSTONE;
                             }
                             double randumb =Math.abs( NMsimplexNoise.sampleNoise3D(pos1.getX()-pos1.getX()%2,pos1.getY(),pos1.getZ()-pos1.getZ()%2,0.2f))*1.01;
-                            if(randumb>0.4&&y>2&&y<6){
+                            if(randumb>0.17&&y>2&&y<6&&(pos1.getX()+pos1.getY()+pos1.getZ())%2==0){
                                 block= NMBlockInit.MORGUE_CABINET_BLOCK.get();
                                 Direction dir = Direction.NORTH;
                                 if(z==-4){dir = Direction.SOUTH;}
@@ -49,6 +51,11 @@ public class ScrambledPitsMonsterRoom extends Feature<NoneFeatureConfiguration> 
                         }else{
                             if(x==0&&z==0&&y==1){
                                 level.setBlock(pos1,Blocks.IRON_TRAPDOOR.defaultBlockState(),2);
+                                continue;
+                            }
+                            if(!didLantern&&x==0&&z==0&&NMsimplexNoise.sampleNoise3D(pos1.getX(),(pos1.getY()+1)*3.0f,pos1.getZ(),5.0f)*1.3f<-3+new Vec3(x,y+1,z).multiply(0.7,1,0.7).length()/2.0f){
+                                level.setBlock(pos1,NMBlockInit.SYRINGE.get().defaultBlockState().setValue(SyringeBlock.FACING,Direction.DOWN),2);
+                                didLantern=true;
                                 continue;
                             }
                             block=Blocks.AIR;

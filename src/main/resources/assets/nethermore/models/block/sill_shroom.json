@@ -1,0 +1,9 @@
+
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "nethermore:block/mush_bottom",
+    "side": "nethermore:block/mush_side",
+    "top": "nethermore:block/mush_top"
+  }
+}

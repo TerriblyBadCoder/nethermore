@@ -65,6 +65,8 @@ public class NMBlockInit {
             }).noOcclusion()));
     public static final DeferredBlock<Block> SOFT_TAR_BLOCK = registerBlock("soft_tar",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).randomTicks().strength(0.5F).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
+    public static final DeferredBlock<Block> SILL_SHROOM_BLOCK = registerBlock("sill_shroom",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_MUSHROOM_BLOCK).randomTicks().strength(0.5F).mapColor(MapColor.TERRACOTTA_PURPLE)));
     public static final DeferredBlock<Block> COLD_FUSED_TAR_BLOCK = registerBlock("cold_fused_tar",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
     public static final DeferredBlock<Block> MORGUE_CABINET_BLOCK = registerBlock("morgue_cabinet",

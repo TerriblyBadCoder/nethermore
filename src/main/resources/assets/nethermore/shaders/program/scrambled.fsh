@@ -143,11 +143,12 @@ void main(){
         hsvD.x=1.08-red*0.08;
         hsvD.y=pow(hsvD.y,0.75);
         hsvD.y*=0.8f;
-        hsvD.z*=1.0f-red*0.05f*hsvD.y;
+        hsvD.z*=1.0f-red*0.02f*hsvD.y;
         souled=min(souled+red,1.0);
         rgbD=rgbD*(1.0-souled)+souled*hsv2rgb(hsvD);
     }
-    rgbD.r*=1.0f+red/12.0f;
+    rgbD.r*=1.0f+red/3.0f;
+    rgbD.bg*=1.0f-red/5.0f;
     rgbD*=1.0+red/12.0f;
     diffuseColor.rgb=rgbD*FadeInTest+diffuseColor.rgb*(1.0-FadeInTest);
     diffuseColor.r*=1.0+red/12.0;

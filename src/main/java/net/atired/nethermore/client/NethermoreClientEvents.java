@@ -113,8 +113,12 @@ public class NethermoreClientEvents {
             computeFogColor.setCanceled(true);
         }
         if(NethermoreClient.PROXY.nihiloNess>0.01f) {
-            computeFogColor.scaleNearPlaneDistance(1.0f-NethermoreClient.PROXY.nihiloNess*2.6f);
-            computeFogColor.scaleFarPlaneDistance(1.0f-NethermoreClient.PROXY.nihiloNess*0.25f);
+            float reddened = Math.min(1.0f,NethermoreClient.PROXY.redNess*3.0f);
+            if(NethermoreClient.PROXY.redNess>0.8f){
+                reddened=Math.clamp((1.0f-NethermoreClient.PROXY.redNess)*6.0f,0.0f,1.0f);
+            }
+            computeFogColor.scaleNearPlaneDistance(1.0f-NethermoreClient.PROXY.nihiloNess*(3.6f-reddened*2.0f));
+            computeFogColor.scaleFarPlaneDistance(1.0f-NethermoreClient.PROXY.nihiloNess*(0.05f+NethermoreClient.PROXY.redNess*0.04f));
             computeFogColor.setCanceled(true);
         }
     }

@@ -42,7 +42,11 @@ public class BileStoneFeature extends Feature<NoneFeatureConfiguration> {
                     if(noisy*10f/12.0f>0.2&&len>0.8f){
                         if((!level.isEmptyBlock(pos1)&&(level.getBlockState(pos1).isSolid()||level.getBlockState(pos1).is(BlockTags.SOUL_FIRE_BASE_BLOCKS)))||
                                 (!level.isEmptyBlock(pos1.below())&&noisy*10f/12.0f>0.3)){
-                            if(!level.getBlockState(pos1).is(NMBlockInit.TOPPED_BILESTONE)&&!level.getFluidState(pos1).is(Fluids.LAVA)&&!level.getBlockState(pos1.below()).is(NMBlockInit.TOPPED_BILESTONE)&&!level.getBlockState(pos1.below()).is(NMBlockInit.BILE_GROWTH)){
+                            if(!level.getBlockState(pos1).is(NMBlockInit.TOPPED_BILESTONE)&&
+                                    !level.getFluidState(pos1).is(Fluids.LAVA)&&
+                                    !level.getBlockState(pos1.below()).is(NMBlockInit.TOPPED_BILESTONE)&&
+                                    !level.getBlockState(pos1.below()).is(NMBlockInit.BILE_GROWTH)&&
+                                    !level.getBlockState(pos1.below()).is(NMBlockInit.INFLAMED_EYE)){
                                 if(level.isEmptyBlock(pos1.above())){
                                     if(level.getBlockState(pos1).getBlock()==NMBlockInit.INFLAMED_EYE.get()){
                                         if(Math.random()>0.8f)

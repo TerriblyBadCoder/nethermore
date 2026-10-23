@@ -23,6 +23,7 @@
   "block.nethermore.morgue_cabinet": "Morgue Cabinet",
 
   "block.nethermore.bilestone": "Bilestone",
+  "block.nethermore.yellowed_bilestone": "Yellowed Bilestone",
   "block.nethermore.bile_bricks": "Bile Bricks",
   "block.nethermore.bile_growth": "Bile Growth",
   "block.nethermore.topped_bilestone": "Topped Bilestone",
@@ -32,6 +33,7 @@
   "block.nethermore.blue_ash_shingles": "Blue Ash Shingles",
   "block.nethermore.blue_ash_block": "Blue Ash Block",
   "block.nethermore.syringe": "Blightbulb",
+  "block.nethermore.empty_syringe": "Empty Blightbulb",
   "effect.nethermore.morbid": "Morbid",
   "effect.nethermore.morbid.description": "Converts all healing into hunger and saturation increases",
   "creativetab.nethermore.nethermore": "Nethermore, Nevermore",

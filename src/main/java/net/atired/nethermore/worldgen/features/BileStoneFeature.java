@@ -12,6 +12,7 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.registries.DeferredBlock;
 
 public class BileStoneFeature extends Feature<NoneFeatureConfiguration> {
     public BileStoneFeature(Codec<NoneFeatureConfiguration> codec) {
@@ -25,12 +26,15 @@ public class BileStoneFeature extends Feature<NoneFeatureConfiguration> {
         if(level.isEmptyBlock(pos)||!level.isEmptyBlock(pos.above())||Math.abs(NMsimplexNoise.sampleNoise3D(pos.getX(),pos.getY()/20.0f+300,pos.getZ(),145.0f))<0.4f){
             return false;
         }
+        if(Math.random()>0.67){
+            pos=pos.offset(0,26+(int)(Math.random()*7.0f),0);
+        }
         for (int x = -12; x <= 12; x++) {
             for (int z = -12; z <= 12; z++) {
                 boolean noStackingLmoa = false;
                 for (int y = -12; y <= 12; y++) {
                     BlockPos pos1=pos.offset(x,y,z);
-                    float noisy = NMsimplexNoise.sampleNoise3D(pos1.getX(),pos1.getY()/20.0f+300,pos1.getZ(),55.0f);
+                    float noisy = NMsimplexNoise.sampleNoise3D(pos1.getX(),pos1.getY()/6.0f+300,pos1.getZ(),55.0f);
                     noisy=Math.abs(noisy);
                     noisy=noisy%0.2f;
                     noisy*=5.0f;
@@ -64,7 +68,7 @@ public class BileStoneFeature extends Feature<NoneFeatureConfiguration> {
                                             noStackingLmoa=true;
                                         }
                                     }
-                                    Block block = (noisy*10f/12.0f>0.3||noisy2>0.5)?NMBlockInit.BILESTONE.get():NMBlockInit.TOPPED_BILESTONE.get();
+                                    Block block = (noisy*10f/12.0f>0.3||noisy2>0.5)?(noisy*10f/12.0f>0.36&&noisy2>0.7?NMBlockInit.YELLOWED_BILESTONE.get():NMBlockInit.BILESTONE.get()):NMBlockInit.TOPPED_BILESTONE.get();
                                     level.setBlock(pos1,(block).defaultBlockState(),2);
 
                                     if(block==NMBlockInit.TOPPED_BILESTONE.get()&&level.isEmptyBlock(pos1.above())&&Math.random()>0.96){
@@ -77,7 +81,7 @@ public class BileStoneFeature extends Feature<NoneFeatureConfiguration> {
                                         }
                                     }
                                 }else{
-                                    level.setBlock(pos1,(NMBlockInit.BILESTONE.get()).defaultBlockState(),2);
+                                    level.setBlock(pos1,(noisy2<0.14?NMBlockInit.YELLOWED_BILESTONE.get():NMBlockInit.BILESTONE.get()).defaultBlockState(),2);
                                 }
                             }
                         }
@@ -96,11 +100,15 @@ public class BileStoneFeature extends Feature<NoneFeatureConfiguration> {
                                 &&level.getBlockState(pos1).getBlock()!=NMBlockInit.BILE_GROWTH.get()
                                 &&level.getBlockState(pos1).getBlock()!=NMBlockInit.INFLAMED_EYE.get()
                                 &&level.getBlockState(pos1.below()).getBlock()!=NMBlockInit.INFLAMED_EYE.get()){
-
+                            float noisy = NMsimplexNoise.sampleNoise3D(pos1.getX(),pos1.getY()*2.0f,pos1.getZ(),12.0f);
                             if(y!=i+2){
-                                level.setBlock(pos1,((level.isEmptyBlock(pos1.above())&&y==i+1)? NMBlockInit.TOPPED_BILESTONE.get():NMBlockInit.BILESTONE.get()).defaultBlockState(),2);
+                                DeferredBlock<Block> block = NMBlockInit.BILESTONE;
+                                if(noisy+y/3.0f<0.5f){
+                                    block = NMBlockInit.YELLOWED_BILESTONE;
+                                }
+                                level.setBlock(pos1,((level.isEmptyBlock(pos1.above())&&y==i+1)? NMBlockInit.TOPPED_BILESTONE.get():block.get()).defaultBlockState(),2);
                                 if(level.getBlockState(pos1.below()).is(NMBlockInit.TOPPED_BILESTONE)){
-                                    level.setBlock(pos1.below(),(NMBlockInit.BILESTONE.get()).defaultBlockState(),2);
+                                    level.setBlock(pos1.below(),(block.get()).defaultBlockState(),2);
                                 }
                             }else if(Math.random()>0.9){
                                 level.setBlock(pos1,(NMBlockInit.BILE_GROWTH.get()).defaultBlockState(),2);

@@ -25,6 +25,7 @@ public class NMConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BILESTONE_KEY = registerKey("bilestone");
     public static final ResourceKey<ConfiguredFeature<?, ?>> IRON_RAFTERS_KEY = registerKey("iron_rafters");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SC_MR_KEY = registerKey("sc_mr");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SILL_SHROOM_KEY = registerKey("sill_shroom");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         register(context, TUMOR_KEY,NMFeatures.TUMOR_FEATURE.get(), new NoneFeatureConfiguration());
@@ -40,6 +41,8 @@ public class NMConfiguredFeatures {
         register(context, BILESTONE_KEY,NMFeatures.BILESTONE_FEATURE.get(), new NoneFeatureConfiguration());
         register(context, IRON_RAFTERS_KEY,NMFeatures.IRON_RAFTERS_FEATURE.get(), new NoneFeatureConfiguration());
         register(context, SC_MR_KEY,NMFeatures.SC_MR_FEATURE.get(), new NoneFeatureConfiguration());
+        register(context, SILL_SHROOM_KEY,NMFeatures.SILL_SHROOM_FEATURE.get(), new NoneFeatureConfiguration());
+
 
     }
 

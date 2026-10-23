@@ -18,7 +18,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SyringeBlock extends RodBlock {
-    public static final MapCodec<SyringeBlock> CODEC = simpleCodec(SyringeBlock::new);
+    public static final MapCodec<SyringeBlock> CODEC = simpleCodec((a)->{return new SyringeBlock(a,true);});
 
     protected static final VoxelShape Y_AXIS_AABB = Block.box(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
     protected static final VoxelShape Z_AXIS_AABB = Block.box(2.0, 2.0, 4.0, 14.0, 14.0, 16.0);
@@ -27,9 +27,10 @@ public class SyringeBlock extends RodBlock {
 
     protected static final VoxelShape ZF_AXIS_AABB = Block.box(2.0, 2.0, 0.0, 14.0, 14.0, 12.0);
     protected static final VoxelShape XF_AXIS_AABB = Block.box(0.0, 2.0, 2.0, 12.0, 14.0, 14.0);
-
-    public SyringeBlock(Properties p_154339_) {
+    private boolean bigPar=false;
+    public SyringeBlock(Properties p_154339_,boolean big) {
         super(p_154339_);
+        this.bigPar=big;
         this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(FACING, Direction.UP));
 
     }
@@ -44,7 +45,7 @@ public class SyringeBlock extends RodBlock {
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if(random.nextFloat()>0.2f)
+        if(random.nextFloat()>0.2f&&(bigPar||random.nextFloat()>0.6))
             level.addParticle(NMParticleInit.SOUL_PARTICLE.get(), pos.getX()+Math.random(),pos.getY()+Math.random()*0.2f+0.8f,pos.getZ()+Math.random(),Math.random()-0.5,Math.random()/4.0f,Math.random()-0.5);
 
         super.animateTick(state, level, pos, random);

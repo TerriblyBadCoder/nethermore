@@ -20,6 +20,8 @@ public class NMBlockInit {
             BLOCKS = DeferredRegister.createBlocks(Nethermore.MODID);
     public static final DeferredBlock<Block> BILE_GROWTH = registerBlock("bile_growth",
             () -> new GrowthBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_ROOTS).mapColor(MapColor.COLOR_YELLOW)));
+    public static final DeferredBlock<Block> YELLOWED_BILESTONE = registerBlock("yellowed_bilestone",
+            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_YELLOW)));
     public static final DeferredBlock<Block> BILESTONE = registerBlock("bilestone",
             () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_LIGHT_GREEN)));
     public static final DeferredBlock<Block> BILE_BRICKS = registerBlock("bile_bricks",
@@ -62,11 +64,15 @@ public class NMBlockInit {
     public static final DeferredBlock<Block> SYRINGE = registerBlock("syringe",
             () -> new SyringeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_GRAY).lightLevel((p_50872_) -> {
                 return 15;
-            }).noOcclusion()));
+            }).noOcclusion(),true));
+    public static final DeferredBlock<Block> EMPTY_SYRINGE = registerBlock("empty_syringe",
+            () -> new SyringeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_GRAY).lightLevel((p_50872_) -> {
+                return 7;
+            }).noOcclusion(),false));
     public static final DeferredBlock<Block> SOFT_TAR_BLOCK = registerBlock("soft_tar",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).randomTicks().strength(0.5F).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
     public static final DeferredBlock<Block> SILL_SHROOM_BLOCK = registerBlock("sill_shroom",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_MUSHROOM_BLOCK).randomTicks().strength(0.5F).mapColor(MapColor.TERRACOTTA_PURPLE)));
+            () -> new SillShroomBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_MUSHROOM_BLOCK).randomTicks().strength(0.5F).mapColor(MapColor.TERRACOTTA_PURPLE)));
     public static final DeferredBlock<Block> COLD_FUSED_TAR_BLOCK = registerBlock("cold_fused_tar",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
     public static final DeferredBlock<Block> MORGUE_CABINET_BLOCK = registerBlock("morgue_cabinet",

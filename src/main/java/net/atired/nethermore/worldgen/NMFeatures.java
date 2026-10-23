@@ -23,8 +23,10 @@ public class NMFeatures {
     public static final Supplier<Feature<NoneFeatureConfiguration>> CRIMSON_BUMP_FEATURE =
             FEATURES.register("crimson_bump_feature", () -> new CrimsonBumpFeature(NoneFeatureConfiguration.CODEC));
 
+
     public static final Supplier<Feature<NoneFeatureConfiguration>> WHISPERING_THORN_FEATURE =
             FEATURES.register("whispering_thorn_feature", () -> new WhisperingThornFeature(NoneFeatureConfiguration.CODEC));
+
 
     public static final Supplier<Feature<NoneFeatureConfiguration>> SOUL_BUMP_FEATURE =
             FEATURES.register("soul_bump_feature", () -> new SoulStackedBumpFeature(NoneFeatureConfiguration.CODEC));
@@ -40,5 +42,7 @@ public class NMFeatures {
             FEATURES.register("iron_rafters_feature", () -> new IronRaftersFeature(NoneFeatureConfiguration.CODEC));
     public static final Supplier<Feature<NoneFeatureConfiguration>> SC_MR_FEATURE =
             FEATURES.register("sc_mr_feature", () -> new ScrambledPitsMonsterRoom(NoneFeatureConfiguration.CODEC));
+    public static final Supplier<Feature<NoneFeatureConfiguration>> SILL_SHROOM_FEATURE =
+            FEATURES.register("sill_shroom_feature", () -> new SillShroomFeature(NoneFeatureConfiguration.CODEC));
 
 }

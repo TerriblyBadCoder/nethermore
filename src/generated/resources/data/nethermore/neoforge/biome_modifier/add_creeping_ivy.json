@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "nethermore:scrambled_pits",
+  "features": "nethermore:creeping_ivy_placed",
+  "step": "vegetal_decoration"
+}

@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import net.atired.nethermore.blocks.IronRafterBlock;
 import net.atired.nethermore.blocks.SyringeBlock;
 import net.atired.nethermore.init.NMBlockInit;
+import net.atired.nethermore.misc.NMsimplexNoise;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.WorldGenLevel;
@@ -24,6 +25,9 @@ public class IronRaftersFeature extends Feature<NoneFeatureConfiguration> {
         WorldGenLevel level = featurePlaceContext.level();
         BlockPos pos = featurePlaceContext.origin();
         if(level.isEmptyBlock(pos)||!level.isEmptyBlock(pos.below())){
+            return false;
+        }
+        if(Math.abs(NMsimplexNoise.sampleNoise3D(pos.getX(),pos.getY()/20.0f+300,pos.getZ()+200,80.0f))>0.0f){
             return false;
         }
         if(pos.getY()%2==0){

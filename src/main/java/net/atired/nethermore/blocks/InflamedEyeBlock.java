@@ -44,7 +44,6 @@ public class InflamedEyeBlock extends Block {
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
         if(neighborPos.getY()==pos.getY()+1){
-            System.out.println("WOW");
             BlockState neighbor = level.getBlockState(neighborPos);
            level.setBlock(pos,
                    state.setValue(COVERED,!neighbor.isEmpty()),2);

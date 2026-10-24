@@ -1,0 +1,27 @@
+{
+  "feature": "nethermore:creeping_ivy",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 7
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:trapezoid",
+        "max_inclusive": {
+          "below_top": 14
+        },
+        "min_inclusive": {
+          "below_top": 46
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

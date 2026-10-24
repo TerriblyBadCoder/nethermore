@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "fruiting=true": {
+      "model": "nethermore:block/creeping_iv_full"
+    },
+    "fruiting=false": {
+      "model": "nethermore:block/creeping_iv"
+    }
+  }
+}

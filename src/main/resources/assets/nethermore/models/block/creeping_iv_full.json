@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:block/cross",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "nethermore:block/creeping_iv_bottom_full",
+    "ch": "nethermore:block/creeping_iv_cherry"
+  },
+  "elements": [
+    {   "from": [ 0.8, 0, 8 ],
+      "to": [ 15.2, 16, 8 ],
+      "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45, "rescale": true },
+      "shade": false,
+      "faces": {
+        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#cross" },
+        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#cross" }
+      }
+    },
+    {   "from": [ 8, 0, 0.8 ],
+      "to": [ 8, 16, 15.2 ],
+      "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45, "rescale": true },
+      "shade": false,
+      "faces": {
+        "west": { "uv": [ 0, 0, 16, 16 ], "texture": "#cross" },
+        "east": { "uv": [ 0, 0, 16, 16 ], "texture": "#cross" }
+      }
+    },
+    {
+      "from": [ 2, -2, 2 ],
+      "to": [ 14, 10, 14 ],
+      "faces": {
+        "down":  { "uv": [ 2,2,14,14 ], "texture": "#ch"},
+        "up":    { "uv": [2,2,14,14 ], "texture": "#ch" },
+        "north": { "uv": [ 2,2,14,14 ], "texture": "#ch" },
+        "south": { "uv": [ 2,2,14,14 ], "texture": "#ch" },
+        "west":  { "uv": [ 2,2,14,14 ], "texture": "#ch" },
+        "east":  { "uv": [ 2,2,14,14 ], "texture": "#ch" }
+      }
+    }
+  ]
+
+}

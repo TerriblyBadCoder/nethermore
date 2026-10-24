@@ -44,5 +44,7 @@ public class NMFeatures {
             FEATURES.register("sc_mr_feature", () -> new ScrambledPitsMonsterRoom(NoneFeatureConfiguration.CODEC));
     public static final Supplier<Feature<NoneFeatureConfiguration>> SILL_SHROOM_FEATURE =
             FEATURES.register("sill_shroom_feature", () -> new SillShroomFeature(NoneFeatureConfiguration.CODEC));
+    public static final Supplier<Feature<NoneFeatureConfiguration>> CREEPING_IVY_FEATURE =
+            FEATURES.register("creeping_ivy_feature", () -> new CreepingIvyFeature(NoneFeatureConfiguration.CODEC));
 
 }

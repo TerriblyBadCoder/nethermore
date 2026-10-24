@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "covered=true": {
+      "model": "nethermore:block/creeping_iv_top"
+    },
+    "covered=false": {
+      "model": "nethermore:block/creeping_iv_plant"
+    }
+  }
+}

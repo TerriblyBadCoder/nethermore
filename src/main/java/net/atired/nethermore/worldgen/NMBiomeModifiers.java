@@ -34,6 +34,8 @@ public class NMBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_IRON_RAFTERS = registerKey("add_iron_rafters");
     public static final ResourceKey<BiomeModifier> ADD_SC_MR = registerKey("add_sc_mr");
     public static final ResourceKey<BiomeModifier> ADD_SILL_SHROOM = registerKey("add_sill_shroom");
+    public static final ResourceKey<BiomeModifier> ADD_CREEPING_IVY = registerKey("add_creeping_ivy");
+
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         HolderGetter<PlacedFeature>placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
@@ -84,7 +86,7 @@ public class NMBiomeModifiers {
         context.register(ADD_IRON_RAFTERS, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(NMBiomeInit.SCRAMBLED_PITS)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.IRON_RAFTERS_PK)),
-                GenerationStep.Decoration.UNDERGROUND_DECORATION));
+                GenerationStep.Decoration.TOP_LAYER_MODIFICATION));
         context.register(ADD_SC_MR, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(NMBiomeInit.SCRAMBLED_PITS)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.SC_MR_PK)),
@@ -92,6 +94,10 @@ public class NMBiomeModifiers {
         context.register(ADD_SILL_SHROOM, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(NMBiomeInit.SCRAMBLED_PITS)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.SILL_SHROOM_PK)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+        context.register(ADD_CREEPING_IVY, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(NMBiomeInit.SCRAMBLED_PITS)),
+                HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.CREEPING_IVY_PK)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
     }
 

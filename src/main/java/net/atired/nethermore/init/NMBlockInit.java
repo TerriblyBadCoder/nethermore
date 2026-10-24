@@ -2,12 +2,16 @@ package net.atired.nethermore.init;
 
 import net.atired.nethermore.Nethermore;
 import net.atired.nethermore.blocks.*;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -26,6 +30,12 @@ public class NMBlockInit {
             () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_LIGHT_GREEN)));
     public static final DeferredBlock<Block> BILE_BRICKS = registerBlock("bile_bricks",
             () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_LIGHT_GREEN)));
+    public static final BooleanProperty FRUITING = BooleanProperty.create("fruiting");
+    public static final DeferredBlock<Block> CREEPING_IV = registerBlock((String)"creeping_iv",  ()->new CreepingIvBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WEEPING_VINES).mapColor(MapColor.NETHER).randomTicks().noCollission().instabreak().pushReaction(PushReaction.DESTROY).lightLevel((state) -> {
+        return state.hasProperty(FRUITING)?(state.getValue(FRUITING)?15:0):0;
+    })));
+
+    public static final DeferredBlock<Block> CREEPING_IV_PLANT = registerBlock((String)"creeping_iv_plant", ()->new CreepingIvPlantBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WEEPING_VINES_PLANT).mapColor(MapColor.NETHER).noCollission().instabreak().pushReaction(PushReaction.DESTROY)));
     public static final DeferredBlock<Block> TOPPED_BILESTONE = registerBlock("topped_bilestone",
             () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_RED)));
     public static final DeferredBlock<Block> BLUE_ASH_SHINGLES = registerBlock("blue_ash_shingles",
@@ -73,6 +83,8 @@ public class NMBlockInit {
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).randomTicks().strength(0.5F).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
     public static final DeferredBlock<Block> SILL_SHROOM_BLOCK = registerBlock("sill_shroom",
             () -> new SillShroomBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_MUSHROOM_BLOCK).randomTicks().strength(0.5F).mapColor(MapColor.TERRACOTTA_PURPLE)));
+    public static final DeferredBlock<Block> CORKBORED_BLOCK = registerBlock("corkbored",
+            () -> new SillShroomBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.SNARE).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
     public static final DeferredBlock<Block> COLD_FUSED_TAR_BLOCK = registerBlock("cold_fused_tar",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
     public static final DeferredBlock<Block> MORGUE_CABINET_BLOCK = registerBlock("morgue_cabinet",

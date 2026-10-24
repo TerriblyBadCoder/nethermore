@@ -30,6 +30,8 @@ public class NMPlacedFeatures {
     public static final ResourceKey<PlacedFeature> IRON_RAFTERS_PK = registerKey("iron_rafters_placed");
     public static final ResourceKey<PlacedFeature> SC_MR_PK = registerKey("sc_mr_placed");
     public static final ResourceKey<PlacedFeature> SILL_SHROOM_PK = registerKey("sill_shroom_placed");
+    public static final ResourceKey<PlacedFeature> CREEPING_IVY_PK = registerKey("creeping_ivy_placed");
+
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         register(context, SMALL_TUMOR_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.SMALL_TUMOR_KEY),
@@ -60,6 +62,8 @@ public class NMPlacedFeatures {
                 commonPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.belowTop(70), VerticalAnchor.belowTop(2))));
         register(context, SILL_SHROOM_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.SILL_SHROOM_KEY),
                 commonPlacement(9, HeightRangePlacement.triangle(VerticalAnchor.belowTop(70), VerticalAnchor.belowTop(24))));
+        register(context, CREEPING_IVY_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.CREEPING_IVY_KEY),
+                commonPlacement(7, HeightRangePlacement.triangle(VerticalAnchor.belowTop(46), VerticalAnchor.belowTop(14))));
 
     }
     public static List<PlacementModifier> typicalPlacement(PlacementModifier pCountPlacement, PlacementModifier pHeightRange) {

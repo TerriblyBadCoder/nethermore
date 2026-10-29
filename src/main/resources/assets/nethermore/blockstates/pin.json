@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "nethermore:block/pin",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "nethermore:block/pin",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "nethermore:block/pin",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "nethermore:block/pin",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "nethermore:block/pin"
+    },
+    "facing=west": {
+      "model": "nethermore:block/pin",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

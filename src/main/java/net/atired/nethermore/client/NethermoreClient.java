@@ -6,10 +6,13 @@ import com.mojang.blaze3d.vertex.*;
 import net.atired.nethermore.Nethermore;
 import net.atired.nethermore.accessors.GameRendererResourceManagerAccessor;
 import net.atired.nethermore.accessors.PostChainDepthPassAccessor;
+import net.atired.nethermore.blockentities.BannerPinBlockEntity;
 import net.atired.nethermore.client.particles.*;
 import net.atired.nethermore.client.renderers.*;
+import net.atired.nethermore.client.renderers.blockentities.BannerPinBlockEntityRenderer;
 import net.atired.nethermore.client.renderers.models.*;
 import net.atired.nethermore.entity.ObserverEntity;
+import net.atired.nethermore.init.NMBlockEntityInit;
 import net.atired.nethermore.init.NMBlockInit;
 import net.atired.nethermore.init.NMEntityInit;
 import net.atired.nethermore.init.NMParticleInit;
@@ -112,6 +115,7 @@ public class NethermoreClient {
     public static RenderTarget ARM_DEPTH_TARGET = null;
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(NMBlockEntityInit.BANNER_PIN_ENTITY.get(), BannerPinBlockEntityRenderer::new);
         event.registerEntityRenderer(NMEntityInit.UNPHEASANT.get(), UnpheasantEntityRenderer::new);
 
         event.registerEntityRenderer(NMEntityInit.NOO.get(), NooEntityRenderer::new);
@@ -129,6 +133,7 @@ public class NethermoreClient {
         event.registerEntityRenderer(NMEntityInit.DISGUSTLING.get(), DisgustlingEntityRenderer::new);
         event.registerEntityRenderer(NMEntityInit.DISGUSTLING_HEAD.get(), EmptyEntityRenderer::new);
     }
+
     @SubscribeEvent
     public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
         event.register((blockState, blockAndTintGetter, blockPos, tintIndex) -> {

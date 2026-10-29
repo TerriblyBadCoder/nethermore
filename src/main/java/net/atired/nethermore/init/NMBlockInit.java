@@ -2,6 +2,7 @@ package net.atired.nethermore.init;
 
 import net.atired.nethermore.Nethermore;
 import net.atired.nethermore.blocks.*;
+import net.atired.nethermore.worldgen.features.BasaltLinesFeature;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -29,7 +30,7 @@ public class NMBlockInit {
     public static final DeferredBlock<Block> BILESTONE = registerBlock("bilestone",
             () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_LIGHT_GREEN)));
     public static final DeferredBlock<Block> BILE_BRICKS = registerBlock("bile_bricks",
-            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_LIGHT_GREEN)));
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_LIGHT_GREEN)));
     public static final BooleanProperty FRUITING = BooleanProperty.create("fruiting");
     public static final DeferredBlock<Block> CREEPING_IV = registerBlock((String)"creeping_iv",  ()->new CreepingIvBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WEEPING_VINES).mapColor(MapColor.NETHER).randomTicks().noCollission().instabreak().pushReaction(PushReaction.DESTROY).lightLevel((state) -> {
         return state.hasProperty(FRUITING)?(state.getValue(FRUITING)?15:0):0;
@@ -61,7 +62,11 @@ public class NMBlockInit {
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).requiresCorrectToolForDrops().mapColor(MapColor.SNOW)));
     public static final DeferredBlock<Block> BLUE_SLAG_BLOCK = registerBlock("blue_slag",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).requiresCorrectToolForDrops().mapColor(MapColor.SNOW)));
-
+    public static final DeferredBlock<Block> HEXATED_BLOCK = registerBlock("hexated_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).mapColor(MapColor.COLOR_GREEN).lightLevel((a)->{return 11;})));
+    public static final DeferredBlock<Block> HEXATED_BASALT = registerBlock("hexated_basalt",
+            () -> new HexatedBasaltBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BASALT).mapColor(MapColor.COLOR_GREEN).lightLevel((a)->
+            {return a.getValue(HexatedBasaltBlock.AMOUNT)*3+4;})));
 
     public static final DeferredBlock<Block> TUMOR_BLOCK = registerBlock("tumor_block",
             () -> new TumorBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).mapColor(MapColor.TERRACOTTA_CYAN).sound(SoundType.HONEY_BLOCK)));
@@ -85,6 +90,10 @@ public class NMBlockInit {
             () -> new SillShroomBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_MUSHROOM_BLOCK).randomTicks().strength(0.5F).mapColor(MapColor.TERRACOTTA_PURPLE)));
     public static final DeferredBlock<Block> CORKBORED_BLOCK = registerBlock("corkbored",
             () -> new SillShroomBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.SNARE).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final DeferredBlock<Block> PIN = registerBlock("pin",
+            () -> new PinBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_ORE).mapColor(MapColor.COLOR_RED).noOcclusion()));
+    public static final DeferredBlock<BannerPinBlock> BANNER_PIN = registerBlock("banner_pin",
+            () -> new BannerPinBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_ORE).mapColor(MapColor.COLOR_YELLOW).noOcclusion()));
     public static final DeferredBlock<Block> COLD_FUSED_TAR_BLOCK = registerBlock("cold_fused_tar",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
     public static final DeferredBlock<Block> MORGUE_CABINET_BLOCK = registerBlock("morgue_cabinet",

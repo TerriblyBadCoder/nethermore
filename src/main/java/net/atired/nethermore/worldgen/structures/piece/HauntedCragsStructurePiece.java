@@ -8,6 +8,7 @@ import net.atired.nethermore.misc.NMsimplexNoise;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.features.NetherFeatures;
@@ -19,6 +20,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.NyliumBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -90,7 +93,9 @@ public class HauntedCragsStructurePiece extends AbstractCaveGenerationStructureP
             }
         }
         if(didStuff){
-            replaceBiomes(level, NMBiomeInit.HAUNTED_CRAGS);
+            Holder<Biome> biomeHolder = level.getBiome(carve);
+            if(biomeHolder.is(Biomes.BASALT_DELTAS))
+                replaceBiomes(level, NMBiomeInit.HAUNTED_CRAGS);
         }
     }
     public static void performBonemeal(WorldGenLevel level, RandomSource random, BlockPos pos, BlockState state,ChunkGenerator chunkgenerator) {

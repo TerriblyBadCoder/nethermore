@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "nethermore:haunted_crags",
+  "features": "nethermore:outcrop_placed",
+  "step": "vegetal_decoration"
+}

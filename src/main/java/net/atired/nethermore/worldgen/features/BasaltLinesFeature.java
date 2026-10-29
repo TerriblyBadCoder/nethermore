@@ -58,7 +58,7 @@ public class BasaltLinesFeature  extends Feature<NoneFeatureConfiguration> {
                                             }
                                         }
                                     }
-                                    if(level.getBlockState(pos1.above()).isEmpty()&&dirs&&level.getBlockState(pos1).getFluidState().isEmpty()){
+                                    if(level.getBlockState(pos1.above()).isEmpty()&&new Vec3(x,y,z).length()<13&&dirs&&level.getBlockState(pos1).getFluidState().isEmpty()){
                                         level.setBlock(pos1, NMBlockInit.TAR.get().defaultBlockState(),2);
                                     }else{
                                         noisy2 = NMsimplexNoise.sampleNoise3D(pos1.getX(),pos1.getY()/3.0f,pos1.getZ(),8.0f);

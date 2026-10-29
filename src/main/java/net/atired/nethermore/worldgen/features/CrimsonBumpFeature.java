@@ -28,9 +28,12 @@ public class CrimsonBumpFeature  extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext) {
         WorldGenLevel level = featurePlaceContext.level();
         BlockPos pos = featurePlaceContext.origin();
+        if(NMsimplexNoise.sampleNoise3D(pos.getX(),pos.getY(),pos.getZ()+2000,130.0f)>0.35){
+            return false;
+        }
         if(!level.getBlockState(pos).isEmpty()&&level.getBlockState(pos).isCollisionShapeFullBlock(level,pos)&&level.getBlockState(pos.above()).isEmpty()){
-            for (int x = -8; x <= 8; x++) {
-                for (int z = -8; z <= 8; z++) {
+            for (int x = -12; x <= 12; x++) {
+                for (int z = -12; z <= 12; z++) {
                     BlockPos pos2 = pos.offset(x,1,z);
                     int count =12;
                     while (level.getBlockState(pos2).isEmpty()){
@@ -40,7 +43,7 @@ public class CrimsonBumpFeature  extends Feature<NoneFeatureConfiguration> {
                     for (int y = 0; y <= 16; y++) {
                         BlockPos pos1 = pos2.offset(0,y,0);
 
-                        float len = (float)Math.pow( new Vec3(x,0,z).length(),2)/7;
+                        float len = (float)Math.pow( new Vec3(x,0,z).length(),1.4)/9;
                         int gottenY=(pos1.getY());
                         gottenY-=gottenY%3;
                         float noisy = NMsimplexNoise.sampleNoise3D(pos1.getX(),gottenY/5.0f,pos1.getZ(),7.0f);
@@ -49,13 +52,17 @@ public class CrimsonBumpFeature  extends Feature<NoneFeatureConfiguration> {
                             continue;
                         }
                         if(noisy*5.0f-len-(y*y)/16.0>-2.5){
+                            if(noisy+1.1<len){
+                                level.setBlock(pos1,Blocks.BASALT.defaultBlockState(), 2);
+                                continue;
+                            }
                             level.setBlock(pos1,Blocks.NETHERRACK.defaultBlockState(), 2);
                             if(noisy2*5.0f-len-((y+1)*(y+1))/16.0<=-2.5||y>4){
                                 noisy = NMsimplexNoise.sampleNoise3D(pos1.getX(),(pos1.getY()-pos1.getY()%5)*26,pos1.getZ(),55);
                                 boolean doesNoisy = (Math.abs(noisy)%0.2f)>0.09f;
                                 level.setBlock(pos1.above(),doesNoisy?Blocks.CRIMSON_NYLIUM.defaultBlockState():Blocks.WARPED_NYLIUM.defaultBlockState(),2);
                                 if(Math.random()>0.8){
-                                    if(Math.random()>0.8){
+                                    if(Math.random()>0.3){
                                         performBonemeal(level,featurePlaceContext.random(),pos1.above(),featurePlaceContext.chunkGenerator());
                                     }else{
                                         level.setBlock(pos1.above().above(),NMBlockInit.TRASH_BAG.get().defaultBlockState(),2);

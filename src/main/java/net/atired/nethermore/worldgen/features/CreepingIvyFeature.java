@@ -23,7 +23,7 @@ public class CreepingIvyFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext) {
         WorldGenLevel level = featurePlaceContext.level();
         BlockPos pos = featurePlaceContext.origin();
-        if(Math.random()>0.5||Math.abs(NMsimplexNoise.sampleNoise3D(pos.getX(),pos.getY()/20.0f+300,pos.getZ()+200,80.0f))<-0.3f){
+        if(Math.random()>0.6||(NMsimplexNoise.sampleNoise3D(pos.getX(),pos.getY()/20.0f+300,pos.getZ()+200,70.0f))<-0.3f){
             return false;
         }
 

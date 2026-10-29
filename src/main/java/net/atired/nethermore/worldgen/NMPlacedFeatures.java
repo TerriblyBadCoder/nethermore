@@ -31,6 +31,8 @@ public class NMPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SC_MR_PK = registerKey("sc_mr_placed");
     public static final ResourceKey<PlacedFeature> SILL_SHROOM_PK = registerKey("sill_shroom_placed");
     public static final ResourceKey<PlacedFeature> CREEPING_IVY_PK = registerKey("creeping_ivy_placed");
+    public static final ResourceKey<PlacedFeature> CORKBORED_PK = registerKey("corkbored_placed");
+    public static final ResourceKey<PlacedFeature> OUTCROP_PK = registerKey("outcrop_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -64,6 +66,10 @@ public class NMPlacedFeatures {
                 commonPlacement(9, HeightRangePlacement.triangle(VerticalAnchor.belowTop(70), VerticalAnchor.belowTop(24))));
         register(context, CREEPING_IVY_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.CREEPING_IVY_KEY),
                 commonPlacement(7, HeightRangePlacement.triangle(VerticalAnchor.belowTop(46), VerticalAnchor.belowTop(14))));
+        register(context, CORKBORED_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.CORKBORED_KEY),
+                commonPlacement(8, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(41), VerticalAnchor.belowTop(44))));
+        register(context, OUTCROP_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.OUTCROP_KEY),
+                commonPlacement(64, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(30), VerticalAnchor.aboveBottom(54))));
 
     }
     public static List<PlacementModifier> typicalPlacement(PlacementModifier pCountPlacement, PlacementModifier pHeightRange) {

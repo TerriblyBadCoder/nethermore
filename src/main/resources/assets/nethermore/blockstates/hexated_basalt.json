@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "nethermore:block/hexated_basalt",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,basalt_amount=0": {
+      "model": "nethermore:block/hexated_basalt_lesser"
+    },
+    "axis=y,basalt_amount=1": {
+      "model": "nethermore:block/hexated_basalt"
+    },
+    "axis=y,basalt_amount=2": {
+      "model": "nethermore:block/hexated_basalt_full"
+    },
+    "axis=z": {
+      "model": "nethermore:block/hexated_basalt",
+      "x": 90
+    }
+  }
+}

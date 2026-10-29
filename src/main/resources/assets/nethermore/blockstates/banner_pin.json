@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "nethermore:block/banner_pin",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "nethermore:block/banner_pin",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "nethermore:block/banner_pin",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "nethermore:block/banner_pin",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "nethermore:block/banner_pin"
+    },
+    "facing=west": {
+      "model": "nethermore:block/banner_pin",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

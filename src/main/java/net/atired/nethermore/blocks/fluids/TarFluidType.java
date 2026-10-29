@@ -1,6 +1,8 @@
 package net.atired.nethermore.blocks.fluids;
 
 import net.atired.nethermore.Nethermore;
+import net.atired.nethermore.entity.SlitherEntity;
+import net.atired.nethermore.entity.TarlingEntity;
 import net.atired.nethermore.init.NMFluidInit;
 import net.atired.nethermore.init.NMItemInit;
 import net.minecraft.core.BlockPos;
@@ -35,7 +37,9 @@ public class TarFluidType extends FluidType {
 
     @Override
     public boolean move(FluidState state, LivingEntity entity, Vec3 movementVector, double gravity) {
-        entity.setDeltaMovement(entity.getDeltaMovement().multiply(0.3,0.9,0.3).add(0,-0.01,0));
+        if(!(entity instanceof TarlingEntity)&&!(entity instanceof SlitherEntity)){
+            entity.setDeltaMovement(entity.getDeltaMovement().multiply(0.3,0.9,0.3).add(0,-0.01,0));
+        }
         return super.move(state, entity, movementVector, gravity);
     }
     @Override

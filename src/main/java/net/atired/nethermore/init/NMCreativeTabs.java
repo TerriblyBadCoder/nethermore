@@ -23,11 +23,15 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.EYE_TUMOR_BLOCK);
                         output.accept(NMBlockInit.FAT_TUMOR_BLOCK);
                         output.accept(NMBlockInit.MAW_TUMOR_BLOCK);
+                        output.accept(NMBlockInit.CORKBORED_BLOCK);
+                        output.accept(NMBlockInit.PIN);
                         output.accept(NMItemInit.TAR_GLOB);
                         output.accept(NMItemInit.TAR_BUCKET);
                         output.accept(NMBlockInit.SOFT_TAR_BLOCK);
                         output.accept(NMBlockInit.FUSED_TAR_BLOCK);
                         output.accept(NMBlockInit.COLD_FUSED_TAR_BLOCK);
+                        output.accept(NMBlockInit.HEXATED_BLOCK);
+                        output.accept(NMBlockInit.HEXATED_BASALT);
                         output.accept(NMBlockInit.TRASH_BAG);
                         output.accept(NMItemInit.ASH_BALL);
                         output.accept(NMBlockInit.BLUE_ASH);
@@ -36,7 +40,11 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.BLUE_ASH_SHINGLES);
                         output.accept(NMBlockInit.SOUL_CRYSTAL_BLOCK);
                         output.accept(NMBlockInit.SOUL_LINING_BLOCK);
+                        output.accept(NMBlockInit.SILL_SHROOM_BLOCK);
+                        output.accept(NMBlockInit.CREEPING_IV);
+                        output.accept(NMItemInit.CREEPING_IV_CHERRY);
                         output.accept(NMBlockInit.BILESTONE);
+                        output.accept(NMBlockInit.YELLOWED_BILESTONE);
                         output.accept(NMBlockInit.TOPPED_BILESTONE);
                         output.accept(NMBlockInit.BILE_GROWTH);
                         output.accept(NMBlockInit.INFLAMED_EYE);

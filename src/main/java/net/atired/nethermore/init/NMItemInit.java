@@ -23,6 +23,12 @@ public class NMItemInit {
             "tar_glob",
             ()->new Item(new Item.Properties())
     );
+    public static final FoodProperties CHERRY_FOOD = (new FoodProperties.Builder()).nutrition(9).alwaysEdible().saturationModifier(0.4F)
+            .effect(()->{return new MobEffectInstance(MobEffects.WEAKNESS,200,3);}, 1.0f).fast().build();
+    public static final DeferredItem<Item> CREEPING_IV_CHERRY = ITEMS.register(
+            "creeping_iv_cherry",
+            ()->new Item(new Item.Properties().food(CHERRY_FOOD))
+    );
     public static final DeferredItem<Item> LOOSE_EYE = ITEMS.register(
             "loose_eye",
             ()->new LooseEyeItem(new Item.Properties().stacksTo(16))

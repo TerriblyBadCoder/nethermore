@@ -27,7 +27,7 @@ public class IronRaftersFeature extends Feature<NoneFeatureConfiguration> {
         if(level.isEmptyBlock(pos)||!level.isEmptyBlock(pos.below())){
             return false;
         }
-        if(Math.abs(NMsimplexNoise.sampleNoise3D(pos.getX(),pos.getY()/20.0f+300,pos.getZ()+200,80.0f))>0.0f){
+        if((NMsimplexNoise.sampleNoise3D(pos.getX(),pos.getY()/20.0f+300,pos.getZ()+200,70.0f))>0.0f){
             return false;
         }
         if(pos.getY()%2==0){

@@ -27,6 +27,9 @@ public class NMConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SC_MR_KEY = registerKey("sc_mr");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SILL_SHROOM_KEY = registerKey("sill_shroom");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CREEPING_IVY_KEY = registerKey("creeping_ivy");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CORKBORED_KEY = registerKey("corkbored");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OUTCROP_KEY = registerKey("outcrop");
+
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         register(context, TUMOR_KEY,NMFeatures.TUMOR_FEATURE.get(), new NoneFeatureConfiguration());
@@ -44,6 +47,8 @@ public class NMConfiguredFeatures {
         register(context, SC_MR_KEY,NMFeatures.SC_MR_FEATURE.get(), new NoneFeatureConfiguration());
         register(context, SILL_SHROOM_KEY,NMFeatures.SILL_SHROOM_FEATURE.get(), new NoneFeatureConfiguration());
         register(context, CREEPING_IVY_KEY,NMFeatures.CREEPING_IVY_FEATURE.get(), new NoneFeatureConfiguration());
+        register(context, CORKBORED_KEY,NMFeatures.CORKBORED_FEATURE.get(), new NoneFeatureConfiguration());
+        register(context, OUTCROP_KEY,NMFeatures.OUTCROP_FEATURE.get(), new NoneFeatureConfiguration());
 
 
     }

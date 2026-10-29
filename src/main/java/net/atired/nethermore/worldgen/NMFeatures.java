@@ -46,5 +46,9 @@ public class NMFeatures {
             FEATURES.register("sill_shroom_feature", () -> new SillShroomFeature(NoneFeatureConfiguration.CODEC));
     public static final Supplier<Feature<NoneFeatureConfiguration>> CREEPING_IVY_FEATURE =
             FEATURES.register("creeping_ivy_feature", () -> new CreepingIvyFeature(NoneFeatureConfiguration.CODEC));
+    public static final Supplier<Feature<NoneFeatureConfiguration>> CORKBORED_FEATURE =
+            FEATURES.register("corkbored_feature", () -> new CorkBoredFeature(NoneFeatureConfiguration.CODEC));
+    public static final Supplier<Feature<NoneFeatureConfiguration>> OUTCROP_FEATURE =
+            FEATURES.register("outcrop_feature", () -> new BasaltOutcropFeature(NoneFeatureConfiguration.CODEC));
 
 }

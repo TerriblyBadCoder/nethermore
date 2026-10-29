@@ -47,7 +47,6 @@ public class WhisperParticle extends TextureSheetParticle {
 
     @Override
     public void render(VertexConsumer buffer, Camera renderInfo, float partialTicks) {
-
         super.render(buffer, renderInfo, partialTicks);
     }
 

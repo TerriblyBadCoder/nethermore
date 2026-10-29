@@ -35,6 +35,9 @@ public class NMBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_SC_MR = registerKey("add_sc_mr");
     public static final ResourceKey<BiomeModifier> ADD_SILL_SHROOM = registerKey("add_sill_shroom");
     public static final ResourceKey<BiomeModifier> ADD_CREEPING_IVY = registerKey("add_creeping_ivy");
+    public static final ResourceKey<BiomeModifier> ADD_CORKBORED = registerKey("add_corkbored");
+    public static final ResourceKey<BiomeModifier> ADD_OUTCROP = registerKey("add_outcrop");
+
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         HolderGetter<PlacedFeature>placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -42,15 +45,15 @@ public class NMBiomeModifiers {
         context.register(ADD_TUMOR, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(NMBiomeInit.HAUNTED_CRAGS)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.TUMOR_PK)),
-                GenerationStep.Decoration.UNDERGROUND_ORES));
+                GenerationStep.Decoration.UNDERGROUND_STRUCTURES));
         context.register(ADD_SMALL_TUMOR, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(NMBiomeInit.HAUNTED_CRAGS)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.SMALL_TUMOR_PK)),
-                GenerationStep.Decoration.UNDERGROUND_ORES));
+                GenerationStep.Decoration.UNDERGROUND_STRUCTURES));
         context.register(ADD_BASALT_LINES, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(NMBiomeInit.HAUNTED_CRAGS)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.BASALT_LINES_PK)),
-                GenerationStep.Decoration.UNDERGROUND_ORES));
+                GenerationStep.Decoration.UNDERGROUND_STRUCTURES));
         context.register(ADD_TUMOR_PILLAR, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(NMBiomeInit.HAUNTED_CRAGS)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.TUMOR_PILLAR_PK)),
@@ -98,6 +101,14 @@ public class NMBiomeModifiers {
         context.register(ADD_CREEPING_IVY, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(NMBiomeInit.SCRAMBLED_PITS)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.CREEPING_IVY_PK)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+        context.register(ADD_CORKBORED, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(NMBiomeInit.HAUNTED_CRAGS)),
+                HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.CORKBORED_PK)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+        context.register(ADD_OUTCROP, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(NMBiomeInit.HAUNTED_CRAGS)),
+                HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.OUTCROP_PK)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
     }
 

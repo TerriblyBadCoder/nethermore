@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "nethermore:creeping_iv",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "fruiting": "true"
+                  }
+                }
+              ],
+              "name": "nethermore:creeping_iv_cherry"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "nethermore:blocks/creeping_iv"
+}

@@ -15,7 +15,12 @@
   "block.nethermore.iron_rafter": "Iron Rafter",
   "block.nethermore.trash_bag": "Trash Bag",
   "block.nethermore.inflamed_eye": "Inflamed Eye",
+  "block.nethermore.creeping_iv": "Creeping IV",
+  "block.nethermore.hexated_block": "Hexated Pile",
+  "block.nethermore.hexated_basalt": "Hexated Basalt",
   "block.nethermore.slivers": "Slivers",
+  "block.nethermore.pin": "Pin",
+  "block.nethermore.banner_pin": "Banner Pin",
   "block.nethermore.sill_shroom": "Sill Shroom",
   "block.nethermore.cold_fused_tar": "Cold Fused Tar",
   "block.nethermore.soul_lining": "Soul Lining",
@@ -43,6 +48,8 @@
   "item.nethermore.tar_glob": "Tar Glob",
   "item.nethermore.ash_ball": "Ash Ball",
   "item.nethermore.loose_eye": "Loose Eye",
+  "item.nethermore.creeping_iv_cherry": "Creeping Cherry",
+
 
   "item.nethermore.unpheasant_spawn_egg": "Unpheasant Spawn Egg",
   "item.nethermore.noo_spawn_egg": "Noo Spawn Egg",

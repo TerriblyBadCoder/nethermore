@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "nethermore:corkbored",
+    "nethermore:sill_shroom",
     "nethermore:whispering_thorn",
     "nethermore:whispering_planks",
     "nethermore:whispering_slab",

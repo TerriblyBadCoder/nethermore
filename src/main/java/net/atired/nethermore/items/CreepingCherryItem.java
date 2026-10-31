@@ -15,8 +15,10 @@ public class CreepingCherryItem extends Item {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
         if(level.isClientSide()&&livingEntity== Minecraft.getInstance().player){
-            NethermoreClient.PROXY.cherried=1.0f;
+            if(NethermoreClient.PROXY.cherried<0.5)
+                NethermoreClient.PROXY.cherried=1.0f;
         }
+        livingEntity.heal(5);
         return super.finishUsingItem(stack, level, livingEntity);
     }
 }

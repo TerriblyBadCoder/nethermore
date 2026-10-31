@@ -2,6 +2,7 @@ package net.atired.nethermore.init;
 
 import net.atired.nethermore.Nethermore;
 import net.atired.nethermore.items.AshBallItem;
+import net.atired.nethermore.items.CreepingCherryItem;
 import net.atired.nethermore.items.LooseEyeItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -24,10 +25,10 @@ public class NMItemInit {
             ()->new Item(new Item.Properties())
     );
     public static final FoodProperties CHERRY_FOOD = (new FoodProperties.Builder()).nutrition(9).alwaysEdible().saturationModifier(0.4F)
-            .effect(()->{return new MobEffectInstance(MobEffects.WEAKNESS,200,3);}, 1.0f).fast().build();
+            .effect(()->{return new MobEffectInstance(MobEffects.WEAKNESS,200,3);}, 1.0f).build();
     public static final DeferredItem<Item> CREEPING_IV_CHERRY = ITEMS.register(
             "creeping_iv_cherry",
-            ()->new Item(new Item.Properties().food(CHERRY_FOOD))
+            ()->new CreepingCherryItem(new Item.Properties().food(CHERRY_FOOD))
     );
     public static final DeferredItem<Item> LOOSE_EYE = ITEMS.register(
             "loose_eye",
@@ -97,6 +98,10 @@ public class NMItemInit {
     public static final DeferredItem<Item> MORBID_PIECE = ITEMS.register(
             "morbid_piece",
             ()->new Item(new Item.Properties().food(MORBID_FOOD))
+    );
+    public static final DeferredItem<Item> HEXATED_SHARD = ITEMS.register(
+            "hexated_shard",
+            ()->new Item(new Item.Properties())
     );
 
 }

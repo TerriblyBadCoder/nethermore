@@ -31,6 +31,10 @@ public class NMBlockInit {
             () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_LIGHT_GREEN)));
     public static final DeferredBlock<Block> BILE_BRICKS = registerBlock("bile_bricks",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_LIGHT_GREEN)));
+    public static final DeferredBlock<Block> SMOKED_SALT_BLOCK = registerBlock("smoked_salt_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BASALT).mapColor(MapColor.COLOR_ORANGE)));
+    public static final DeferredBlock<Block> CHISELED_SMOKED_SALT_BLOCK = registerBlock("chiseled_smoked_salt_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BASALT).mapColor(MapColor.COLOR_ORANGE)));
     public static final BooleanProperty FRUITING = BooleanProperty.create("fruiting");
     public static final DeferredBlock<Block> CREEPING_IV = registerBlock((String)"creeping_iv",  ()->new CreepingIvBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WEEPING_VINES).mapColor(MapColor.NETHER).randomTicks().noCollission().instabreak().pushReaction(PushReaction.DESTROY).lightLevel((state) -> {
         return state.hasProperty(FRUITING)?(state.getValue(FRUITING)?15:0):0;
@@ -40,7 +44,9 @@ public class NMBlockInit {
     public static final DeferredBlock<Block> TOPPED_BILESTONE = registerBlock("topped_bilestone",
             () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_RED)));
     public static final DeferredBlock<Block> BLUE_ASH_SHINGLES = registerBlock("blue_ash_shingles",
-            () -> new SoulSandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.TERRACOTTA_WHITE)));
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.TERRACOTTA_WHITE)));
+    public static final DeferredBlock<Block> BIG_BLUE_ASH_SHINGLES = registerBlock("big_blue_ash_shingles",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.TERRACOTTA_WHITE)));
 
     public static final DeferredBlock<Block> SOUL_LINING_BLOCK = registerBlock("soul_lining",
             () -> new SoulLiningBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).isValidSpawn((a,b,c,d)->{return false;}).lightLevel((p_50872_) -> {
@@ -89,7 +95,7 @@ public class NMBlockInit {
     public static final DeferredBlock<Block> SILL_SHROOM_BLOCK = registerBlock("sill_shroom",
             () -> new SillShroomBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_MUSHROOM_BLOCK).randomTicks().strength(0.5F).mapColor(MapColor.TERRACOTTA_PURPLE)));
     public static final DeferredBlock<Block> CORKBORED_BLOCK = registerBlock("corkbored",
-            () -> new SillShroomBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.SNARE).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.SNARE).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
     public static final DeferredBlock<Block> PIN = registerBlock("pin",
             () -> new PinBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_ORE).mapColor(MapColor.COLOR_RED).noOcclusion()));
     public static final DeferredBlock<BannerPinBlock> BANNER_PIN = registerBlock("banner_pin",

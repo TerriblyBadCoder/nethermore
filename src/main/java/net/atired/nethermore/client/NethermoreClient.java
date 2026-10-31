@@ -47,6 +47,8 @@ public class NethermoreClient {
     public static PostChain TUMOR = null;
     public static ResourceLocation SCRAMBLEDEFFECT = Nethermore.getId("shaders/post/scrambled.json");
     public static PostChain SCRAMBLED = null;
+    public static ResourceLocation CHERRYEFFECT = Nethermore.getId("shaders/post/cherry.json");
+    public static PostChain CHERRY = null;
 
     public static ResourceLocation GAZINGEFFECT = Nethermore.getId("shaders/post/gazing.json");
     public static PostChain GAZING = null;
@@ -179,6 +181,8 @@ public class NethermoreClient {
             TARRED.resize(Minecraft.getInstance().getWindow().getWidth(), Minecraft.getInstance().getWindow().getHeight());
             SCRAMBLED= new PostChain(Minecraft.getInstance().getTextureManager(), accessor.nethermore$myPrecious(), Minecraft.getInstance().getMainRenderTarget(), SCRAMBLEDEFFECT);
             SCRAMBLED.resize(Minecraft.getInstance().getWindow().getWidth(), Minecraft.getInstance().getWindow().getHeight());
+            CHERRY= new PostChain(Minecraft.getInstance().getTextureManager(), accessor.nethermore$myPrecious(), Minecraft.getInstance().getMainRenderTarget(), CHERRYEFFECT);
+            CHERRY.resize(Minecraft.getInstance().getWindow().getWidth(), Minecraft.getInstance().getWindow().getHeight());
             TUMOR= new PostChain(Minecraft.getInstance().getTextureManager(), accessor.nethermore$myPrecious(), Minecraft.getInstance().getMainRenderTarget(), TUMOREFFECT);
             TUMOR.resize(Minecraft.getInstance().getWindow().getWidth(), Minecraft.getInstance().getWindow().getHeight());
             GAZING= new PostChain(Minecraft.getInstance().getTextureManager(), accessor.nethermore$myPrecious(), Minecraft.getInstance().getMainRenderTarget(), GAZINGEFFECT);
@@ -201,6 +205,7 @@ public class NethermoreClient {
             TARRED.resize(SIZED[0],SIZED[1]);
             SCRAMBLED.resize(SIZED[0],SIZED[1]);
             GAZING.resize(SIZED[0],SIZED[1]);
+            CHERRY.resize(SIZED[0],SIZED[1]);
             if(DEPTH_TARGET!=null){
 
                 ARM_DEPTH_TARGET.resize(SIZED[0],SIZED[1],true);

@@ -14,16 +14,34 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 public class BannerPinBlockEntityRenderer implements BlockEntityRenderer<BannerPinBlockEntity> {
     private static final ResourceLocation BANNER_LOCATION = Nethermore.getId("textures/entity/pin_banner.png");
     public BannerPinBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
     }
+
+    @Override
+    public boolean shouldRender(BannerPinBlockEntity blockEntity, Vec3 cameraPos) {
+        return true;
+    }
+
+    @Override
+    public AABB getRenderBoundingBox(BannerPinBlockEntity blockEntity) {
+        return BlockEntityRenderer.super.getRenderBoundingBox(blockEntity).inflate(0,6,0).move(0,-3,0);
+    }
+
+    @Override
+    public boolean shouldRenderOffScreen(BannerPinBlockEntity blockEntity) {
+        return true;
+    }
+
     @Override
     public void render(BannerPinBlockEntity bannerPinBlock, float v, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int i1) {
         float yRot = 0;
         float offX = 0.17f;
+        float zRot = (float)Math.pow((bannerPinBlock.vHeight)/6.0f,1.5f)*0.5f;
         RenderSystem.enableDepthTest();
         if(bannerPinBlock.getBlockState().getOptionalValue(BlockStateProperties.FACING).isPresent()){
             Direction dir = bannerPinBlock.getBlockState().getOptionalValue(BlockStateProperties.FACING).get();
@@ -53,10 +71,11 @@ public class BannerPinBlockEntityRenderer implements BlockEntityRenderer<BannerP
             float rotated = Mth.cos(bannerPinBlock.aged/3.0f+j*3.14f/4.0f+Mth.sin((float)bannerPinBlock.getBlockPos().getX()/300.0f*6.28f+bannerPinBlock.getBlockPos().getZ()/300.0f*6.28f)*6.28f*2.0f)/50.0f*(1+j/2.0f);
             float rotated2 = Mth.cos(bannerPinBlock.aged/3.0f+j*3.14f*6.0f/4.0f+Mth.sin((float)bannerPinBlock.getBlockPos().getX()/300.0f*6.28f+bannerPinBlock.getBlockPos().getZ()/300.0f*6.28f)*6.28f*2.0f)/10.0f*(1+j/16.0f);
             Vec3 dir1;
+            float roll = +rotated2 + (zRot-0.5f)*1.5f * (j==0?-0.5f:(j % 2 == 0 ? -1 : 1));
             if(yRot>0){
-                dir1=oDir1.add(new Vec3(0,-0.5,0).xRot(rotated).zRot(rotated2));
+                dir1=oDir1.add(new Vec3(0,-zRot,0).xRot(rotated).zRot(roll));
             }else{
-                dir1=oDir1.add(new Vec3(0,-0.5,0).zRot(rotated).xRot(rotated2));
+                dir1=oDir1.add(new Vec3(0,-zRot,0).zRot(rotated).xRot(roll));
             }
             Vec3 dir2 = dir1.subtract(oDir1).add(oDir2);
             vertex(pose,consumer,oDir2.x,oDir2.y,oDir2.z,0,j/12.0f,0,0,1,lightCol,1.0f);

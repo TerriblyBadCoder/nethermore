@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "nethermore:block/smoked_salt_block"
+    }
+  }
+}

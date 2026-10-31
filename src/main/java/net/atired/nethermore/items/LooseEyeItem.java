@@ -52,7 +52,12 @@ public class LooseEyeItem extends Item {
             PacketDistributor.sendToPlayersTrackingChunk(serverLevel,livingEntity.chunkPosition(),new VelSyncPayload(livingEntity.getId(),dir.x,dir.y,dir.z));
         }
         if(livingEntity.level().isClientSide()&&NethermoreClient.PROXY!=null&& Minecraft.getInstance().player==livingEntity){
-            NethermoreClient.PROXY.blink=1.0f;
+            if(NethermoreClient.PROXY.blink<0.1f){
+                NethermoreClient.PROXY.blink=1.0f;
+            }else{
+                NethermoreClient.PROXY.blink=0.75f;
+
+            }
         }
         livingEntity.playSound(SoundEvents.PLAYER_TELEPORT,1.0f,0.6f);
         if(livingEntity instanceof Player player && !player.isCreative())stack.setCount(stack.getCount()-1);

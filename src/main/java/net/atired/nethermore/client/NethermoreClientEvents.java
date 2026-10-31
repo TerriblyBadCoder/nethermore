@@ -17,6 +17,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
@@ -66,6 +67,11 @@ public class NethermoreClientEvents {
             NethermoreClient.PROXY.blink-=0.05f;
         }
         NethermoreClient.PROXY.whispered*=0.95f;
+        if(NethermoreClient.PROXY.cherried>0.8f){
+            NethermoreClient.PROXY.cherried=Math.max(0.8f,NethermoreClient.PROXY.cherried*0.98f);
+        }else if(Minecraft.getInstance().player!=null&&!Minecraft.getInstance().player.hasEffect(MobEffects.WEAKNESS)){
+            NethermoreClient.PROXY.cherried=NethermoreClient.PROXY.cherried*0.91f;
+        }
         NethermoreClient.PROXY.redNess=Math.max(0.0f,Math.max(NethermoreClient.PROXY.redNess-0.02f,NethermoreClient.PROXY.redNess*0.86f));
         NethermoreClient.PROXY.redNess2=Math.max(0.0f,Math.max(NethermoreClient.PROXY.redNess2-0.02f,NethermoreClient.PROXY.redNess2*0.86f));
 

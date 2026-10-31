@@ -28,6 +28,7 @@ public class NMGameRendererMixin implements GameRendererResourceManagerAccessor 
     }
     @Inject(method = "render",at= @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/LevelRenderer;doEntityOutline()V",ordinal = 0,shift= At.Shift.BEFORE))
     private void renderCFDepth(DeltaTracker deltaTracker, boolean renderLevel, CallbackInfo ci){
+        if(true){return;}
         PostChain[] chains = {NethermoreClient.TUMOR,NethermoreClient.SCRAMBLED};
         NethermoreClient.ARM_DEPTH_TARGET.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
 
@@ -70,6 +71,13 @@ public class NMGameRendererMixin implements GameRendererResourceManagerAccessor 
                 PostChain chain = NethermoreClient.GAZING;
                 chain.setUniform("GameTime",(Minecraft.getInstance().level.getGameTime()%24000));
                 chain.setUniform("FadeInTest",NethermoreClient.PROXY.blink);
+                chain.process(deltaTracker.getRealtimeDeltaTicks());
+            }
+            if(NethermoreClient.PROXY!=null&&NethermoreClient.PROXY.cherried>0){
+
+                PostChain chain = NethermoreClient.CHERRY;
+                chain.setUniform("GameTime",(Minecraft.getInstance().level.getGameTime()%24000));
+                chain.setUniform("FadeInTest",NethermoreClient.PROXY.cherried);
                 chain.process(deltaTracker.getRealtimeDeltaTicks());
             }
         }

@@ -25,11 +25,13 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.MAW_TUMOR_BLOCK);
                         output.accept(NMBlockInit.CORKBORED_BLOCK);
                         output.accept(NMBlockInit.PIN);
+                        output.accept(NMBlockInit.BANNER_PIN);
                         output.accept(NMItemInit.TAR_GLOB);
                         output.accept(NMItemInit.TAR_BUCKET);
                         output.accept(NMBlockInit.SOFT_TAR_BLOCK);
                         output.accept(NMBlockInit.FUSED_TAR_BLOCK);
                         output.accept(NMBlockInit.COLD_FUSED_TAR_BLOCK);
+                        output.accept(NMItemInit.HEXATED_SHARD);
                         output.accept(NMBlockInit.HEXATED_BLOCK);
                         output.accept(NMBlockInit.HEXATED_BASALT);
                         output.accept(NMBlockInit.TRASH_BAG);
@@ -38,6 +40,7 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.BLUE_ASH_BLOCK);
                         output.accept(NMBlockInit.BLUE_SLAG_BLOCK);
                         output.accept(NMBlockInit.BLUE_ASH_SHINGLES);
+                        output.accept(NMBlockInit.BIG_BLUE_ASH_SHINGLES);
                         output.accept(NMBlockInit.SOUL_CRYSTAL_BLOCK);
                         output.accept(NMBlockInit.SOUL_LINING_BLOCK);
                         output.accept(NMBlockInit.SILL_SHROOM_BLOCK);
@@ -52,6 +55,8 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.IRON_RAFTER);
                         output.accept(NMItemInit.LOOSE_EYE);
                         output.accept(NMBlockInit.SYRINGE);
+                        output.accept(NMBlockInit.SMOKED_SALT_BLOCK);
+                        output.accept(NMBlockInit.CHISELED_SMOKED_SALT_BLOCK);
                         output.accept(NMBlockInit.SLIVERS_BLOCK);
                         output.accept(NMBlockInit.WHISPERING_THORN_BLOCK);
                         output.accept(NMBlockInit.WHISPERING_PLANKS);

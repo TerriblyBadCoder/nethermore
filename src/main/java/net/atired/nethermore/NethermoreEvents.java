@@ -9,6 +9,7 @@ import net.atired.nethermore.init.*;
 import net.atired.nethermore.networking.payloads.RednessPayload;
 import net.atired.nethermore.networking.payloads.VelSyncPayload;
 import net.minecraft.core.*;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;

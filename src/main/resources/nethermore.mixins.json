@@ -8,6 +8,7 @@
     "LivingEntityMixin",
     "NMBiomeSourceNoiseMixin",
     "NMBlockBehaviourPropertiesMixin",
+    "NMItemNameMixin",
     "NMMultiBiomeSourceNoiseMixin",
     "ServerLevelMixin",
     "SkeletonEntityMixin",
@@ -26,6 +27,7 @@
     "LightmapMixin",
     "NMAdvancementTabMixin",
     "NMGameRendererMixin",
+    "NMGuiGraphicsMixin",
     "NMPostChainMixin"
   ]
 }

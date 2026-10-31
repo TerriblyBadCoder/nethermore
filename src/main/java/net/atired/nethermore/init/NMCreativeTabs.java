@@ -55,6 +55,7 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.IRON_RAFTER);
                         output.accept(NMItemInit.LOOSE_EYE);
                         output.accept(NMBlockInit.SYRINGE);
+                        output.accept(NMItemInit.SMOKED_SALT);
                         output.accept(NMBlockInit.SMOKED_SALT_BLOCK);
                         output.accept(NMBlockInit.CHISELED_SMOKED_SALT_BLOCK);
                         output.accept(NMBlockInit.SLIVERS_BLOCK);

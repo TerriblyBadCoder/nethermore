@@ -50,5 +50,7 @@ public class NMFeatures {
             FEATURES.register("corkbored_feature", () -> new CorkBoredFeature(NoneFeatureConfiguration.CODEC));
     public static final Supplier<Feature<NoneFeatureConfiguration>> OUTCROP_FEATURE =
             FEATURES.register("outcrop_feature", () -> new BasaltOutcropFeature(NoneFeatureConfiguration.CODEC));
+    public static final Supplier<Feature<NoneFeatureConfiguration>> SALT_FEATURE =
+            FEATURES.register("salt_feature", () -> new SaltOutcropFeature(NoneFeatureConfiguration.CODEC));
 
 }

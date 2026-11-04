@@ -7,10 +7,13 @@ import net.atired.nethermore.Nethermore;
 import net.atired.nethermore.accessors.GameRendererResourceManagerAccessor;
 import net.atired.nethermore.accessors.PostChainDepthPassAccessor;
 import net.atired.nethermore.blockentities.BannerPinBlockEntity;
+import net.atired.nethermore.blockentities.InfusingStandMenu;
 import net.atired.nethermore.client.particles.*;
 import net.atired.nethermore.client.renderers.*;
 import net.atired.nethermore.client.renderers.blockentities.BannerPinBlockEntityRenderer;
+import net.atired.nethermore.client.renderers.blockentities.InfusingStandBlockEntityRenderer;
 import net.atired.nethermore.client.renderers.models.*;
+import net.atired.nethermore.client.screens.InfusingStandScreen;
 import net.atired.nethermore.entity.ObserverEntity;
 import net.atired.nethermore.init.NMBlockEntityInit;
 import net.atired.nethermore.init.NMBlockInit;
@@ -118,6 +121,7 @@ public class NethermoreClient {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(NMBlockEntityInit.BANNER_PIN_ENTITY.get(), BannerPinBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(NMBlockEntityInit.INFUSING_STAND_ENTITY.get(), InfusingStandBlockEntityRenderer::new);
         event.registerEntityRenderer(NMEntityInit.UNPHEASANT.get(), UnpheasantEntityRenderer::new);
 
         event.registerEntityRenderer(NMEntityInit.NOO.get(), NooEntityRenderer::new);
@@ -152,6 +156,7 @@ public class NethermoreClient {
         event.registerSpriteSet(NMParticleInit.PAPER_TRAIL_PARTICLE.get(), PaperTrailParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.TAR_POP_PARTICLE.get(), TarParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.TAR_SLOP_PARTICLE.get(), TarSlopParticle.Provider::new);
+        event.registerSpriteSet(NMParticleInit.HEXATED_SPIKE_PARTICLE.get(), HexatedSpikeParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.WHISPER_PARTICLE.get(), WhisperParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.SOUL_PARTICLE.get(), SoulParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.OPEN_PARTICLE.get(), OpenParticle.Provider::new);
@@ -172,6 +177,10 @@ public class NethermoreClient {
         event.registerLayerDefinition(SlitherEntityModel.LAYER_LOCATION, SlitherEntityModel::createBodyLayer);
         event.registerLayerDefinition(MorbidPiglinEntityModel.LAYER_LOCATION, MorbidPiglinEntityModel::createBodyLayer);
         event.registerLayerDefinition(DisgustlingEntityModel.LAYER_LOCATION, DisgustlingEntityModel::createBodyLayer);
+    }
+    @SubscribeEvent // on the mod event bus only on the physical client
+    public static void registerScreens(RegisterMenuScreensEvent event) {
+        event.register(NMBlockEntityInit.INFUSING_MENU.get(), InfusingStandScreen::new);
     }
     @SubscribeEvent
     public static void registerShaders(RegisterShadersEvent event) throws IOException {

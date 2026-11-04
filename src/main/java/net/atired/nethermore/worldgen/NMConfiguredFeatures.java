@@ -29,6 +29,7 @@ public class NMConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CREEPING_IVY_KEY = registerKey("creeping_ivy");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CORKBORED_KEY = registerKey("corkbored");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OUTCROP_KEY = registerKey("outcrop");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SALT_KEY = registerKey("salt");
 
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
@@ -49,6 +50,7 @@ public class NMConfiguredFeatures {
         register(context, CREEPING_IVY_KEY,NMFeatures.CREEPING_IVY_FEATURE.get(), new NoneFeatureConfiguration());
         register(context, CORKBORED_KEY,NMFeatures.CORKBORED_FEATURE.get(), new NoneFeatureConfiguration());
         register(context, OUTCROP_KEY,NMFeatures.OUTCROP_FEATURE.get(), new NoneFeatureConfiguration());
+        register(context, SALT_KEY,NMFeatures.SALT_FEATURE.get(), new NoneFeatureConfiguration());
 
 
     }

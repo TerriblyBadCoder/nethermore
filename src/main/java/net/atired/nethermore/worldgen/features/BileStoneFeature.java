@@ -1,9 +1,12 @@
 package net.atired.nethermore.worldgen.features;
 
 import com.mojang.serialization.Codec;
+import net.atired.nethermore.blocks.IronRafterBlock;
+import net.atired.nethermore.blocks.SyringeBlock;
 import net.atired.nethermore.init.NMBlockInit;
 import net.atired.nethermore.misc.NMsimplexNoise;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
@@ -23,8 +26,28 @@ public class BileStoneFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext) {
         WorldGenLevel level = featurePlaceContext.level();
         BlockPos pos = featurePlaceContext.origin();
-        if(level.isEmptyBlock(pos)||!level.isEmptyBlock(pos.above())||Math.abs(NMsimplexNoise.sampleNoise3D(pos.getX(),pos.getY()/20.0f+300,pos.getZ(),145.0f))<0.4f){
+        if(level.isEmptyBlock(pos)||!level.isEmptyBlock(pos.above())){
             return false;
+        }
+        if(Math.abs(NMsimplexNoise.sampleNoise3D(pos.getX(),pos.getY()/20.0f+300,pos.getZ(),145.0f))<0.4f){
+            int randLarge = 2+(int)(Math.random()*4.0f);
+            int randSmall = 3+(int)(Math.random()*5.0f);
+            for (int i = 1; i <= randLarge+randSmall; i++) {
+                BlockPos pos1=pos.offset(0,i,0);
+                if(level.getBlockState(pos1).isEmpty()){
+                    if(i<randLarge){
+                        level.setBlock(pos1,NMBlockInit.BIG_IRON_RAFTER.get().defaultBlockState(),2);
+                    }else{
+                        if(i==randSmall+randLarge&&Math.random()>0.5){
+                            level.setBlock(pos1,NMBlockInit.SYRINGE.get().defaultBlockState().setValue(SyringeBlock.FACING, Direction.UP),2);
+
+                        }else{
+                            level.setBlock(pos1,NMBlockInit.IRON_RAFTER.get().defaultBlockState().setValue(IronRafterBlock.AXIS, Direction.Axis.Y),2);
+                        }
+                    }
+                }
+            }
+            return true;
         }
         if(Math.random()>0.67){
             pos=pos.offset(0,26+(int)(Math.random()*7.0f),0);

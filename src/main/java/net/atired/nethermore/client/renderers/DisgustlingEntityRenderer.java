@@ -47,6 +47,7 @@ public class DisgustlingEntityRenderer extends MobRenderer<DisgustlingEntity, Di
             vecLeft=new Vec3(0,Mth.sin(-yaw)*olY,0.1875);
             poseStack.pushPose();
             int overlay = getOverlayCoords(entity, this.getWhiteOverlayProgress(entity, partialTicks));
+            pos=pos.subtract(entity.getPosition(partialTicks));
             poseStack.translate(-pos.x(),-pos.y(),-pos.z());
             pos=pos.add(0,1.16,0);
             VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(DISGUSTLING_NECK_LOCATION));

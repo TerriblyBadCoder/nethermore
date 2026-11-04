@@ -33,6 +33,7 @@ public class NMPlacedFeatures {
     public static final ResourceKey<PlacedFeature> CREEPING_IVY_PK = registerKey("creeping_ivy_placed");
     public static final ResourceKey<PlacedFeature> CORKBORED_PK = registerKey("corkbored_placed");
     public static final ResourceKey<PlacedFeature> OUTCROP_PK = registerKey("outcrop_placed");
+    public static final ResourceKey<PlacedFeature> SALT_PK = registerKey("salt_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -70,6 +71,8 @@ public class NMPlacedFeatures {
                 commonPlacement(8, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(41), VerticalAnchor.belowTop(44))));
         register(context, OUTCROP_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.OUTCROP_KEY),
                 commonPlacement(64, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(30), VerticalAnchor.aboveBottom(54))));
+        register(context, SALT_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.SALT_KEY),
+                commonPlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(30), VerticalAnchor.belowTop(20))));
 
     }
     public static List<PlacementModifier> typicalPlacement(PlacementModifier pCountPlacement, PlacementModifier pHeightRange) {

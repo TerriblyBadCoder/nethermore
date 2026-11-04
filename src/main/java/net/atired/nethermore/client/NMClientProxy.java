@@ -5,12 +5,17 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.atired.nethermore.Nethermore;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.resources.ResourceLocation;
+import org.joml.Vector4f;
 
 import java.util.SequencedMap;
 
 public class NMClientProxy {
     public float blueNess=0.0f;
+    public boolean infuseNext = false;
+    public boolean done = false;
+
     public float nihiloNess=0.0f;
     public float tarNess=0.0f;
     public float redNess=0.0f;
@@ -21,6 +26,19 @@ public class NMClientProxy {
     public float lightNess=0.0f;
     public float cherried=0.0f;
     public float blink=0.0f;
+    public static MultiBufferSource.BufferSource INFUSION_SOURCE = null;
+
+    public static MultiBufferSource.BufferSource getInfusionSource(){
+        if(INFUSION_SOURCE!=null){
+            return INFUSION_SOURCE;
+        }else{
+            SequencedMap<RenderType, ByteBufferBuilder> buffers = new Object2ObjectLinkedOpenHashMap<>();
+            buffers.put(NMRenderLayers.infusion(TextureAtlas.LOCATION_BLOCKS),
+                    new ByteBufferBuilder(NMRenderLayers.infusion(TextureAtlas.LOCATION_BLOCKS).bufferSize()));
+            INFUSION_SOURCE=MultiBufferSource.immediateWithBuffers(buffers,new ByteBufferBuilder(256));
+            return INFUSION_SOURCE;
+        }
+    }
     private static final ResourceLocation SLITHER_LOCATION = Nethermore.getId("textures/entity/slither.png");
     public static MultiBufferSource.BufferSource SLITHER_SOURCE = null;
 

@@ -1,10 +1,13 @@
 package net.atired.nethermore.init;
 
 import net.atired.nethermore.Nethermore;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -35,6 +38,7 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.HEXATED_BLOCK);
                         output.accept(NMBlockInit.HEXATED_BASALT);
                         output.accept(NMBlockInit.TRASH_BAG);
+                        output.accept(NMBlockInit.MORGUE_CABINET_BLOCK);
                         output.accept(NMItemInit.ASH_BALL);
                         output.accept(NMBlockInit.BLUE_ASH);
                         output.accept(NMBlockInit.BLUE_ASH_BLOCK);
@@ -52,10 +56,17 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.BILE_GROWTH);
                         output.accept(NMBlockInit.INFLAMED_EYE);
                         output.accept(NMBlockInit.BILE_BRICKS);
+                        output.accept(NMBlockInit.BIG_IRON_RAFTER);
                         output.accept(NMBlockInit.IRON_RAFTER);
                         output.accept(NMItemInit.LOOSE_EYE);
                         output.accept(NMBlockInit.SYRINGE);
                         output.accept(NMItemInit.SMOKED_SALT);
+                        ItemStack stack = Items.BREAD.getDefaultInstance();
+                        FoodProperties properties = stack.get(DataComponents.FOOD);
+                        properties = new FoodProperties((int)(properties.nutrition()*1.5f),properties.saturation()*1.5f,properties.canAlwaysEat(),properties.eatSeconds(),properties.usingConvertsTo(),properties.effects());
+                        stack.set(DataComponents.FOOD,properties);
+                        stack.set(NMItemComponentInit.SALTED,true);
+                        output.accept(stack);
                         output.accept(NMBlockInit.SMOKED_SALT_BLOCK);
                         output.accept(NMBlockInit.CHISELED_SMOKED_SALT_BLOCK);
                         output.accept(NMBlockInit.SLIVERS_BLOCK);

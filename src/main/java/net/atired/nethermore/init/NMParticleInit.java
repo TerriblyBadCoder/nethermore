@@ -35,4 +35,8 @@ public class NMParticleInit {
             "tar_slop",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> HEXATED_SPIKE_PARTICLE = PARTICLE_TYPES.register(
+            "hexated_spike",
+            () -> new SimpleParticleType(false)
+    );
 }

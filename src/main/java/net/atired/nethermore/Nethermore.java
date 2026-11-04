@@ -40,6 +40,7 @@ public class Nethermore {
         NMSoundInit.SOUND_EVENTS.register(modEventBus);
         NMFluidInit.FLUID_TYPES.register(modEventBus);
         NMBlockEntityInit.BLOCK_ENTITIES.register(modEventBus);
+        NMBlockEntityInit.MENUS.register(modEventBus);
         NMEntityInit.ENTITIES.register(modEventBus);
         NMParticleInit.PARTICLE_TYPES.register(modEventBus);
         NMStructureInit.STRUCTURES.register(modEventBus);

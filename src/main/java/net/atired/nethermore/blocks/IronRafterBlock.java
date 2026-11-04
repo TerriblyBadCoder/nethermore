@@ -24,6 +24,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class IronRafterBlock extends RotatedPillarBlock {
     public static final BooleanProperty COMBINED = BooleanProperty.create("combined");
+    public static final BooleanProperty COMBINED_FULLY = BooleanProperty.create("combined_fully");
     public static final BooleanProperty ISX = BooleanProperty.create("isx");
     
     protected static final VoxelShape Y_AXIS_AABB = Block.box(4.5, 0.0, 4.5, 11.5, 16.0, 11.5);
@@ -32,18 +33,32 @@ public class IronRafterBlock extends RotatedPillarBlock {
     protected static final VoxelShape XZ_AXIS_AABB = Shapes.or(X_AXIS_AABB,Z_AXIS_AABB);
     protected static final VoxelShape XY_AXIS_AABB = Shapes.or(X_AXIS_AABB,Y_AXIS_AABB);
     protected static final VoxelShape YZ_AXIS_AABB = Shapes.or(Y_AXIS_AABB,Z_AXIS_AABB);
+    protected static final VoxelShape XYZ_AXIS_AABB = Shapes.or(X_AXIS_AABB,Y_AXIS_AABB,Z_AXIS_AABB);
 
     public IronRafterBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState((BlockState)this.defaultBlockState().setValue(AXIS, Direction.Axis.Y).setValue(COMBINED,false).setValue(ISX,false));
+        this.registerDefaultState((BlockState)this.defaultBlockState().setValue(AXIS, Direction.Axis.Y).setValue(COMBINED,false).setValue(COMBINED_FULLY,false).setValue(ISX,false));
 
     }
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{AXIS,COMBINED,ISX});
+        builder.add(new Property[]{AXIS,COMBINED,COMBINED_FULLY,ISX});
     }
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if(!player.isCrouching()&&stack.getItem().asItem()== NMBlockInit.IRON_RAFTER.asItem() &&state.getValue(COMBINED) &&!state.getValue(COMBINED_FULLY)){
+            Direction.Axis axis = state.getValue(AXIS);
+            Direction.Axis axis2 = hitResult.getDirection().getAxis();
+            if((axis!= Direction.Axis.Y&&axis2.isVertical())||(axis.isVertical()&&axis2== Direction.Axis.Z&&state.getValue(ISX))||(axis.isVertical()&&axis2== Direction.Axis.X&&!state.getValue(ISX))){
+                player.swing(hand);
+                if(!player.isCreative())
+                    stack.setCount(stack.getCount()-1);
+                player.playSound(soundType.getPlaceSound());
+                level.setBlock(pos,state.setValue(COMBINED_FULLY,true),2);
+
+                return ItemInteractionResult.CONSUME_PARTIAL;
+            }
+        }
         if(!player.isCrouching()&&stack.getItem().asItem()== NMBlockInit.IRON_RAFTER.asItem() &&!state.getValue(COMBINED)){
             Direction.Axis axis = state.getValue(AXIS);
             Direction.Axis axis2 = hitResult.getDirection().getAxis();
@@ -69,6 +84,7 @@ public class IronRafterBlock extends RotatedPillarBlock {
         return (BlockState)this.defaultBlockState().setValue(COMBINED,false).setValue(AXIS, context.getClickedFace().getAxis()).setValue(ISX,false);
     }
     protected VoxelShape getShape(BlockState state, BlockGetter p_154347_, BlockPos p_154348_, CollisionContext p_154349_) {
+        if(state.getValue(COMBINED_FULLY)){return XYZ_AXIS_AABB;}
         if(state.getValue(COMBINED)){
             if(state.getValue(AXIS)!= Direction.Axis.Y)
                 return XZ_AXIS_AABB;

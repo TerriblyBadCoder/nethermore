@@ -37,6 +37,7 @@ public class NMBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_CREEPING_IVY = registerKey("add_creeping_ivy");
     public static final ResourceKey<BiomeModifier> ADD_CORKBORED = registerKey("add_corkbored");
     public static final ResourceKey<BiomeModifier> ADD_OUTCROP = registerKey("add_outcrop");
+    public static final ResourceKey<BiomeModifier> ADD_SALT = registerKey("add_salt");
 
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
@@ -110,6 +111,10 @@ public class NMBiomeModifiers {
                 HolderSet.direct(biomes.getOrThrow(NMBiomeInit.HAUNTED_CRAGS)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.OUTCROP_PK)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
+        context.register(ADD_SALT, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.NETHER_WASTES)),
+                HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.SALT_PK)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {

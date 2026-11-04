@@ -6,21 +6,61 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 import net.atired.nethermore.Nethermore;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
+import org.joml.Matrix4f;
 
 import java.io.IOException;
 import java.util.function.Function;
 @EventBusSubscriber(modid = Nethermore.MODID,value = Dist.CLIENT)
 
 public class NMRenderLayers {
+
+    public static ShaderInstance INFUSION_SHADER_INSTANCE = null;
+    public static ShaderInstance getInfusionShaderInstance(){return INFUSION_SHADER_INSTANCE;}
+    public static final RenderStateShard.ShaderStateShard RENDERTYPE_INFUSION_SHADER = new RenderStateShard.ShaderStateShard(NMRenderLayers::getInfusionShaderInstance);
+    private static final ResourceLocation INFUSION_TEX =Nethermore.getId("textures/item/potion_infusion.png");
+    public static RenderStateShard.TexturingStateShard INFUSION_TEXTURING = new RenderStateShard.TexturingStateShard("glint_infusion", () -> {
+        long i = (long)((double)Util.getMillis() * (Double)Minecraft.getInstance().options.glintSpeed().get() * 0.5);
+        float f = (float)(i % 210000L) / 210000.0F;
+        float f1 = (float)(i % 20000L) / 20000.0F;
+        Matrix4f matrix4f = (new Matrix4f()).translation(0, -f1, 0.0F);
+        matrix4f.scale(8f);
+        RenderSystem.setTextureMatrix(matrix4f);
+    }, () -> {
+        RenderSystem.resetTextureMatrix();
+    });;
+    public static final Function<ResourceLocation, RenderType> INFUSION = Util.memoize(
+            p_286169_ -> {
+                RenderType.CompositeState rendertype$compositestate = RenderType.CompositeState.builder()
+                        .setShaderState(RENDERTYPE_INFUSION_SHADER)
+                        .setTextureState(new RenderStateShard.EmptyTextureStateShard(()->{
+                            TextureManager texturemanager = Minecraft.getInstance().getTextureManager();
+                            texturemanager.getTexture(p_286169_).setFilter(false, false);
+                            texturemanager.getTexture(INFUSION_TEX).setFilter(false, false);
+                            RenderSystem.setShaderTexture(0, p_286169_);
+                            RenderSystem.setShaderTexture(4,Minecraft.getInstance().getTextureManager().getTexture(INFUSION_TEX).getId());
+                        },()->{}))
+                        .setCullState(RenderType.NO_CULL)
+                        .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
+                        .setLightmapState(RenderType.LIGHTMAP)
+                        .setOverlayState(RenderStateShard.OVERLAY)
+                        .createCompositeState(true);
+                return RenderType.create("rendertype_infusion", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, 1536,true,true, rendertype$compositestate);
+            }
+    );
+    public static RenderType infusion(ResourceLocation resourceLocation) {
+        return INFUSION.apply(resourceLocation);
+    }
     public static ShaderInstance TAR_SHADER_INSTANCE = null;
     public static ShaderInstance getTarShaderInstance(){return TAR_SHADER_INSTANCE;}
     public static final RenderStateShard.ShaderStateShard RENDERTYPE_ENTITY_TAR_CULL_SHADER = new RenderStateShard.ShaderStateShard
@@ -105,6 +145,11 @@ public class NMRenderLayers {
                 new ShaderInstance(registerShadersEvent.getResourceProvider(), Nethermore.getId("rendertype_entity_fading"), DefaultVertexFormat.NEW_ENTITY)
                 , (a) -> {
                     FADING_SHADER_INSTANCE = a;
+                });
+        registerShadersEvent.registerShader(
+                new ShaderInstance(registerShadersEvent.getResourceProvider(), Nethermore.getId("rendertype_infusion"), DefaultVertexFormat.NEW_ENTITY)
+                , (a) -> {
+                    INFUSION_SHADER_INSTANCE = a;
                 });
     }
 }

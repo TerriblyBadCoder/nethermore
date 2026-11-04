@@ -26,9 +26,8 @@ public class NMGameRendererMixin implements GameRendererResourceManagerAccessor 
     public ResourceManager nethermore$myPrecious() {
         return resourceManager;
     }
-    @Inject(method = "render",at= @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/LevelRenderer;doEntityOutline()V",ordinal = 0,shift= At.Shift.BEFORE))
+    @Inject(method = "render",at= @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/LevelRenderer;doEntityOutline()V",ordinal = 0,shift= At.Shift.AFTER))
     private void renderCFDepth(DeltaTracker deltaTracker, boolean renderLevel, CallbackInfo ci){
-        if(true){return;}
         PostChain[] chains = {NethermoreClient.TUMOR,NethermoreClient.SCRAMBLED};
         NethermoreClient.ARM_DEPTH_TARGET.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
 

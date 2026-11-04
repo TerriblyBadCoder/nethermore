@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "minecraft:nether_wastes",
+  "features": "nethermore:salt_placed",
+  "step": "underground_ores"
+}

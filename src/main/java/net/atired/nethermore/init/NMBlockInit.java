@@ -2,8 +2,6 @@ package net.atired.nethermore.init;
 
 import net.atired.nethermore.Nethermore;
 import net.atired.nethermore.blocks.*;
-import net.atired.nethermore.worldgen.features.BasaltLinesFeature;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -69,7 +67,7 @@ public class NMBlockInit {
     public static final DeferredBlock<Block> BLUE_SLAG_BLOCK = registerBlock("blue_slag",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).requiresCorrectToolForDrops().mapColor(MapColor.SNOW)));
     public static final DeferredBlock<Block> HEXATED_BLOCK = registerBlock("hexated_block",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).mapColor(MapColor.COLOR_GREEN).lightLevel((a)->{return 11;})));
+            () -> new HexatedBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).mapColor(MapColor.COLOR_GREEN).lightLevel((a)->{return 11;})));
     public static final DeferredBlock<Block> HEXATED_BASALT = registerBlock("hexated_basalt",
             () -> new HexatedBasaltBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BASALT).mapColor(MapColor.COLOR_GREEN).lightLevel((a)->
             {return a.getValue(HexatedBasaltBlock.AMOUNT)*3+4;})));
@@ -80,6 +78,8 @@ public class NMBlockInit {
             () -> new TumorBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).mapColor(MapColor.TERRACOTTA_CYAN).sound(SoundType.MOSS)));
     public static final DeferredBlock<Block> FUSED_TAR_BLOCK = registerBlock("fused_tar",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
+    public static final DeferredBlock<Block> BIG_IRON_RAFTER = registerBlock("big_iron_rafter",
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_GRAY)));
     public static final DeferredBlock<Block> IRON_RAFTER = registerBlock("iron_rafter",
             () -> new IronRafterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_GRAY).noOcclusion()));
     public static final DeferredBlock<Block> SYRINGE = registerBlock("syringe",
@@ -90,6 +90,8 @@ public class NMBlockInit {
             () -> new SyringeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_GRAY).lightLevel((p_50872_) -> {
                 return 7;
             }).noOcclusion(),false));
+    public static final DeferredBlock<Block> INFUSING_STAND = registerBlock("infusing_stand",
+            () -> new InfusingStandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BREWING_STAND).mapColor(MapColor.COLOR_GRAY).noOcclusion()));
     public static final DeferredBlock<Block> SOFT_TAR_BLOCK = registerBlock("soft_tar",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).randomTicks().strength(0.5F).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
     public static final DeferredBlock<Block> SILL_SHROOM_BLOCK = registerBlock("sill_shroom",

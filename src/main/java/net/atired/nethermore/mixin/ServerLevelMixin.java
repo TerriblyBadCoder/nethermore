@@ -50,8 +50,8 @@ public abstract class ServerLevelMixin extends Level implements RednessServerLev
                         if(getBiome(serverPlayer.getOnPos()).is(NMBiomeInit.SCRAMBLED_PITS)){
                             NMAchievements.HEARTY.get().trigger(serverPlayer);
                         }
+                        PacketDistributor.sendToPlayer(serverPlayer,new RednessPayload(1));
                     }
-                    PacketDistributor.sendToPlayersInDimension((ServerLevel)(Object)this,new RednessPayload(1));
                 }
             }
         }else{

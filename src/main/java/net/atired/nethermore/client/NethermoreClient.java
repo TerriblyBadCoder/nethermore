@@ -157,6 +157,7 @@ public class NethermoreClient {
         event.registerSpriteSet(NMParticleInit.TAR_POP_PARTICLE.get(), TarParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.TAR_SLOP_PARTICLE.get(), TarSlopParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.HEXATED_SPIKE_PARTICLE.get(), HexatedSpikeParticle.Provider::new);
+        event.registerSpriteSet(NMParticleInit.HEXATED_POP_CIRCLE_PARTICLE.get(), HexatedPopCircleParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.WHISPER_PARTICLE.get(), WhisperParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.SOUL_PARTICLE.get(), SoulParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.OPEN_PARTICLE.get(), OpenParticle.Provider::new);

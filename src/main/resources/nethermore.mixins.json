@@ -11,6 +11,7 @@
     "NMItemMixin",
     "NMItemNameMixin",
     "NMMultiBiomeSourceNoiseMixin",
+    "NMPlayerMixin",
     "ServerLevelMixin",
     "SkeletonEntityMixin",
     "SurfaceRuleDataMixin",

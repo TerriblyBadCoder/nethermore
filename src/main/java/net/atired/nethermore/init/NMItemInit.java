@@ -1,10 +1,7 @@
 package net.atired.nethermore.init;
 
 import net.atired.nethermore.Nethermore;
-import net.atired.nethermore.items.AshBallItem;
-import net.atired.nethermore.items.CreepingCherryItem;
-import net.atired.nethermore.items.LooseEyeItem;
-import net.atired.nethermore.items.SmokedSaltItem;
+import net.atired.nethermore.items.*;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -102,7 +99,7 @@ public class NMItemInit {
     );
     public static final DeferredItem<Item> HEXATED_SHARD = ITEMS.register(
             "hexated_shard",
-            ()->new Item(new Item.Properties())
+            ()->new HexatedShardItem(new Item.Properties())
     );
     public static final DeferredItem<Item> SMOKED_SALT = ITEMS.register(
             "smoked_salt",

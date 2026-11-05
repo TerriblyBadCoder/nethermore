@@ -39,4 +39,8 @@ public class NMParticleInit {
             "hexated_spike",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> HEXATED_POP_CIRCLE_PARTICLE = PARTICLE_TYPES.register(
+            "hexated_pop_circle",
+            () -> new SimpleParticleType(false)
+    );
 }

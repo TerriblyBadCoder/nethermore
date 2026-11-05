@@ -4,12 +4,17 @@ import net.atired.nethermore.Nethermore;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.function.Supplier;
 
 public class NMCreativeTabs {
@@ -40,6 +45,19 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.TRASH_BAG);
                         output.accept(NMBlockInit.MORGUE_CABINET_BLOCK);
                         output.accept(NMItemInit.ASH_BALL);
+                        output.accept(NMBlockInit.INFUSING_STAND);
+                        ItemStack stack = Items.APPLE.getDefaultInstance();
+                        FoodProperties properties = stack.get(DataComponents.FOOD);
+                        ArrayList<FoodProperties.PossibleEffect> list = new ArrayList<>(properties.effects());
+                        stack.set(NMItemComponentInit.INFUSED,new PotionContents(Potions.STRONG_POISON));
+                        Iterator<MobEffectInstance> iterable = stack.get(NMItemComponentInit.INFUSED).getAllEffects().iterator();
+                        if(iterable.hasNext()){
+                            MobEffectInstance mobEffectInstance = iterable.next();
+                            list.add(new FoodProperties.PossibleEffect(()->{return mobEffectInstance;},1.0f));
+                        }
+                        properties = new FoodProperties(properties.nutrition(),properties.saturation(),properties.canAlwaysEat(),properties.eatSeconds(),properties.usingConvertsTo(),list);
+                        stack.set(DataComponents.FOOD,properties);
+                        output.accept(stack);
                         output.accept(NMBlockInit.BLUE_ASH);
                         output.accept(NMBlockInit.BLUE_ASH_BLOCK);
                         output.accept(NMBlockInit.BLUE_SLAG_BLOCK);
@@ -61,8 +79,8 @@ public class NMCreativeTabs {
                         output.accept(NMItemInit.LOOSE_EYE);
                         output.accept(NMBlockInit.SYRINGE);
                         output.accept(NMItemInit.SMOKED_SALT);
-                        ItemStack stack = Items.BREAD.getDefaultInstance();
-                        FoodProperties properties = stack.get(DataComponents.FOOD);
+                         stack = Items.BREAD.getDefaultInstance();
+                         properties = stack.get(DataComponents.FOOD);
                         properties = new FoodProperties((int)(properties.nutrition()*1.5f),properties.saturation()*1.5f,properties.canAlwaysEat(),properties.eatSeconds(),properties.usingConvertsTo(),properties.effects());
                         stack.set(DataComponents.FOOD,properties);
                         stack.set(NMItemComponentInit.SALTED,true);

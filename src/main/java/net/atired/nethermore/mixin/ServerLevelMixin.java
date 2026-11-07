@@ -39,6 +39,7 @@ public abstract class ServerLevelMixin extends Level implements RednessServerLev
     private float nm$redness=0.0f;
     @Inject(method = "tick",at=@At("TAIL"))
     private void nmTick(BooleanSupplier hasTimeLeft, CallbackInfo ci){
+        if(ci.isCancelled()){return;}
         this.nm$redness*=0.95f;
         if(this.nm$redness<0.01f)this.nm$redness=0.0f;
         if( nm$redCD<=0){

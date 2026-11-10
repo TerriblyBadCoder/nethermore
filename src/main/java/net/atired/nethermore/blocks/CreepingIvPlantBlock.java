@@ -6,6 +6,8 @@ import net.atired.nethermore.init.NMSoundInit;
 import net.atired.nethermore.misc.NMsimplexNoise;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -15,6 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class CreepingIvPlantBlock extends GrowingPlantBodyBlock {
@@ -26,7 +29,20 @@ public class CreepingIvPlantBlock extends GrowingPlantBodyBlock {
     public MapCodec<CreepingIvPlantBlock> codec() {
         return CODEC;
     }
-
+    @Override
+    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+        if (entity instanceof LivingEntity) {
+            entity.makeStuckInBlock(state, new Vec3(0.860000011920929, 0.95, 0.860000011920929));
+            if (!level.isClientSide && (entity.xOld != entity.getX() || entity.zOld != entity.getZ())) {
+                double d0 = Math.abs(entity.getX() - entity.xOld);
+                double d1 = Math.abs(entity.getZ() - entity.zOld);
+                if (d0 >= 0.003000000026077032 || d1 >= 0.003000000026077032) {
+                    entity.hurt(level.damageSources().sweetBerryBush(), 2.0F);
+                }
+            }
+        }
+        super.entityInside(state, level, pos, entity);
+    }
     public CreepingIvPlantBlock(BlockBehaviour.Properties p_154975_) {
         super(p_154975_, Direction.DOWN, SHAPE, false);
         this.registerDefaultState((BlockState)this.defaultBlockState().setValue(COVERED,false));

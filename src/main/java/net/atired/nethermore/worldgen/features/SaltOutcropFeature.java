@@ -20,7 +20,7 @@ public class SaltOutcropFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext) {
         WorldGenLevel level = featurePlaceContext.level();
         BlockPos pos = featurePlaceContext.origin();
-        if(Math.abs(pos.getX())+Math.abs(pos.getZ())<2000|| NMsimplexNoise.sampleNoise3D(4000+pos.getX(),pos.getY(),pos.getZ(),200.0f)<0.1){
+        if(Math.abs(pos.getX())+Math.abs(pos.getZ())<2000|| NMsimplexNoise.sampleNoise3D(4000+pos.getX(),pos.getY(),pos.getZ(),200.0f)<0.3){
             return false;
         }
         float rot = (float)(Math.random()*3.14f*2.0f);

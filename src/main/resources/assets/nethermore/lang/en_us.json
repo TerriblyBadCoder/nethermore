@@ -71,8 +71,15 @@
   "item.nethermore.onlooker_spawn_egg": "Onlooker Spawn Egg",
   "item.nethermore.beholder_spawn_egg": "Beholder Spawn Egg",
 
+  "desc.nethermore.salt": "Used on food items in your inventory.",
 
   "sound.nethermore.heartbeat": "Heart beat.",
+  "fluid_type.nethermore.tar": "Tar",
+
+  "painting.nethermore.hi.title": "Hi",
+  "painting.nethermore.hi.author": "A Tired Guy",
+  "painting.nethermore.pylon.title": "Pylon",
+  "painting.nethermore.pylon.author": "A Tired Guy",
 
   "entity.nethermore.morbid_piglin": "Morbid Piglin",
   "entity.nethermore.tarling": "Tarling",
@@ -80,6 +87,8 @@
   "entity.nethermore.disgustling": "Disgustling",
 
   "entity.nethermore.unpheasant": "Unpheasant",
+
+
 
   "entity.nethermore.noo": "Noo",
   "entity.nethermore.soul": "Soul",

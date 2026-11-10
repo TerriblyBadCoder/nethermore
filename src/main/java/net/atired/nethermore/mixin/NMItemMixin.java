@@ -6,10 +6,13 @@ import net.minecraft.client.renderer.blockentity.CampfireRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.inventory.BrewingStandMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.level.block.BrewingStandBlock;
+import net.minecraft.world.level.block.entity.BrewingStandBlockEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -24,7 +27,6 @@ public class NMItemMixin {
     @Inject(method = "appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/Item$TooltipContext;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V",at=@At("HEAD"))
     private void getInfused(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, CallbackInfo ci) {
         if(stack.has(NMItemComponentInit.INFUSED)){
-
             PotionContents contents = stack.get(NMItemComponentInit.INFUSED);
             tooltipComponents.add(Component.literal("Infused with: ").withStyle(ChatFormatting.DARK_GRAY));
             contents.addPotionTooltip(tooltipComponents::add, 1.0F, context.tickRate());

@@ -16,8 +16,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class NMItemInit {
     public static final DeferredRegister.Items ITEMS =DeferredRegister.createItems(Nethermore.MODID);
     public static final FoodProperties MORBID_FOOD = (new FoodProperties.Builder()).nutrition(1).alwaysEdible().saturationModifier(0.1F)
-            .effect(()->{return new MobEffectInstance(NMMobEffectInit.MORBID,400,0);}, 1.0f)
-            .effect(()->{return new MobEffectInstance(MobEffects.POISON,20,0);}, 1.0f).fast().build();
+            .effect(()->{return new MobEffectInstance(NMMobEffectInit.MORBID,400,0);}, 1.0f).fast().build();
     public static final DeferredItem<Item> TAR_BUCKET = ITEMS.register(
             "tar_bucket",
             ()->new BucketItem(NMFluidInit.TAR_FLUID_SOURCE.get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));

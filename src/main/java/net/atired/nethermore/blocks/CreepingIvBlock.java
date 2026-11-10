@@ -12,6 +12,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -25,6 +27,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
 
@@ -36,6 +39,21 @@ public class CreepingIvBlock extends GrowingPlantHeadBlock {
     public static final MapCodec<CreepingIvBlock> CODEC = simpleCodec(CreepingIvBlock::new);
 
     protected static final VoxelShape SHAPE = Block.box(2.0, 5.0, 2.0, 14.0, 16.0, 14.0);
+
+    @Override
+    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+        if (entity instanceof LivingEntity) {
+            entity.makeStuckInBlock(state, new Vec3(0.860000011920929, 0.95, 0.860000011920929));
+            if (!level.isClientSide && (entity.xOld != entity.getX() || entity.zOld != entity.getZ())) {
+                double d0 = Math.abs(entity.getX() - entity.xOld);
+                double d1 = Math.abs(entity.getZ() - entity.zOld);
+                if (d0 >= 0.003000000026077032 || d1 >= 0.003000000026077032) {
+                    entity.hurt(level.damageSources().sweetBerryBush(), 2.0F);
+                }
+            }
+        }
+        super.entityInside(state, level, pos, entity);
+    }
 
     public MapCodec<CreepingIvBlock> codec() {
         return CODEC;

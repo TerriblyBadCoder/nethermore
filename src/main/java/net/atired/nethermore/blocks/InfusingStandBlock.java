@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
@@ -51,6 +52,10 @@ public class InfusingStandBlock extends BaseEntityBlock {
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
+    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        Containers.dropContentsOnDestroy(state, newState, level, pos);
+        super.onRemove(state, level, pos, newState, isMoving);
+    }
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         double d0 = (double)pos.getX() + 0.1 + (double)random.nextFloat() * 0.2;
         double d1 = (double)pos.getY() + 0.7 + (double)random.nextFloat() * 0.3;
@@ -69,7 +74,6 @@ public class InfusingStandBlock extends BaseEntityBlock {
         BlockEntity blockentity = level.getBlockEntity(pos);
         if (blockentity instanceof InfusingStandBlockEntity) {
             player.openMenu((MenuProvider)blockentity);
-            player.awardStat(Stats.INTERACT_WITH_FURNACE);
         }
 
     }

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "nethermore:smoked_salt_block"
+  },
+  "result": {
+    "count": 1,
+    "id": "nethermore:chiseled_smoked_salt_block"
+  }
+}

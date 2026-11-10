@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "nethermore:smoked_salt_block"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "nethermore:smoked_salt"
+  }
+}

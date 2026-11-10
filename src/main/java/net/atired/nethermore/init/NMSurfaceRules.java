@@ -38,7 +38,20 @@ public class NMSurfaceRules {
                         )
                 )
         );
+        SurfaceRules.RuleSource hauntedCrags = SurfaceRules.ifTrue(
+                SurfaceRules.isBiome(NMBiomeInit.HAUNTED_CRAGS),
+                SurfaceRules.sequence(
+                        SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.verticalGradient("bedrock_roof", VerticalAnchor.belowTop(5), VerticalAnchor.top())), block(Blocks.BEDROCK))
+                        ,SurfaceRules.ifTrue(
+                                SurfaceRules.UNDER_CEILING, block(Blocks.BASALT)
+                        ),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.UNDER_FLOOR,
+                                block(Blocks.BASALT)
+                        )
+                )
+        );
         System.out.println("I AM LOSING IT!");
-        return scrambledPits;
+        return SurfaceRules.sequence(scrambledPits,hauntedCrags);
     }
 }

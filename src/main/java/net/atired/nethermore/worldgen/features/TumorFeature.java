@@ -1,12 +1,14 @@
 package net.atired.nethermore.worldgen.features;
 
 import com.mojang.serialization.Codec;
+import net.atired.nethermore.blocks.PinBlock;
 import net.atired.nethermore.init.NMBlockInit;
 import net.atired.nethermore.misc.NMsimplexNoise;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.decoration.PaintingVariants;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -16,6 +18,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.ticks.TickPriority;
 import org.jetbrains.annotations.NotNull;
 
 public class TumorFeature extends Feature<NoneFeatureConfiguration> {
@@ -118,6 +121,52 @@ public class TumorFeature extends Feature<NoneFeatureConfiguration> {
                     }
                 }
             }
+        }else if(pos.getY()>74&&!level.getBlockState(pos.above(22)).isEmpty()){
+            pos=pos.above(20);
+            for (int x = -8; x <= 8; x++) {
+                for (int y = -3; y <= 3; y++) {
+                    for (int z = -8; z <= 8; z++) {
+                        BlockPos pos1 = pos.offset(x,y,z);
+                        float noisy = NMsimplexNoise.sampleNoise3D(pos1.getX(),pos1.getY()+1225,pos1.getZ()+1225,40.0f);
+                        noisy=Math.abs(noisy);
+                        if(noisy>0&&level.getBlockState(pos1).is(BlockTags.NETHER_CARVER_REPLACEABLES)&&new Vec3(x,y,z).length()<8.5f){
+                            noisy=noisy%0.2f;
+                            if(noisy>0.10f){
+                                level.setBlock(pos1,NMBlockInit.CORKBORED_BLOCK.get().defaultBlockState(), 2);
+                                if(Math.random()>0.91)
+                                for (int i = 1; i < 5; i++) {
+                                    BlockPos pos2=pos1.below(i);
+                                    if(Math.random()>0.4&&level.getBlockState(pos2).isEmpty()){
+                                        if(Math.random()>0.4&&i>1){
+                                            if(Math.random()>0.35){
+                                                if(Math.random()>0.6){
+                                                    level.setBlock(pos2,NMBlockInit.TRASH_BAG.get().defaultBlockState(),2);
+
+                                                }else{
+                                                    level.setBlock(pos2,Blocks.LANTERN.defaultBlockState().setValue(BlockStateProperties.HANGING,true),2);
+
+                                                }
+                                            }else{
+                                                level.setBlock(pos2,NMBlockInit.BANNER_PIN.get().defaultBlockState().setValue(PinBlock.FACING,Direction.DOWN),2);
+                                                level.scheduleTick(pos2,NMBlockInit.BANNER_PIN.get(),4, TickPriority.EXTREMELY_LOW);
+                                            }
+                                            break;
+                                        }else{
+                                            level.setBlock(pos2,NMBlockInit.PIN.get().defaultBlockState().setValue(PinBlock.FACING,Direction.DOWN),2);
+                                        }
+                                    }else{
+                                        break;
+                                    }
+                                }
+                            }else if(noisy>0.06){
+                                level.setBlock(pos1,Blocks.BLACKSTONE.defaultBlockState(), 2);
+
+                            }
+                        }
+                    }
+                }
+            }
+
         }
         return false;
     }

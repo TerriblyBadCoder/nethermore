@@ -2,8 +2,11 @@ package net.atired.nethermore.init;
 
 import net.atired.nethermore.Nethermore;
 import net.atired.nethermore.items.*;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.material.Fluids;

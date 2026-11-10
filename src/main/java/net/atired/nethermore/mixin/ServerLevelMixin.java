@@ -48,10 +48,13 @@ public abstract class ServerLevelMixin extends Level implements RednessServerLev
                 nm$redCD=400+(int)(Math.random()*17);
                 if(!players().isEmpty()){
                     for(ServerPlayer serverPlayer : players()){
-                        if(getBiome(serverPlayer.getOnPos()).is(NMBiomeInit.SCRAMBLED_PITS)){
-                            NMAchievements.HEARTY.get().trigger(serverPlayer);
+                        if(serverPlayer.connection.hasChannel(new RednessPayload(1))){
+                            if(getBiome(serverPlayer.getOnPos()).is(NMBiomeInit.SCRAMBLED_PITS)){
+                                NMAchievements.HEARTY.get().trigger(serverPlayer);
+                            }
+                            PacketDistributor.sendToPlayer(serverPlayer,new RednessPayload(1));
+
                         }
-                        PacketDistributor.sendToPlayer(serverPlayer,new RednessPayload(1));
                     }
                 }
             }

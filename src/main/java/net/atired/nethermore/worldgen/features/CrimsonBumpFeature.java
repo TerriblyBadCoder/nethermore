@@ -1,9 +1,11 @@
 package net.atired.nethermore.worldgen.features;
 
 import com.mojang.serialization.Codec;
+import net.atired.nethermore.blocks.PinBlock;
 import net.atired.nethermore.init.NMBlockInit;
 import net.atired.nethermore.misc.NMsimplexNoise;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.features.NetherFeatures;
@@ -11,6 +13,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CandleBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -31,14 +34,20 @@ public class CrimsonBumpFeature  extends Feature<NoneFeatureConfiguration> {
         if(NMsimplexNoise.sampleNoise3D(pos.getX(),pos.getY(),pos.getZ()+2000,130.0f)>0.35){
             return false;
         }
-        if(!level.getBlockState(pos).isEmpty()&&level.getBlockState(pos).isCollisionShapeFullBlock(level,pos)&&level.getBlockState(pos.above()).isEmpty()){
-            for (int x = -12; x <= 12; x++) {
-                for (int z = -12; z <= 12; z++) {
-                    BlockPos pos2 = pos.offset(x,1,z);
-                    int count =12;
-                    while (level.getBlockState(pos2).isEmpty()){
+        if(!level.getBlockState(pos).isEmpty()&&level.getBlockState(pos.above()).isEmpty()){
+            int offCount = 2;
+            pos=pos.below();
+            for (int x = -6; x <= 6; x++) {
+                for (int z = -6; z <= 6; z++) {
+                    boolean didDat=false;
+                    BlockPos pos2 = pos.offset(x,offCount,z);
+                    offCount+=1;
+                    while (level.getBlockState(pos2).isEmpty()&&offCount>0){
                         pos2=pos2.offset(0,-1,0);
-                        count-=1;
+                        offCount-=1;
+                    }
+                    if(level.getBlockState(pos2).isEmpty()){
+                        continue;
                     }
                     for (int y = 0; y <= 16; y++) {
                         BlockPos pos1 = pos2.offset(0,y,0);
@@ -51,23 +60,18 @@ public class CrimsonBumpFeature  extends Feature<NoneFeatureConfiguration> {
                         if(!level.getBlockState(pos1).isEmpty()){
                             continue;
                         }
-                        if(noisy*5.0f-len-(y*y)/16.0>-2.5){
-                            if(noisy+1.1<len){
-                                level.setBlock(pos1,Blocks.BASALT.defaultBlockState(), 2);
-                                continue;
+                        double v = noisy * 2.0f - len - (y * y) / 16.0;
+                        if(v >-1.8){
+                            level.setBlock(pos1, v <-0.1?NMBlockInit.GARBAGE_HEAP.get().defaultBlockState():Blocks.BASALT.defaultBlockState(), 2);
+                            if(y>=2&&Math.random()>0.9){
+                                level.setBlock(pos1.above(),NMBlockInit.TRASH_BAG.get().defaultBlockState(), 2);
+                                break;
+                            }else if(y>=2&&Math.random()>0.85){
+                                level.setBlock(pos1.above(),Blocks.CANDLE.defaultBlockState().setValue(CandleBlock.LIT,true).setValue(CandleBlock.CANDLES,featurePlaceContext.random().nextIntBetweenInclusive(1,4)), 2);
+                                break;
                             }
-                            level.setBlock(pos1,Blocks.NETHERRACK.defaultBlockState(), 2);
-                            if(noisy2*5.0f-len-((y+1)*(y+1))/16.0<=-2.5||y>4){
-                                noisy = NMsimplexNoise.sampleNoise3D(pos1.getX(),(pos1.getY()-pos1.getY()%5)*26,pos1.getZ(),55);
-                                boolean doesNoisy = (Math.abs(noisy)%0.2f)>0.09f;
-                                level.setBlock(pos1.above(),doesNoisy?Blocks.CRIMSON_NYLIUM.defaultBlockState():Blocks.WARPED_NYLIUM.defaultBlockState(),2);
-                                if(Math.random()>0.8){
-                                    if(Math.random()>0.3){
-                                        performBonemeal(level,featurePlaceContext.random(),pos1.above(),featurePlaceContext.chunkGenerator());
-                                    }else{
-                                        level.setBlock(pos1.above().above(),NMBlockInit.TRASH_BAG.get().defaultBlockState(),2);
-                                    }
-                                }
+                            else if(y>=2&&Math.random()>0.92){
+                                level.setBlock(pos1.above(),NMBlockInit.PIN.get().defaultBlockState().setValue(PinBlock.FACING, Direction.UP), 2);
                                 break;
                             }
                         }

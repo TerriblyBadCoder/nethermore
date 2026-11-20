@@ -117,17 +117,17 @@ void main(){
     dist=clamp(dist/3.0-2.0,3.0,6.0)-3.0;
     dist/=3.0;
     dist*=(red/2.0+0.5)*FadeInTest;
-    fracted.y+=sin(fracted.y*3.14f*60.0f+fracted.x*3.14f*4.0f+GameTime/3.0f)/160.0f*dist;
-    fracted.x+=sin(fracted.y*3.14f*60.0f+GameTime/50.0f)/800.0f*dist;
+    fracted.y+=sin(fracted.y*3.14f*60.0f+fracted.x*3.14f*4.0f+GameTime/10.0f)/320.0f*dist;
+    fracted.x+=sin(fracted.y*3.14f*60.0f+GameTime/50.0f)/1600.0f*dist;
     vec4 diffuseColor = texture(DiffuseSampler, fracted);
     vec3 hsvD = rgb2hsv(diffuseColor.rgb);
-    float mulSat=clamp(abs(hsvD.x-0.5)*12.0-0.4,0.0,1.0);
+    float mulSat=clamp(abs(hsvD.x-0.5)*12.0-0.38,0.0,1.0);
 
     float olMulSat = mulSat;
     if(red>0.02){
         fracted = fracted;
         fracted.y+=sin(fracted.x*3.14f*32.0f+GameTime/3.0f)/150.0f*red*hsvD.y;
-        fracted.x+=sin(fracted.y*3.14f*60.0f+GameTime/3.0f)/200.0f*red*hsvD.y;
+        fracted.x+=cos(fracted.y*3.14f*60.0f+GameTime/3.0f)/200.0f*red*hsvD.y;
         diffuseColor = texture(DiffuseSampler, fracted)*(1.0-olMulSat)+diffuseColor*olMulSat;
         hsvD = rgb2hsv(diffuseColor.rgb);
     }
@@ -142,8 +142,17 @@ void main(){
     if(souled>0.0){
         hsvD.x=1.08-red*0.08;
         hsvD.y=pow(hsvD.y,0.75);
+        fracted.x-=fract(texCoord.x*160.0)/160.0;
+        fracted.y-=fract(texCoord.y*90.0)/90.0;
+        float off = cnoise(vec3(fracted*3.14f*4.0f,dist*2.0+GameTime/14.0f))*max(0,red-0.02)*hsvD.y;
+        float off2 = cnoise(vec3(fracted*3.14f*5.0f*(1+pow(dist*10,0.5)),20+dist*2.0+GameTime/35.0f))*max(0,red-0.02);
+        off2=fract(off2*3.0)*3.0*sign(off2);
+        off2-=fract(off2*7.0)/7.0;
+        hsvD.x+=off2/70.0;
+        off=pow(abs(off),0.5)*sign(off);
+        off-=fract(off*16.0)/16.0;
         hsvD.y*=0.8f;
-        hsvD.z*=1.0f-red*0.02f*hsvD.y;
+        hsvD.z*=1.0f-red*0.02f*hsvD.y-off/3.8-abs(off2/14.0);
         souled=min(souled+red,1.0);
         rgbD=rgbD*(1.0-souled)+souled*hsv2rgb(hsvD);
     }
@@ -154,8 +163,6 @@ void main(){
     diffuseColor.r*=1.0+red/12.0;
     fragColor = diffuseColor;
 
-    vec2 dirForNoise = fracted-vec2(0.5,0.5);
-    dirForNoise=normalize(dirForNoise)*2.0;
 
 
     //dist = clamp(dist/4.0*(0.8+length(texCopied-vec2(0.5,0.5))*0.2),1.0,20.0);

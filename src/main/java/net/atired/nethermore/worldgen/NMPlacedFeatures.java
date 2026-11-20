@@ -50,15 +50,15 @@ public class NMPlacedFeatures {
         register(context, TUMOR_PILLAR_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.TUMOR_PILLAR_KEY),
                 typicalPlacement(CountPlacement.of(UniformInt.of(12,16)), HeightRangePlacement.triangle(VerticalAnchor.belowTop(100), VerticalAnchor.belowTop(4))));
         register(context, SOUL_BUMP_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.SOUL_BUMP_KEY),
-                commonPlacement(64, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(40), VerticalAnchor.belowTop(30))));
+                commonPlacement(64, HeightRangePlacement.triangle(VerticalAnchor.absolute(40), VerticalAnchor.belowTop(30))));
         register(context, SHATTER_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.SHATTER_KEY),
-                commonPlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(86), VerticalAnchor.belowTop(5))));
+                commonPlacement(4, HeightRangePlacement.triangle(VerticalAnchor.absolute(86), VerticalAnchor.belowTop(5))));
         register(context, BRICK_ROAD_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.BRICK_ROAD_KEY),
-                commonPlacement(64, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(42), VerticalAnchor.belowTop(20))));
+                commonPlacement(64, HeightRangePlacement.triangle(VerticalAnchor.absolute(67), VerticalAnchor.belowTop(20))));
         register(context, SLAG_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.SLAG_KEY),
-                commonPlacement(32, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(47), VerticalAnchor.belowTop(20))));
+                commonPlacement(48, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(57), VerticalAnchor.belowTop(20))));
         register(context, BILESTONE_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.BILESTONE_KEY),
-                commonPlacement(48, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(34), VerticalAnchor.aboveBottom(43))));
+                commonPlacement(48, HeightRangePlacement.triangle(VerticalAnchor.absolute(30), VerticalAnchor.absolute(43))));
         register(context, IRON_RAFTERS_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.IRON_RAFTERS_KEY),
                 commonPlacement(24, HeightRangePlacement.triangle(VerticalAnchor.belowTop(40), VerticalAnchor.belowTop(2))));
         register(context, SC_MR_PK, configuredFeatures.getOrThrow(NMConfiguredFeatures.SC_MR_KEY),

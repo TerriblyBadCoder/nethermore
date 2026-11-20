@@ -1,0 +1,7 @@
+
+{
+  "parent": "nethermore:block/soul_blocks",
+  "textures": {
+    "all": "nethermore:block/trash_pile"
+  }
+}

@@ -1,10 +1,12 @@
 package net.atired.nethermore.blocks;
 
 import net.atired.nethermore.accessors.OffsetFunctionAccessor;
+import net.atired.nethermore.init.NMParticleInit;
 import net.atired.nethermore.misc.NMsimplexNoise;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -48,6 +50,17 @@ public class InflamedEyeBlock extends Block {
            level.setBlock(pos,
                    state.setValue(COVERED,!neighbor.isEmpty()),2);
         }
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if(!state.getValue(COVERED)){
+            for (int i = 0; i < 2; i++) {
+                Vec3 posv = pos.getCenter().add(0,0.41,0).add(state.getOffset(level,pos)).add((Math.random()-0.5)/2.0,Math.random()/4.0f,(Math.random()-0.5)/2.0);
+                level.addParticle(NMParticleInit.TEAR_PARTICLE.get(),posv.x,posv.y,posv.z,0,0.01,0);
+            }
+        }
+        super.animateTick(state, level, pos, random);
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

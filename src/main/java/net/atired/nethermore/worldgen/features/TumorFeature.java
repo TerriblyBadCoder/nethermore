@@ -30,6 +30,8 @@ public class TumorFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(@NotNull FeaturePlaceContext featurePlaceContext) {
         WorldGenLevel level = featurePlaceContext.level();
         BlockPos pos = featurePlaceContext.origin();
+
+        if(pos.getY()<62){return false;}
         if(!level.getBlockState(pos).isEmpty()){
             boolean yeaGoAhead=false;
             for(Direction direction : Direction.values()){

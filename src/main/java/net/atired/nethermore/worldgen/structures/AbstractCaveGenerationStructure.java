@@ -18,7 +18,7 @@ import java.util.function.Consumer;
 //based on alex's caves cave structures
 public abstract class AbstractCaveGenerationStructure extends Structure {
 
-
+    public int worldHeight = 128;
 
     protected AbstractCaveGenerationStructure(StructureSettings settings) {
         super(settings);
@@ -41,7 +41,7 @@ public abstract class AbstractCaveGenerationStructure extends Structure {
     }
 
     public void generatePieces(StructurePiecesBuilder builder, GenerationContext context) {
-
+        this.worldHeight=128;
         WorldgenRandom worldgenrandom = new WorldgenRandom(new LegacyRandomSource(0L));
         worldgenrandom.setLargeFeatureSeed(context.seed(), context.chunkPos().x, context.chunkPos().z);
         int i = context.chunkPos().getMinBlockX();
@@ -57,11 +57,11 @@ public abstract class AbstractCaveGenerationStructure extends Structure {
         int heightBlocks = (biomeUp + biomeDown) / 2;
         int widthChunks = getWidthChunks();
         int heightChunks = getHeightOverride((int) Math.ceil((heightBlocks + 16) / 16F / 2F));
-        int minYChunks = (int) Math.ceil(context.chunkGenerator().getMinY() / 16F);
+        int minYChunks = (int) Math.ceil(0 / 16F);
         int maxYChunks = (int) Math.ceil(320 / 16F);
         for (int chunkX = -widthChunks; chunkX <= widthChunks; chunkX++) {
             for (int chunkZ = -widthChunks; chunkZ <= widthChunks; chunkZ++) {
-                for (int chunkY = Math.max(-heightChunks, minYChunks); chunkY <= Math.min(heightChunks, maxYChunks); chunkY++) {
+                for (int chunkY = Math.max(-heightChunks-8, minYChunks-8); chunkY <= Math.min(heightChunks, maxYChunks); chunkY++) {
                     StructurePiece piece = createPiece(center.offset(new BlockPos(chunkX * 16, chunkY * 16, chunkZ * 16)), center, heightBlocks, widthBlocks, context.randomState());
                     builder.addPiece(piece);
                 }
@@ -74,7 +74,7 @@ public abstract class AbstractCaveGenerationStructure extends Structure {
     }
 
     protected int getYExpand() {
-        return -5;
+        return 44;
     }
 
     protected abstract StructurePiece createPiece(BlockPos offset, BlockPos center, int heightBlocks, int widthBlocks, RandomState randomState);

@@ -56,7 +56,7 @@ public class ScrambledPitsStructurePiece extends AbstractCaveGenerationStructure
             for (int z = 0; z < 16; z++) {
                 MutableBoolean doFloor = new MutableBoolean(false);
                 for (int y = 15; y >= 0; y--) {
-                    Vec3 dir =new Vec3(cornerX+x,cornerY+y,cornerZ+z).vectorTo(this.holeCenter.getCenter()).normalize();
+                    Vec3 dir =new Vec3(cornerX+x,cornerY+y,cornerZ+z).vectorTo(this.holeCenter.getCenter().multiply(1,0,1).add(0,level.dimensionType().logicalHeight(),0)).normalize();
                     float sinused =(float)Math.cos(Math.acos(dir.y)*6.0f);
                     float cosinused = (float)Math.sin(Math.atan2(dir.x,dir.z)*12.0f+(cornerY+y)/12.0f)*(float)dir.multiply(1,0.6,1).length();
                     carve.set(cornerX + x, Mth.clamp(cornerY + y, level.getMinBuildHeight(), level.getMaxBuildHeight()), cornerZ + z);
@@ -156,9 +156,9 @@ public class ScrambledPitsStructurePiece extends AbstractCaveGenerationStructure
 
         float absed = Math.max(0.0f,this.holeCenter.getY()-y);
         float nonabsed = Math.max(0.0f,-this.holeCenter.getY()+y);
-        boolean returnal = (2.0f+sin/16.0f+cos*1.2f)*distToCenter<56f-absed*5.0;
+        boolean returnal = (1.8f-sin/16.0f+cos*1.2f)*distToCenter<56f-absed*5.0;
         boolean returnal2 = pillarNoise*(hordistToCenter+10-Math.pow(nonabsed+12,0.5)*3.0)<1f-absed*5.0;
-        boolean returnal3 = (2.0f+sin/16.0f+cos*0.3f)*distToCenter<56f-absed*5.0;
+        boolean returnal3 = (1.8f-sin/16.0f+cos*0.3f)*distToCenter<56f-absed*5.0;
         return returnal2?3:(returnal?1:(returnal3?2:0));
     }
     private float getHeightOf(BlockPos.MutableBlockPos carve) {

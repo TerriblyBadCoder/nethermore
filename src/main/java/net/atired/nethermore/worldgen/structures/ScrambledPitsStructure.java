@@ -54,12 +54,12 @@ public class ScrambledPitsStructure extends AbstractCaveGenerationStructure{
 
     @Override
     protected StructurePiece createPiece(BlockPos offset, BlockPos center, int heightBlocks, int widthBlocks, RandomState randomState) {
-        return new ScrambledPitsStructurePiece(offset, center.atY(60+(int)(center.getY()/2.5f)), heightBlocks, widthBlocks);
+        return new ScrambledPitsStructurePiece(offset, center, heightBlocks, widthBlocks);
     }
 
     @Override
     public int getGenerateYHeight(WorldgenRandom random, int x, int y) {
-        return BOWL_Y_CENTER;
+        return 60;
     }
     @Override
     public int getWidthChunks(){

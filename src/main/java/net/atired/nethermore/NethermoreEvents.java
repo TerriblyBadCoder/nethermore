@@ -25,6 +25,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.EventPriority;
@@ -182,6 +183,8 @@ public class NethermoreEvents {
 //        }
         biomeMap.put(NMBiomeInit.HAUNTED_CRAGS,biomes.getHolder(NMBiomeInit.HAUNTED_CRAGS).get());
         biomeMap.put(NMBiomeInit.SCRAMBLED_PITS,biomes.getHolder(NMBiomeInit.SCRAMBLED_PITS).get());
+        biomeMap.put(Biomes.SOUL_SAND_VALLEY,biomes.getHolder(Biomes.SOUL_SAND_VALLEY).get());
+        biomeMap.put(Biomes.BASALT_DELTAS,biomes.getHolder(Biomes.BASALT_DELTAS).get());
         Registry<LevelStem> levelStems = registryAccess.registryOrThrow(Registries.LEVEL_STEM);
 
         for (ResourceKey<LevelStem> levelStemResourceKey : levelStems.registryKeySet()) {

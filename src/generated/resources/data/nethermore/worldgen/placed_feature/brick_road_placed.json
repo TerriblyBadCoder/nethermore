@@ -16,7 +16,7 @@
           "below_top": 20
         },
         "min_inclusive": {
-          "above_bottom": 42
+          "absolute": 67
         }
       }
     },

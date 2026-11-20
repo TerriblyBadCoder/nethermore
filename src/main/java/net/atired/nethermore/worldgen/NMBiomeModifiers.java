@@ -54,7 +54,7 @@ public class NMBiomeModifiers {
         context.register(ADD_BASALT_LINES, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(NMBiomeInit.HAUNTED_CRAGS)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.BASALT_LINES_PK)),
-                GenerationStep.Decoration.UNDERGROUND_STRUCTURES));
+                GenerationStep.Decoration.LAKES));
         context.register(ADD_TUMOR_PILLAR, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(NMBiomeInit.HAUNTED_CRAGS)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.TUMOR_PILLAR_PK)),
@@ -110,7 +110,7 @@ public class NMBiomeModifiers {
         context.register(ADD_OUTCROP, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(NMBiomeInit.HAUNTED_CRAGS)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.OUTCROP_PK)),
-                GenerationStep.Decoration.VEGETAL_DECORATION));
+                GenerationStep.Decoration.TOP_LAYER_MODIFICATION));
         context.register(ADD_SALT, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.NETHER_WASTES)),
                 HolderSet.direct(placedFeatures.getOrThrow(NMPlacedFeatures.SALT_PK)),

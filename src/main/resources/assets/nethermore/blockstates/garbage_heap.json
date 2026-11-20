@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "nethermore:block/garbage_heap"
+      },
+      {
+        "model": "nethermore:block/garbage_heap",
+        "x": 90
+      },
+      {
+        "model": "nethermore:block/garbage_heap",
+        "x": 180
+      },
+      {
+        "model": "nethermore:block/garbage_heap",
+        "x": 270
+      },
+      {
+        "model": "nethermore:block/garbage_heap_1"
+      },
+      {
+        "model": "nethermore:block/garbage_heap_2"
+      },
+      {
+        "model": "nethermore:block/garbage_heap_3"
+      }
+    ]
+  }
+}

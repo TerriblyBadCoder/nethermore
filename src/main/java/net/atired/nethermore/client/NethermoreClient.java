@@ -142,6 +142,19 @@ public class NethermoreClient {
 
     @SubscribeEvent
     public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
+
+        event.register((blockState, blockAndTintGetter, blockPos, tintIndex) -> {
+            if(blockPos!=null){
+                float minimal = Math.min(1.0f,0.9f+ NMsimplexNoise.sampleNoise3D(blockPos.getX(),blockPos.getY()*4.0f,blockPos.getZ(),4.0f)/12.5f);
+                int a = (int)(minimal*255);
+                 minimal = Math.min(1.0f,0.6f+ NMsimplexNoise.sampleNoise3D(blockPos.getX(),blockPos.getY()*3.0f,blockPos.getZ()/2.0f,4.0f)/12.5f);
+                int b = (int)(minimal*255);
+                 minimal = Math.min(1.0f,0.6f+ NMsimplexNoise.sampleNoise3D(blockPos.getX()/2.0f,blockPos.getY()*5.0f,blockPos.getZ()+400,4.0f)/12.5f);
+                int c = (int)(minimal*255);
+                return new Color(a,b,c,255).getRGB();
+            }
+            return 0xFFFFFFFF;
+        }, NMBlockInit.GARBAGE_HEAP.get());
         event.register((blockState, blockAndTintGetter, blockPos, tintIndex) -> {
             if(blockPos!=null){
                 float minimal = Math.min(1.0f,1.0f+ NMsimplexNoise.sampleNoise3D(blockPos.getX(),blockPos.getY()*4.0f,blockPos.getZ(),14.0f)/4.0f);
@@ -161,6 +174,8 @@ public class NethermoreClient {
         event.registerSpriteSet(NMParticleInit.WHISPER_PARTICLE.get(), WhisperParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.SOUL_PARTICLE.get(), SoulParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.OPEN_PARTICLE.get(), OpenParticle.Provider::new);
+        event.registerSpriteSet(NMParticleInit.RUNE_PARTICLE.get(), RuneParticle.Provider::new);
+        event.registerSpriteSet(NMParticleInit.TEAR_PARTICLE.get(), TearParticle.Provider::new);
     }
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {

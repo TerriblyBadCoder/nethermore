@@ -10,9 +10,13 @@ import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -32,12 +36,28 @@ public class TrashBagBlock extends Block {
     protected void spawnDestroyParticles(Level level, Player player, BlockPos pos, BlockState state) {
         if(level instanceof ServerLevel serverLevel){
             Vec3 center = pos.getCenter();
-            serverLevel.sendParticles(NMParticleInit.PAPER_TRAIL_PARTICLE.get(),center.x,center.y,center.z,7,0.25,0.25,.25,0.4);
-            serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, NMBlockInit.TRASH_BAG.asItem().getDefaultInstance()),center.x,center.y,center.z,14,0.25,0.25,.25,0.8);
-            serverLevel.sendParticles(NMParticleInit.PAPER_TRAIL_PARTICLE.get(),center.x,center.y,center.z,7,0.25,0.25,.25,0.8);
+            serverLevel.sendParticles(NMParticleInit.PAPER_TRAIL_PARTICLE.get(),center.x,center.y,center.z,2,0.25,0.25,.25,0.4);
+            serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, NMBlockInit.TRASH_BAG.asItem().getDefaultInstance()),center.x,center.y,center.z,14,0.25,0.25,.25,0.4);
+            serverLevel.sendParticles(NMParticleInit.PAPER_TRAIL_PARTICLE.get(),center.x,center.y,center.z,2,0.25,0.25,.25,0.2);
         }
         super.spawnDestroyParticles(level, player, pos, state);
     }
+
+    @Override
+    public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+
+        if(fallDistance>1){
+            if(entity instanceof ServerPlayer player){
+
+            }
+            if(entity instanceof LivingEntity && !(entity instanceof Monster)){
+                level.destroyBlock(pos,true);
+            }
+        }
+        super.fallOn(level, state, pos, entity, fallDistance);
+    }
+
+
 
     @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {

@@ -1,7 +1,22 @@
 {
   "variants": {
-    "": {
-      "model": "nethermore:block/topped_bilestone"
-    }
+    "":[
+      {
+        "model": "nethermore:block/topped_bilestone",
+        "y": 90
+      },
+      {
+        "model": "nethermore:block/topped_bilestone",
+        "y": 180
+      },
+      {
+        "model": "nethermore:block/topped_bilestone",
+        "y": 270
+      },
+      {
+        "model": "nethermore:block/topped_bilestone"
+      }
+    ]
+
   }
 }

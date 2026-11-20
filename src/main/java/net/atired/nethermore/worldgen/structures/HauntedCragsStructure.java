@@ -70,7 +70,7 @@ public class HauntedCragsStructure extends AbstractCaveGenerationStructure{
 
     @Override
     public int getGenerateYHeight(WorldgenRandom random, int x, int y) {
-        return BOWL_Y_CENTER;
+        return this.worldHeight/2;
     }
     @Override
     public int getWidthChunks(){
@@ -83,7 +83,7 @@ public class HauntedCragsStructure extends AbstractCaveGenerationStructure{
 
     @Override
     public int getHeightRadius(WorldgenRandom random, int seaLevel) {
-        return 90;
+        return 256;
     }
 
     @Override

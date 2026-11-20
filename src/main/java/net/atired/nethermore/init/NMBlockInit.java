@@ -58,6 +58,8 @@ public class NMBlockInit {
             () -> new BlueAshLayerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).requiresCorrectToolForDrops().mapColor(MapColor.SNOW)));
     public static final DeferredBlock<Block> TRASH_BAG = registerBlock("trash_bag",
             () -> new TrashBagBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DRIED_KELP_BLOCK).instabreak().mapColor(MapColor.COLOR_BLACK)));
+    public static final DeferredBlock<Block> GARBAGE_HEAP = registerBlock("garbage_heap",
+            () -> new GarbageHeapBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DRIED_KELP_BLOCK).friction(0.9f).instabreak().mapColor(MapColor.COLOR_BLACK)));
     public static final DeferredBlock<Block> INFLAMED_EYE = registerBlock("inflamed_eye",
             () -> new InflamedEyeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_RED).lightLevel((p_50872_) -> {
                 return p_50872_.getValue(InflamedEyeBlock.COVERED)?0:15;
@@ -112,7 +114,7 @@ public class NMBlockInit {
             })));
     public static final DeferredBlock<Block> MAW_TUMOR_BLOCK = registerBlock("maw_tumor_block",
             () -> new MawTumorBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).mapColor(MapColor.TERRACOTTA_WHITE).strength(0.6F)));
-    public static final DeferredBlock<LiquidBlock> TAR = registerBlockNoItem("tar",()-> new TarBlock(NMFluidInit.TAR_FLUID_SOURCE.get(),BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_BLACK)));
+    public static final DeferredBlock<LiquidBlock> TAR = registerBlockNoItem("tar",()-> new TarBlock(NMFluidInit.TAR_FLUID_SOURCE.get(),BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).lightLevel((a)->{return 3;}).mapColor(MapColor.TERRACOTTA_BLACK)));
     public static final DeferredBlock<Block> WHISPERING_THORN_BLOCK = registerBlock("whispering_thorn",
             () -> new WhisperingThornBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_STEM).randomTicks().mapColor(MapColor.COLOR_PURPLE)));
     public static final DeferredBlock<Block> SLIVERS_BLOCK = registerBlock("slivers",

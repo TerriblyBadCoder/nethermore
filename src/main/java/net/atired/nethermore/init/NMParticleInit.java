@@ -23,6 +23,14 @@ public class NMParticleInit {
             "soul",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> RUNE_PARTICLE = PARTICLE_TYPES.register(
+            "rune",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> TEAR_PARTICLE = PARTICLE_TYPES.register(
+            "tear",
+            () -> new SimpleParticleType(false)
+    );
     public static final Supplier<SimpleParticleType> PAPER_TRAIL_PARTICLE = PARTICLE_TYPES.register(
             "paper_trail",
             () -> new SimpleParticleType(false)

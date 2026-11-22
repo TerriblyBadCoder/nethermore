@@ -177,6 +177,7 @@ public class NethermoreClient {
         event.registerSpriteSet(NMParticleInit.OPEN_PARTICLE.get(), OpenParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.RUNE_PARTICLE.get(), RuneParticle.Provider::new);
         event.registerSpriteSet(NMParticleInit.TEAR_PARTICLE.get(), TearParticle.Provider::new);
+        event.registerSpriteSet(NMParticleInit.SOUL_BOOM_PARTICLE.get(), SoulBoomParticle.Provider::new);
     }
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {

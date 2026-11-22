@@ -31,6 +31,10 @@ public class NMParticleInit {
             "tear",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> SOUL_BOOM_PARTICLE = PARTICLE_TYPES.register(
+            "soul_boom",
+            () -> new SimpleParticleType(false)
+    );
     public static final Supplier<SimpleParticleType> PAPER_TRAIL_PARTICLE = PARTICLE_TYPES.register(
             "paper_trail",
             () -> new SimpleParticleType(false)

@@ -47,8 +47,9 @@ public class PrimedEctEntity extends PrimedTnt {
     @Override
     protected void explode() {
         if(level() instanceof ServerLevel serverLevel){
-            serverLevel.sendParticles(NMParticleInit.SOUL_PARTICLE.get(),getX(),getY(0.5),getZ(),15,0.4,0.4,0.4,0.1);
-            serverLevel.sendParticles(NMParticleInit.SOUL_PARTICLE.get(),getX(),getY(0.5),getZ(),15,0.4,0.4,0.4,0.4);
+            serverLevel.sendParticles(NMParticleInit.SOUL_PARTICLE.get(),getX(),getY(0.5),getZ(),15,1.4,1.4,1.4,0.1);
+            serverLevel.sendParticles(NMParticleInit.SOUL_PARTICLE.get(),getX(),getY(0.5),getZ(),15,1.4,1.4,1.4,0.4);
+            serverLevel.sendParticles(NMParticleInit.SOUL_BOOM_PARTICLE.get(),getX(),getY(0.5),getZ(),40,1.5,1.5,1.5,0.0);
             serverLevel.sendParticles(ParticleTypes.SOUL_FIRE_FLAME,getX(),getY(0.5),getZ(),15,0.1,0.4,0.1,0.1);
             for (int i = 0; i < 16; i++) {
                 SoulProjEntity soul = new SoulProjEntity(NMEntityInit.SOUL.get(),serverLevel);

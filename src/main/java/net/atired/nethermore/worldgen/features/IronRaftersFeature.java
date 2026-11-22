@@ -37,44 +37,81 @@ IronRaftersFeature extends Feature<NoneFeatureConfiguration> {
                 for (int z = -15; z <= 15; z++) {
                     BlockPos pos1 = pos.offset(x,0,z);
                     if(level.isEmptyBlock(pos1)&&new Vec3(x,0,z).length()<15){
+                        if(new Vec3(x,0,z).length()>10){
 
-                        if((pos1.getX()+pos1.getY()/(int)2)%4==0){
-                            if((pos1.getZ()+pos1.getY()/(int)2)%4==0){
-                                level.setBlock(pos1, NMBlockInit.IRON_RAFTER.get().defaultBlockState()
-                                        .setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z)
-                                        .setValue(IronRafterBlock.COMBINED, true)
-                                        ,2);
+                            if((pos1.getX()+pos1.getY()/(int)2)%4==0){
+                                if((pos1.getZ()+pos1.getY()/(int)2)%4==0){
+                                    level.setBlock(pos1, NMBlockInit.IRON_RAFTER.get().defaultBlockState()
+                                                    .setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z)
+                                                    .setValue(IronRafterBlock.COMBINED, true)
+                                            ,2);
 
-                            }else{
-                                if(Math.random()>0.85f&&(pos1.getZ()+pos1.getY()/(int)2)%4==2&&level.getBlockState(pos1.below()).isEmpty()){
+                                }else{
+                                    if(Math.random()>0.85f&&(pos1.getZ()+pos1.getY()/(int)2)%4==2&&level.getBlockState(pos1.below()).isEmpty()){
+                                        level.setBlock(pos1.below(),NMBlockInit.SYRINGE.get().defaultBlockState().setValue(
+                                                BlockStateProperties.FACING,Direction.DOWN),2);
+                                        level.setBlock(pos1, NMBlockInit.IRON_RAFTER.get().defaultBlockState()
+                                                        .setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y)
+                                                        .setValue(IronRafterBlock.COMBINED, true)
+                                                        .setValue(IronRafterBlock.ISX, false)
+                                                ,2);
+                                    }
+                                    else{
+                                        level.setBlock(pos1, NMBlockInit.IRON_RAFTER.get().defaultBlockState()
+                                                        .setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z)
+                                                ,2);
+                                    }
+                                }
+                            }else if((pos1.getZ()+pos1.getY()/(int)2)%4==0){
+                                if(Math.random()>0.85f&&(pos1.getX()+pos1.getY()/(int)2)%4==2&&level.getBlockState(pos1.below()).isEmpty()){
                                     level.setBlock(pos1.below(),NMBlockInit.SYRINGE.get().defaultBlockState().setValue(
                                             BlockStateProperties.FACING,Direction.DOWN),2);
                                     level.setBlock(pos1, NMBlockInit.IRON_RAFTER.get().defaultBlockState()
                                                     .setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y)
                                                     .setValue(IronRafterBlock.COMBINED, true)
-                                                    .setValue(IronRafterBlock.ISX, false)
+                                                    .setValue(IronRafterBlock.ISX, true)
                                             ,2);
                                 }
                                 else{
                                     level.setBlock(pos1, NMBlockInit.IRON_RAFTER.get().defaultBlockState()
-                                                    .setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z)
+                                                    .setValue(RotatedPillarBlock.AXIS, Direction.Axis.X)
                                             ,2);
                                 }
                             }
-                        }else if((pos1.getZ()+pos1.getY()/(int)2)%4==0){
-                            if(Math.random()>0.85f&&(pos1.getX()+pos1.getY()/(int)2)%4==2&&level.getBlockState(pos1.below()).isEmpty()){
-                                level.setBlock(pos1.below(),NMBlockInit.SYRINGE.get().defaultBlockState().setValue(
-                                        BlockStateProperties.FACING,Direction.DOWN),2);
-                                level.setBlock(pos1, NMBlockInit.IRON_RAFTER.get().defaultBlockState()
-                                                .setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y)
-                                                .setValue(IronRafterBlock.COMBINED, true)
-                                                .setValue(IronRafterBlock.ISX, true)
-                                        ,2);
-                            }
-                            else{
-                                level.setBlock(pos1, NMBlockInit.IRON_RAFTER.get().defaultBlockState()
-                                                .setValue(RotatedPillarBlock.AXIS, Direction.Axis.X)
-                                        ,2);
+                        }else{
+                            if((pos1.getX()+pos1.getY()/(int)2)%4==0){
+                                if((pos1.getZ()+pos1.getY()/(int)2)%4==0){
+                                    level.setBlock(pos1, NMBlockInit.BIG_IRON_RAFTER.get().defaultBlockState()
+                                                    .setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y)
+                                            ,2);
+
+                                }else{
+                                    if(Math.random()>0.85f&&(pos1.getZ()+pos1.getY()/(int)2)%4==2&&level.getBlockState(pos1.below()).isEmpty()){
+                                        level.setBlock(pos1.below(),NMBlockInit.SYRINGE.get().defaultBlockState().setValue(
+                                                BlockStateProperties.FACING,Direction.DOWN),2);
+                                        level.setBlock(pos1, NMBlockInit.BIG_IRON_RAFTER.get().defaultBlockState()
+                                                        .setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y)
+                                                ,2);
+                                    }
+                                    else{
+                                        level.setBlock(pos1, NMBlockInit.BIG_IRON_RAFTER.get().defaultBlockState()
+                                                        .setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z)
+                                                ,2);
+                                    }
+                                }
+                            }else if((pos1.getZ()+pos1.getY()/(int)2)%4==0){
+                                if(Math.random()>0.85f&&(pos1.getX()+pos1.getY()/(int)2)%4==2&&level.getBlockState(pos1.below()).isEmpty()){
+                                    level.setBlock(pos1.below(),NMBlockInit.SYRINGE.get().defaultBlockState().setValue(
+                                            BlockStateProperties.FACING,Direction.DOWN),2);
+                                    level.setBlock(pos1, NMBlockInit.BIG_IRON_RAFTER.get().defaultBlockState()
+                                                    .setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y)
+                                            ,2);
+                                }
+                                else{
+                                    level.setBlock(pos1, NMBlockInit.BIG_IRON_RAFTER.get().defaultBlockState()
+                                                    .setValue(RotatedPillarBlock.AXIS, Direction.Axis.X)
+                                            ,2);
+                                }
                             }
                         }
                     }

@@ -20,11 +20,11 @@ public class SoulParticle extends TextureSheetParticle {
         this.zd=zSpeed;
         this.xd*=0.28f;
         this.zd*=0.28f;
-        this.gravity=-0.1f;
+        this.gravity=0.17f;
         this.quadSize*=2.6f;
         this.sprOff=(int)(Math.random()*50);
         this.spriteSet=sprite;
-        this.roll=(float)Math.random()*3.14f*8.0f;
+        this.roll=(float)(Math.random()-0.5)*3.14f*0.5f;
         this.oRoll=this.roll;
         this.setSpriteFromAge(spriteSet);
     }
@@ -32,7 +32,7 @@ public class SoulParticle extends TextureSheetParticle {
     @Override
     public void tick() {
         this.oRoll=roll;
-        this.roll+=(1.0f-(float)this.age/this.lifetime)/6.0f;
+        this.roll+=(1.0f-(float)this.age/this.lifetime)/32.0f;
         alpha=Math.min((1.0f-(float)((float)this.age/(float)this.lifetime))*6.0f,1.0f);
         this.setSpriteFromAge(spriteSet);
         super.tick();

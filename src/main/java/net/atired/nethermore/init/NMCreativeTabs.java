@@ -31,6 +31,7 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.EYE_TUMOR_BLOCK);
                         output.accept(NMBlockInit.FAT_TUMOR_BLOCK);
                         output.accept(NMBlockInit.MAW_TUMOR_BLOCK);
+                        output.accept(NMBlockInit.GARBAGE_HEAP);
                         output.accept(NMBlockInit.CORKBORED_BLOCK);
                         output.accept(NMBlockInit.PIN);
                         output.accept(NMBlockInit.BANNER_PIN);

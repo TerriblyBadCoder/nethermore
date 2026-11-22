@@ -46,6 +46,8 @@ public class NMBlockInit {
     public static final DeferredBlock<Block> BIG_BLUE_ASH_SHINGLES = registerBlock("big_blue_ash_shingles",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).mapColor(MapColor.TERRACOTTA_WHITE)));
 
+    public static final DeferredBlock<Block> ECT = registerBlock("ect",
+            () -> new ECTBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.TNT).mapColor(MapColor.COLOR_LIGHT_BLUE)));
     public static final DeferredBlock<Block> SOUL_LINING_BLOCK = registerBlock("soul_lining",
             () -> new SoulLiningBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).isValidSpawn((a,b,c,d)->{return false;}).lightLevel((p_50872_) -> {
                 return 13;

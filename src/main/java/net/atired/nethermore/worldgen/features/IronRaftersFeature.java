@@ -15,7 +15,8 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.phys.Vec3;
 
-public class IronRaftersFeature extends Feature<NoneFeatureConfiguration> {
+public class
+IronRaftersFeature extends Feature<NoneFeatureConfiguration> {
     public IronRaftersFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
     }

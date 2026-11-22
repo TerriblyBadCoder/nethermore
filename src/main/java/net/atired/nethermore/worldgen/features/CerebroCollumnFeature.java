@@ -40,7 +40,7 @@ public class CerebroCollumnFeature extends Feature<NoneFeatureConfiguration> {
                                 }else{
                                     level.setBlock(pos1, NMBlockInit.SOUL_CRYSTAL_BLOCK.get().defaultBlockState(),2);
                                 }
-                            }else if(((dir.length()<5.5&&dir.length()>4.5+noisier*2.0)||(dir.length()>7.0&&dir.length()<7.5-noisier))&&!level.getBlockState(pos1).isEmpty()){
+                            }else if(((dir.length()<5.5&&dir.length()>4.5+noisier*2.0)||(dir.length()>7.0&&dir.length()<8.5-noisier))&&!level.getBlockState(pos1).isEmpty()){
                                 float noisy = NMsimplexNoise.sampleNoise3D(200+pos1.getX(),pos1.getY(),pos1.getZ(),5);
                                 if(noisy>-0.2){
                                     level.setBlock(pos1, NMBlockInit.BLUE_ASH_BLOCK.get().defaultBlockState(),2);
@@ -52,31 +52,24 @@ public class CerebroCollumnFeature extends Feature<NoneFeatureConfiguration> {
                     }
                 }
                 for (int i = 0; i < 12; i++) {
-                    double length = 8*Math.random()+5;
+                    double length = 8*Math.random()+8;
                     Vec3 dir = new Vec3(1,0,0).zRot((float)(Math.random()-0.5f)*3.0f).yRot(yRot+i/12.0f*3.14f*2.0f);
                     for (double j = 0; j < length; j+=0.5) {
                         BlockPos pos1 = pos.offset((int)dir.scale(j).x(),(int)dir.scale(j).y(),(int)dir.scale(j).z());
-                        if(j<length/2){
-                            for (int x = -1; x <1; x++) {
-                                for (int z = -1; z <1; z++) {
-                                    for (int y = -1; y <1; y++) {
-                                        float noisy = NMsimplexNoise.sampleNoise3D(200+pos1.getX(),pos1.getY(),pos1.getZ(),6);
+                        int l = (int)(Math.pow((length-j)*0.3,0.5))+1;
+                            for (int x = -l+1; x <l; x++) {
+                                for (int z = -l+1; z <l; z++) {
+                                    for (int y = -l+1; y <l; y++) {
+                                        BlockPos pos2 = pos1.offset(x,y,z);
+                                        float noisy = NMsimplexNoise.sampleNoise3D(200+pos2.getX(),pos2.getY(),pos2.getZ(),6);
                                         if(noisy>0.1){
-                                            level.setBlock(pos1, NMBlockInit.SOUL_LINING_BLOCK.get().defaultBlockState(),2);
+                                            level.setBlock(pos2, NMBlockInit.SOUL_LINING_BLOCK.get().defaultBlockState(),2);
                                         }else{
-                                            level.setBlock(pos1, NMBlockInit.SOUL_CRYSTAL_BLOCK.get().defaultBlockState(),2);
+                                            level.setBlock(pos2, NMBlockInit.SOUL_CRYSTAL_BLOCK.get().defaultBlockState(),2);
                                         }
                                     }
                                 }
                             }
-                        }else{
-                            float noisy = NMsimplexNoise.sampleNoise3D(200+pos1.getX(),pos1.getY(),pos1.getZ(),6);
-                            if(noisy>-0.2){
-                                level.setBlock(pos1, NMBlockInit.SOUL_LINING_BLOCK.get().defaultBlockState(),2);
-                            }else{
-                                level.setBlock(pos1, NMBlockInit.SOUL_CRYSTAL_BLOCK.get().defaultBlockState(),2);
-                            }
-                        }
                     }
                 }
 

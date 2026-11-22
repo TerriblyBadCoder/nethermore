@@ -2,6 +2,11 @@
   "replace": false,
   "values": [
     "nethermore:soul_lining",
-    "nethermore:soul_crystal"
+    "nethermore:soul_crystal",
+    "nethermore:ect",
+    "nethermore:blue_ash_shingles",
+    "nethermore:big_blue_ash_shingles",
+    "nethermore:blue_ash_block",
+    "nethermore:blue_slag"
     ]
 }

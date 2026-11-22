@@ -45,7 +45,7 @@ public class SoulLiningBlock extends Block {
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         if(random.nextFloat()>0.4f&&!(level.getBlockState(pos.below()).getBlock() instanceof SoulLiningBlock))
-            level.addParticle(NMParticleInit.SOUL_PARTICLE.get(), pos.getX()+Math.random(),pos.getY()-Math.random()/12.0f,pos.getZ()+Math.random(),0,-Math.random()/4.0f-0.04f,0);
+            level.addParticle(NMParticleInit.SOUL_PARTICLE.get(), pos.getX()+Math.random(),pos.getY()-Math.random()/12.0f,pos.getZ()+Math.random(),0,0,0);
         super.animateTick(state, level, pos, random);
     }
 }

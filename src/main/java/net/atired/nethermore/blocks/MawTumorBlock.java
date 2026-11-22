@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 
 public class MawTumorBlock extends TumorBlock {
-    public static final DirectionProperty FACING= BlockStateProperties.FACING;;
+    public static final DirectionProperty FACING= BlockStateProperties.FACING;
 
     public static final MapCodec<MawTumorBlock> CODEC = simpleCodec(MawTumorBlock::new);
 
@@ -40,7 +40,7 @@ public class MawTumorBlock extends TumorBlock {
         BlockPos realPos=context.getClickedPos();
         dir=dir.getClockWise();
         int xEd=Math.abs(realPos.getX())%3;
-        if(realPos.getZ()<0&&diri.getZ()==1||(realPos.getZ()>0&&diri.getZ()==1)){
+        if((realPos.getZ()<0&&diri.getZ()==1)||(realPos.getZ()>0&&diri.getZ()==1)){
             xEd=2-xEd;
         }
         int zEd=Math.abs(realPos.getZ())%3;

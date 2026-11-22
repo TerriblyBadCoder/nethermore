@@ -132,6 +132,7 @@ public class NethermoreClient {
         event.registerEntityRenderer(NMEntityInit.ASH_BALL.get(), AshBallEntityRenderer::new);
         event.registerEntityRenderer(NMEntityInit.ONLOOKER.get(), OnlookerEntityRenderer::new);
         event.registerEntityRenderer(NMEntityInit.BEHOLDER.get(), ObserverEntityRenderer::new);
+        event.registerEntityRenderer(NMEntityInit.ECT.get(), EctEntityRenderer::new);
 
         event.registerEntityRenderer(NMEntityInit.TARLING.get(), TarlingEntityRenderer::new);
         event.registerEntityRenderer(NMEntityInit.SLITHER.get(), SlitherEntityRenderer::new);

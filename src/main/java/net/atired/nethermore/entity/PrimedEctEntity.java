@@ -55,8 +55,22 @@ public class PrimedEctEntity extends PrimedTnt {
                 SoulProjEntity soul = new SoulProjEntity(NMEntityInit.SOUL.get(),serverLevel);
                 soul.shootFromRotation(this, this.getXRot(), (float)Math.random()*360.0f, 0.0F, 0.46F+(float)Math.random()/25.0f, 30.0F);
                 soul.addDeltaMovement(new Vec3(0,(Math.random()-0.5)/7.0f,0));
+                if(i%2==0){
+
+                    soul.ignoreHeart=true;
+                }
                 double ranDumb = Math.random()/5.0f+0.8f;
                 soul.setDeltaMovement(soul.getDeltaMovement().multiply(ranDumb*2,1,ranDumb*2));
+                soul.setPos(new Vec3(getX((Math.random()-0.5)*4.0),getY()-0.1,getZ((Math.random()-0.5)*4.0)));
+                serverLevel.addFreshEntity(soul);
+            }
+            for (int i = 0; i < 8; i++) {
+                SoulProjEntity soul = new SoulProjEntity(NMEntityInit.SOUL.get(),serverLevel);
+                soul.shootFromRotation(this, this.getXRot(), (float)Math.random()*360.0f, 0.0F, 0.46F+(float)Math.random()/25.0f, 30.0F);
+                soul.addDeltaMovement(new Vec3(0,(Math.random()-0.5)/7.0f,0));
+                soul.ignoreHeart=true;
+                double ranDumb = Math.random()/5.0f+0.8f;
+                soul.setDeltaMovement(soul.getDeltaMovement().multiply(ranDumb*1.5,1,ranDumb*1.5));
                 soul.setPos(new Vec3(getX((Math.random()-0.5)*4.0),getY()-0.1,getZ((Math.random()-0.5)*4.0)));
                 serverLevel.addFreshEntity(soul);
             }

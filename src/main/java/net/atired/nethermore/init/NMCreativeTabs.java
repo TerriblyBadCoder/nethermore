@@ -64,6 +64,7 @@ public class NMCreativeTabs {
                         output.accept(NMBlockInit.BLUE_SLAG_BLOCK);
                         output.accept(NMBlockInit.BLUE_ASH_SHINGLES);
                         output.accept(NMBlockInit.BIG_BLUE_ASH_SHINGLES);
+                        output.accept(NMBlockInit.ECT);
                         output.accept(NMBlockInit.SOUL_CRYSTAL_BLOCK);
                         output.accept(NMBlockInit.SOUL_LINING_BLOCK);
                         output.accept(NMBlockInit.SILL_SHROOM_BLOCK);

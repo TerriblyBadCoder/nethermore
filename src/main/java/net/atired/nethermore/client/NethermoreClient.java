@@ -142,6 +142,12 @@ public class NethermoreClient {
     }
 
     @SubscribeEvent
+    public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
+        event.register((a, b) -> {
+            return 0x999999;
+        }, NMBlockInit.GARBAGE_HEAP.get().asItem());
+    }
+    @SubscribeEvent
     public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
 
         event.register((blockState, blockAndTintGetter, blockPos, tintIndex) -> {
@@ -154,7 +160,7 @@ public class NethermoreClient {
                 int c = (int)(minimal*255);
                 return new Color(a,b,c,255).getRGB();
             }
-            return 0xFFFFFFFF;
+            return 0xAA9999FF;
         }, NMBlockInit.GARBAGE_HEAP.get());
         event.register((blockState, blockAndTintGetter, blockPos, tintIndex) -> {
             if(blockPos!=null){

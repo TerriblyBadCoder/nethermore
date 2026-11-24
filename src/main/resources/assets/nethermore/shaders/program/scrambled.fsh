@@ -148,6 +148,7 @@ void main(){
         float off2 = cnoise(vec3(fracted*3.14f*5.0f*(1+pow(dist*10,0.5)),20+dist*2.0+GameTime/35.0f))*max(0,red-0.02);
         off2=fract(off2*3.0)*3.0*sign(off2);
         off2-=fract(off2*7.0)/7.0;
+        off2*=hsvD.y;
         hsvD.x+=off2/70.0;
         off=pow(abs(off),0.5)*sign(off);
         off-=fract(off*16.0)/16.0;

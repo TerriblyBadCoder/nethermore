@@ -2,6 +2,7 @@ package net.atired.nethermore.init;
 
 import net.atired.nethermore.Nethermore;
 import net.atired.nethermore.blocks.*;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -59,9 +60,9 @@ public class NMBlockInit {
     public static final DeferredBlock<Block> BLUE_ASH = registerBlock("blue_ash",
             () -> new BlueAshLayerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SOIL).requiresCorrectToolForDrops().mapColor(MapColor.SNOW)));
     public static final DeferredBlock<Block> TRASH_BAG = registerBlock("trash_bag",
-            () -> new TrashBagBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DRIED_KELP_BLOCK).instabreak().mapColor(MapColor.COLOR_BLACK)));
+            () -> new TrashBagBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DRIED_KELP_BLOCK).sound(SoundType.SCULK_SENSOR).instabreak().mapColor(MapColor.COLOR_BLACK)));
     public static final DeferredBlock<Block> GARBAGE_HEAP = registerBlock("garbage_heap",
-            () -> new GarbageHeapBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DRIED_KELP_BLOCK).friction(0.9f).instabreak().mapColor(MapColor.COLOR_BLACK)));
+            () -> new GarbageHeapBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DRIED_KELP_BLOCK).sound(SoundType.SCULK_SENSOR).friction(0.9f).instabreak().mapColor(MapColor.COLOR_BLACK)));
     public static final DeferredBlock<Block> INFLAMED_EYE = registerBlock("inflamed_eye",
             () -> new InflamedEyeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_RED).lightLevel((p_50872_) -> {
                 return p_50872_.getValue(InflamedEyeBlock.COVERED)?0:15;
@@ -100,6 +101,8 @@ public class NMBlockInit {
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).randomTicks().strength(0.5F).mapColor(MapColor.COLOR_BLACK).sound(SoundType.DRIPSTONE_BLOCK)));
     public static final DeferredBlock<Block> SILL_SHROOM_BLOCK = registerBlock("sill_shroom",
             () -> new SillShroomBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_MUSHROOM_BLOCK).randomTicks().strength(0.5F).mapColor(MapColor.TERRACOTTA_PURPLE)));
+    public static final DeferredBlock<Block> SILL_SHROOM_INNER_BLOCK = registerBlock("sill_shroom_inner",
+            () -> new SillShroomBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_MUSHROOM_BLOCK).randomTicks().strength(0.5F).mapColor(MapColor.TERRACOTTA_WHITE)));
     public static final DeferredBlock<Block> CORKBORED_BLOCK = registerBlock("corkbored",
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.SNARE).strength(1.0F, 3.0F).sound(SoundType.WOOD)));
     public static final DeferredBlock<Block> PIN = registerBlock("pin",

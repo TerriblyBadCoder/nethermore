@@ -61,7 +61,7 @@ public class HauntedCragsStructurePiece extends AbstractCaveGenerationStructureP
                     float distToCenter = (float)Math.pow(carve.distToLowCornerSqr(this.holeCenter.getX(), carve.getY(), this.holeCenter.getZ()),0.5);
                     if(carve.getY()<level.dimensionType().logicalHeight()){
                         int circled = inCircle(carve, level);
-                        if (circled>0 && (!checkedGetBlock(level, carve).is(Blocks.BEDROCK)||distToCenter<23)&&!checkedGetBlock(level,carve).is(Blocks.LAVA)) {
+                        if (circled>0 && (!checkedGetBlock(level, carve).is(Blocks.BEDROCK)||distToCenter<23)&&carve.getY()>31&&!checkedGetBlock(level,carve).is(Blocks.LAVA)) {
                             if(circled==1)
                             {
                                 checkedSetBlock(level, carve, Blocks.CAVE_AIR.defaultBlockState());

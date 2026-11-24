@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
@@ -35,10 +36,13 @@ public class TrashBagBlock extends Block {
     @Override
     protected void spawnDestroyParticles(Level level, Player player, BlockPos pos, BlockState state) {
         if(level instanceof ServerLevel serverLevel){
-            Vec3 center = pos.getCenter();
-            serverLevel.sendParticles(NMParticleInit.PAPER_TRAIL_PARTICLE.get(),center.x,center.y,center.z,2,0.25,0.25,.25,0.4);
-            serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, NMBlockInit.TRASH_BAG.asItem().getDefaultInstance()),center.x,center.y,center.z,14,0.25,0.25,.25,0.4);
-            serverLevel.sendParticles(NMParticleInit.PAPER_TRAIL_PARTICLE.get(),center.x,center.y,center.z,2,0.25,0.25,.25,0.2);
+            LootParams.Builder lootparams$builder = (new LootParams.Builder(serverLevel)).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos)).withParameter(LootContextParams.TOOL, player.getMainHandItem()).withOptionalParameter(LootContextParams.BLOCK_ENTITY, null);
+            if(super.getDrops(state,lootparams$builder).isEmpty()){
+                Vec3 center = pos.getCenter();
+                serverLevel.sendParticles(NMParticleInit.PAPER_TRAIL_PARTICLE.get(),center.x,center.y,center.z,2,0.25,0.25,.25,0.4);
+                serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, NMBlockInit.TRASH_BAG.asItem().getDefaultInstance()),center.x,center.y,center.z,14,0.25,0.25,.25,0.4);
+                serverLevel.sendParticles(NMParticleInit.PAPER_TRAIL_PARTICLE.get(),center.x,center.y,center.z,2,0.25,0.25,.25,0.2);
+            }
         }
         super.spawnDestroyParticles(level, player, pos, state);
     }
@@ -47,9 +51,6 @@ public class TrashBagBlock extends Block {
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
 
         if(fallDistance>1){
-            if(entity instanceof ServerPlayer player){
-
-            }
             if(entity instanceof LivingEntity && !(entity instanceof Monster)){
                 level.destroyBlock(pos,true);
             }

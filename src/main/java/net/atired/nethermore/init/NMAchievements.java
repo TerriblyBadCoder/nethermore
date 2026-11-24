@@ -18,5 +18,7 @@ public class NMAchievements {
     public static final DeferredHolder<CriterionTrigger<?>, DummyTrigger> BABBLE=  TRIGGER_TYPES.register("babble",DummyTrigger::new);
     public static final DeferredHolder<CriterionTrigger<?>, DummyTrigger> TARRED=  TRIGGER_TYPES.register("tarred",DummyTrigger::new);
     public static final DeferredHolder<CriterionTrigger<?>, DummyTrigger> GARBAGE=  TRIGGER_TYPES.register("garbage",DummyTrigger::new);
+    public static final DeferredHolder<CriterionTrigger<?>, DummyTrigger> SALT=  TRIGGER_TYPES.register("salt",DummyTrigger::new);
+    public static final DeferredHolder<CriterionTrigger<?>, DummyTrigger> CHERRY=  TRIGGER_TYPES.register("cherry",DummyTrigger::new);
 
 }

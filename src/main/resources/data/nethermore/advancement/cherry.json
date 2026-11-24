@@ -1,0 +1,29 @@
+{
+  "parent": "nethermore:jaunt",
+  "criteria": {
+    "0": {
+      "trigger": "nethermore:cherry"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "color": "#9ca49f",
+      "translate": "advancement.nethermore.cherry.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nethermore:creeping_iv_cherry"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.nethermore.cherry"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

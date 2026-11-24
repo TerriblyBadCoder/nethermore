@@ -1,10 +1,12 @@
 package net.atired.nethermore.items;
 
+import net.atired.nethermore.init.NMAchievements;
 import net.atired.nethermore.init.NMItemComponentInit;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.inventory.ClickAction;
@@ -48,6 +50,9 @@ public class SmokedSaltItem extends Item {
                         player.drop(clone,true,false);
                     }
 
+                }
+                if(player instanceof ServerPlayer splayer){
+                    NMAchievements.SALT.get().trigger(splayer);
                 }
                 return true;
             }
